@@ -1,0 +1,41 @@
+======================================================================
+  MCE3R TIER1 DIAGNOSTIC REPORT
+  Why does the known Mce3R regulatory region appear in results?
+======================================================================
+
+  FIMO hit score floor (weakest passing hit): -10.53
+  Motifs scored: meme, meme_asymmetric
+  Sequences in FASTA: 2351
+
+  Locus                     In FASTA            meme    meme_asymmet                Status
+  --------------------------------------------------------------------
+  IGR_Rv1935c_Rv1936              NO             N/A             N/A          NOT IN FASTA
+  IGR_Rv1963c_Rv1964             YES         -315.00           11.73  HIT (in ranked table)
+  Rv1935c                        YES         -357.36            6.89  HIT (in ranked table)
+  Rv1936                         YES         -357.36            6.89  HIT (in ranked table)
+  Rv1963c                        YES         -391.91           11.73  HIT (in ranked table)
+  Rv1964                         YES         -397.26            8.35  HIT (in ranked table)
+  Rv1965                          NO             N/A             N/A          NOT IN FASTA
+  Rv1966                          NO             N/A             N/A          NOT IN FASTA
+  Rv1967                          NO             N/A             N/A          NOT IN FASTA
+  Rv1968                          NO             N/A             N/A          NOT IN FASTA
+  Rv1969                          NO             N/A             N/A          NOT IN FASTA
+  Rv1970                          NO             N/A             N/A          NOT IN FASTA
+  Rv1971                          NO             N/A             N/A          NOT IN FASTA
+  Rv1972                          NO             N/A             N/A          NOT IN FASTA
+  Rv1973                          NO             N/A             N/A          NOT IN FASTA
+  Rv1974                          NO             N/A             N/A          NOT IN FASTA
+  Rv1975                          NO             N/A             N/A          NOT IN FASTA
+  Rv1976c                        YES         -327.66            7.87  HIT (in ranked table)
+  Rv1977                         YES         -419.19           10.59  HIT (in ranked table)
+  Rv1978                         YES         -999.00            5.98  ABOVE FLOOR but not merged
+
+  INTERPRETATION
+  --------------------------------------------------------------------
+  GOOD: 36 Tier1 hit(s) appear in the ranked table.
+
+  RECOMMENDATION:
+  Run the pipeline with --simulate flag and check whether
+  IGR_Rv1963c_Rv1964 appears in the output after this fix.
+  For definitive results: install MEME Suite (conda install -c bioconda meme)
+======================================================================

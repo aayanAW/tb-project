@@ -1,0 +1,774 @@
+============================================================================
+  MCE3R ARCHITECTURE COMPARISON REPORT
+  Comparing each candidate region to the validated yrbE3A-style operator
+============================================================================
+
+REFERENCE OPERATOR (from 2024 ACS Chemical Biology):
+  Region              : mce3R–yrbE3A (Rv1963c–Rv1964)
+  Architecture        : validated_paired_asymmetric
+  Half-site width     : ~25 bp each
+  Spacer between sites: ~53 bp
+  Strand arrangement  : same-strand direct repeat
+  Palindrome score    : 0.35 (asymmetric — NOT palindromic)
+  Asymmetry score     : 0.65
+
+RANKING CRITERIA:
+  40% — Spacer match to ~53 bp (full credit within ±5 bp)
+  30% — Architecture type (validated_paired_asymmetric = 1.0)
+  30% — Asymmetric model fit (mean asymmetry_score / reference 0.65)
+
+NOTE: Palindrome score is reported as a DESCRIPTIVE METRIC only.
+      It is NOT used in ranking. Low palindrome score (< 0.6) is
+      consistent with the 2024 Mce3R asymmetric binding model.
+
+────────────────────────────────────────────────────────────────────────────
+  Region                   N   Score Architecture                  Spacer  AsymSim    Sim  Verdict
+  ────────────────────────────────────────────────────────────────────────
+  Rv0916c                  2    7.70 validated_paired_asymmetric    53 bp    0.857  1.000  STRONG MATCH — identical architecture to validated Mce3R operator
+  IGR_Rv0916c_Rv0917       2    7.70 validated_paired_asymmetric    53 bp    0.857  1.000  STRONG MATCH — identical architecture to validated Mce3R operator
+  Rv3623                   2   13.13 validated_paired_asymmetric    53 bp    0.655  1.000  STRONG MATCH — identical architecture to validated Mce3R operator
+  Rv3622c                  2   13.13 validated_paired_asymmetric    53 bp    0.655  1.000  STRONG MATCH — identical architecture to validated Mce3R operator
+  IGR_Rv2940c_Rv2941       2    2.33 validated_paired_asymmetric    54 bp    0.714  0.985  STRONG MATCH — identical architecture to validated Mce3R operator
+  Rv3754                   2    1.34 validated_paired_asymmetric    50 bp    0.750  0.954  STRONG MATCH — identical architecture to validated Mce3R operator
+  Rv3753c                  2    1.34 validated_paired_asymmetric    50 bp    0.750  0.954  STRONG MATCH — identical architecture to validated Mce3R operator
+  Rv0491                   2    4.74 validated_paired_asymmetric    49 bp    0.786  0.938  STRONG MATCH — identical architecture to validated Mce3R operator
+  IGR_Rv1765c_Rv1766       3   13.29 validated_paired_asymmetric    59 bp    0.651  0.908  STRONG MATCH — identical architecture to validated Mce3R operator
+  Rv1741                   2    4.19 validated_paired_asymmetric    59 bp    0.714  0.908  STRONG MATCH — identical architecture to validated Mce3R operator
+  Rv1535                   2    3.69 validated_paired_asymmetric    61 bp    0.643  0.874  STRONG MATCH — identical architecture to validated Mce3R operator
+  Rv3316                   2   -3.21 validated_paired_asymmetric    40 bp    0.750  0.800  STRONG MATCH — identical architecture to validated Mce3R operator
+  Rv3315c                  2   -3.21 validated_paired_asymmetric    40 bp    0.750  0.800  STRONG MATCH — identical architecture to validated Mce3R operator
+  Rv3638                   3   11.84 direct_repeat                  53 bp    0.881  0.790  WEAK MATCH — multiple hits present but architecture differs
+  IGR_Rv1894c_Rv1895       4    7.12 divergent                      52 bp    0.643  0.681  WEAK MATCH — multiple hits present but architecture differs
+  Rv1579c                  2    6.84 convergent                     48 bp    0.750  0.653  WEAK MATCH — multiple hits present but architecture differs
+  Rv0788                   3    3.74 isolated                       56 bp    0.643  0.651  WEAK MATCH — multiple hits present but architecture differs
+  Rv2141c                  3    0.42 validated_paired_asymmetric    30 bp    0.691  0.646  STRONG MATCH — identical architecture to validated Mce3R operator
+  Rv2444c                  3    1.11 direct_repeat                  63 bp    0.809  0.636  WEAK MATCH — multiple hits present but architecture differs
+  Rv0195                   2   11.42 tandem_asymmetric              38 bp    0.798  0.619  PARTIAL MATCH — same-strand paired, spacing outside 40–65 bp window
+  Rv1894c                  2    7.12 divergent                      52 bp    0.500  0.616  WEAK MATCH — multiple hits present but architecture differs
+  IGR_Rv3324c_Rv3327       6    9.67 validated_paired_asymmetric     9 bp    0.774  0.600  STRONG MATCH — identical architecture to validated Mce3R operator
+  Rv3726                   4    4.61 validated_paired_asymmetric     0 bp    0.750  0.600  STRONG MATCH — identical architecture to validated Mce3R operator
+  Rv0282                   4   14.28 validated_paired_asymmetric     0 bp    0.696  0.600  STRONG MATCH — identical architecture to validated Mce3R operator
+  IGR_Rv3473c_Rv3477      12    9.67 validated_paired_asymmetric     9 bp    0.714  0.600  STRONG MATCH — identical architecture to validated Mce3R operator
+  IGR_Rv2277c_Rv2281      11    9.67 validated_paired_asymmetric     9 bp    0.740  0.600  STRONG MATCH — identical architecture to validated Mce3R operator
+  IGR_Rv2104a_Rv2107       6    9.67 validated_paired_asymmetric     9 bp    0.774  0.600  STRONG MATCH — identical architecture to validated Mce3R operator
+  IGR_Rv1963c_Rv1964      13   43.38 validated_paired_asymmetric    10 bp    0.736  0.600  STRONG MATCH — identical architecture to validated Mce3R operator
+  IGR_Rv0794c_Rv0797       6    9.67 validated_paired_asymmetric     9 bp    0.774  0.600  STRONG MATCH — identical architecture to validated Mce3R operator
+  Rv1964                   6   42.68 validated_paired_asymmetric    15 bp    0.726  0.600  STRONG MATCH — identical architecture to validated Mce3R operator
+  IGR_Rv1754c_Rv1758       7    9.67 validated_paired_asymmetric     9 bp    0.755  0.600  STRONG MATCH — identical architecture to validated Mce3R operator
+  Rv0124                   3    0.25 isolated                       46 bp    0.762  0.592  WEAK MATCH — multiple hits present but architecture differs
+  IGR_Rv2338c_Rv2339       2   -3.35 convergent                     62 bp    0.643  0.588  WEAK MATCH — multiple hits present but architecture differs
+  Rv2338c                  2   -3.35 convergent                     62 bp    0.643  0.588  WEAK MATCH — multiple hits present but architecture differs
+  Rv0116c                  2   12.16 tandem_asymmetric              38 bp    0.564  0.579  PARTIAL MATCH — same-strand paired, spacing outside 40–65 bp window
+  Rv0117                   2   12.16 tandem_asymmetric              38 bp    0.564  0.579  PARTIAL MATCH — same-strand paired, spacing outside 40–65 bp window
+  Rv3617                   2   10.35 tandem_asymmetric              35 bp    0.750  0.573  PARTIAL MATCH — same-strand paired, spacing outside 40–65 bp window
+  IGR_Rv3616c_Rv3617       3   10.35 tandem_asymmetric              35 bp    0.738  0.573  PARTIAL MATCH — same-strand paired, spacing outside 40–65 bp window
+  Rv0659c                  3   10.10 divergent                      62 bp    0.833  0.562  WEAK MATCH — multiple hits present but architecture differs
+  Rv2227                   2   16.40 tandem_asymmetric              34 bp    0.679  0.558  PARTIAL MATCH — same-strand paired, spacing outside 40–65 bp window
+  Rv0209                   2    3.43 tandem_asymmetric              34 bp    0.750  0.558  PARTIAL MATCH — same-strand paired, spacing outside 40–65 bp window
+  Rv0208c                  2    3.43 tandem_asymmetric              34 bp    0.750  0.558  PARTIAL MATCH — same-strand paired, spacing outside 40–65 bp window
+  Rv3604c                  2    0.82 tandem_asymmetric              34 bp    0.714  0.558  PARTIAL MATCH — same-strand paired, spacing outside 40–65 bp window
+  Rv2524c                  3    0.75 direct_repeat                  68 bp    0.643  0.556  WEAK MATCH — multiple hits present but architecture differs
+  Rv1057                   2   11.58 convergent                     44 bp    0.564  0.552  WEAK MATCH — multiple hits present but architecture differs
+  Rv1176c                  2   38.80 direct_repeat                  67 bp    0.571  0.538  WEAK MATCH — multiple hits present but architecture differs
+  Rv1177                   2   38.80 direct_repeat                  67 bp    0.571  0.538  WEAK MATCH — multiple hits present but architecture differs
+  Rv0490                   2   -1.41 direct_repeat                  69 bp    0.607  0.524  WEAK MATCH — multiple hits present but architecture differs
+  IGR_Rv0837c_Rv0838       4    0.90 convergent                     67 bp    0.661  0.515  WEAK MATCH — multiple hits present but architecture differs
+  Rv0845                   3   11.34 tandem_asymmetric              31 bp    0.770  0.512  PARTIAL MATCH — same-strand paired, spacing outside 40–65 bp window
+  Rv0838                   2    0.90 convergent                     67 bp    0.643  0.511  WEAK MATCH — multiple hits present but architecture differs
+  Rv0488                   2    8.35 tandem_asymmetric              30 bp    0.714  0.496  PARTIAL MATCH — same-strand paired, spacing outside 40–65 bp window
+  Rv0823c                  2   10.19 tandem_asymmetric              30 bp    0.643  0.493  PARTIAL MATCH — same-strand paired, spacing outside 40–65 bp window
+  Rv1669                   3    4.52 tandem_asymmetric              29 bp    0.857  0.481  PARTIAL MATCH — same-strand paired, spacing outside 40–65 bp window
+  Rv0341                   2    6.72 divergent                      68 bp    0.750  0.469  WEAK MATCH — multiple hits present but architecture differs
+  Rv2415c                  2    1.37 convergent                     36 bp    0.786  0.468  WEAK MATCH — multiple hits present but architecture differs
+  Rv2825c                  3    2.06 direct_repeat                  74 bp    0.714  0.467  WEAK MATCH — multiple hits present but architecture differs
+  Rv2807                   2    1.23 divergent                      69 bp    0.679  0.454  WEAK MATCH — multiple hits present but architecture differs
+  Rv0985c                  2    0.31 tandem_asymmetric               2 bp    0.750  0.450  PARTIAL MATCH — same-strand paired, spacing outside 40–65 bp window
+  Rv1043c                  2   11.48 tandem_asymmetric              10 bp    0.821  0.450  PARTIAL MATCH — same-strand paired, spacing outside 40–65 bp window
+  Rv1044                   2   11.48 tandem_asymmetric              10 bp    0.821  0.450  PARTIAL MATCH — same-strand paired, spacing outside 40–65 bp window
+  Rv0986                   2    0.31 tandem_asymmetric               2 bp    0.750  0.450  PARTIAL MATCH — same-strand paired, spacing outside 40–65 bp window
+  Rv0689c                  2    6.76 tandem_asymmetric              16 bp    0.714  0.450  PARTIAL MATCH — same-strand paired, spacing outside 40–65 bp window
+  IGR_Rv1976c_Rv1977       6   43.94 tandem_asymmetric              24 bp    0.714  0.450  PARTIAL MATCH — same-strand paired, spacing outside 40–65 bp window
+  Rv1963c                  6   43.38 tandem_asymmetric              12 bp    0.761  0.450  PARTIAL MATCH — same-strand paired, spacing outside 40–65 bp window
+  Rv3545c                  2   38.09 tandem_asymmetric              14 bp    0.714  0.450  PARTIAL MATCH — same-strand paired, spacing outside 40–65 bp window
+  Rv1790                   2    3.83 tandem_asymmetric              11 bp    0.750  0.450  PARTIAL MATCH — same-strand paired, spacing outside 40–65 bp window
+  Rv1976c                  5   43.94 tandem_asymmetric              24 bp    0.686  0.450  PARTIAL MATCH — same-strand paired, spacing outside 40–65 bp window
+  Rv1371                   2    2.99 tandem_asymmetric               0 bp    0.714  0.450  PARTIAL MATCH — same-strand paired, spacing outside 40–65 bp window
+  Rv0150c                  4    4.01 tandem_asymmetric              18 bp    0.750  0.450  PARTIAL MATCH — same-strand paired, spacing outside 40–65 bp window
+  Rv2744c                  2    4.99 tandem_asymmetric              15 bp    0.750  0.450  PARTIAL MATCH — same-strand paired, spacing outside 40–65 bp window
+  Rv3879c                  2    4.10 tandem_asymmetric              24 bp    0.679  0.450  PARTIAL MATCH — same-strand paired, spacing outside 40–65 bp window
+  Rv0844c                  3   11.34 tandem_asymmetric              26 bp    0.770  0.450  PARTIAL MATCH — same-strand paired, spacing outside 40–65 bp window
+  Rv2882c                  2    4.36 tandem_asymmetric              25 bp    0.857  0.450  PARTIAL MATCH — same-strand paired, spacing outside 40–65 bp window
+  Rv3546                   2   38.09 tandem_asymmetric              14 bp    0.714  0.450  PARTIAL MATCH — same-strand paired, spacing outside 40–65 bp window
+  Rv0861c                  2    2.88 tandem_asymmetric              25 bp    0.786  0.450  PARTIAL MATCH — same-strand paired, spacing outside 40–65 bp window
+  Rv0538                   3    1.65 convergent                     34 bp    0.738  0.438  WEAK MATCH — multiple hits present but architecture differs
+  Rv0537c                  3    1.65 convergent                     34 bp    0.738  0.438  WEAK MATCH — multiple hits present but architecture differs
+  Rv2662                   2    0.16 tandem_asymmetric              19 bp    0.607  0.430  PARTIAL MATCH — same-strand paired, spacing outside 40–65 bp window
+  Rv3590c                  2    2.44 tandem_asymmetric               6 bp    0.607  0.430  PARTIAL MATCH — same-strand paired, spacing outside 40–65 bp window
+  Rv1818c                  2    0.67 convergent                     33 bp    0.643  0.419  WEAK MATCH — multiple hits present but architecture differs
+  Rv2811                   3    4.69 inverted_repeat                74 bp    0.738  0.392  WEAK MATCH — multiple hits present but architecture differs
+  Rv0946c                  2    2.28 convergent                     75 bp    0.786  0.392  WEAK MATCH — multiple hits present but architecture differs
+  IGR_Rv1051c_Rv1052       2    1.66 direct_repeat                    N/A    0.714  0.390  WEAK MATCH — multiple hits present but architecture differs
+  Rv1276c                  2   -4.88 direct_repeat                    N/A    0.786  0.390  WEAK MATCH — multiple hits present but architecture differs
+  Rv0704                   2    1.64 direct_repeat                    N/A    0.821  0.390  WEAK MATCH — multiple hits present but architecture differs
+  IGR_Rv2304c_Rv2305       5    7.15 direct_repeat                   6 bp    0.729  0.390  WEAK MATCH — multiple hits present but architecture differs
+  Rv1458c                  2    4.07 direct_repeat                    N/A    0.893  0.390  WEAK MATCH — multiple hits present but architecture differs
+  Rv1583c                  4    8.37 direct_repeat                    N/A    0.768  0.390  WEAK MATCH — multiple hits present but architecture differs
+  Rv2759c                  2    0.32 direct_repeat                    N/A    0.786  0.390  WEAK MATCH — multiple hits present but architecture differs
+  Rv0475                   3    4.83 direct_repeat                  20 bp    0.691  0.390  WEAK MATCH — multiple hits present but architecture differs
+  Rv1365c                  2    2.36 direct_repeat                    N/A    0.750  0.390  WEAK MATCH — multiple hits present but architecture differs
+  Rv3850                   2    2.12 direct_repeat                    N/A    0.786  0.390  WEAK MATCH — multiple hits present but architecture differs
+  IGR_Rv2435c_Rv2436       2    0.88 direct_repeat                    N/A    0.786  0.390  WEAK MATCH — multiple hits present but architecture differs
+  Rv1366                   2    2.36 direct_repeat                    N/A    0.750  0.390  WEAK MATCH — multiple hits present but architecture differs
+  Rv2436                   2    0.88 direct_repeat                    N/A    0.786  0.390  WEAK MATCH — multiple hits present but architecture differs
+  Rv1277                   2   -4.88 direct_repeat                    N/A    0.786  0.390  WEAK MATCH — multiple hits present but architecture differs
+  Rv2202c                  2   14.09 direct_repeat                    N/A    0.607  0.370  WEAK MATCH — multiple hits present but architecture differs
+  Rv2203                   2   14.09 direct_repeat                    N/A    0.607  0.370  WEAK MATCH — multiple hits present but architecture differs
+  Rv0091                   2    2.16 direct_repeat                    N/A    0.571  0.354  WEAK MATCH — multiple hits present but architecture differs
+  Rv2116                   2   11.57 convergent                     28 bp    0.786  0.345  WEAK MATCH — multiple hits present but architecture differs
+  Rv2115c                  2   11.57 convergent                     28 bp    0.786  0.345  WEAK MATCH — multiple hits present but architecture differs
+  Rv3521                   2    1.91 direct_repeat                    N/A    0.536  0.337  WEAK MATCH — multiple hits present but architecture differs
+  Rv3666c                  2   -2.89 direct_repeat                    N/A    0.536  0.337  WEAK MATCH — multiple hits present but architecture differs
+  IGR_Rv3666c_Rv3667       2   -2.89 direct_repeat                    N/A    0.536  0.337  WEAK MATCH — multiple hits present but architecture differs
+  Rv1659                   2    4.82 direct_repeat                    N/A    0.536  0.337  WEAK MATCH — multiple hits present but architecture differs
+  Rv3520c                  2    1.91 direct_repeat                    N/A    0.536  0.337  WEAK MATCH — multiple hits present but architecture differs
+  IGR_Rv1666c_Rv1669      10    8.72 isolated                       29 bp    0.793  0.331  WEAK MATCH — multiple hits present but architecture differs
+  Rv2626c                  2   -4.32 convergent                     13 bp    0.714  0.330  WEAK MATCH — multiple hits present but architecture differs
+  Rv3044                   2   -0.37 convergent                     21 bp    0.786  0.330  WEAK MATCH — multiple hits present but architecture differs
+  Rv3043c                  2   -0.37 convergent                     21 bp    0.786  0.330  WEAK MATCH — multiple hits present but architecture differs
+  Rv2131c                  2   12.32 tandem_asymmetric               4 bp    0.389  0.329  DOES NOT MATCH reference paired-asymmetric architecture
+  Rv2132                   2   12.32 tandem_asymmetric               4 bp    0.389  0.329  DOES NOT MATCH reference paired-asymmetric architecture
+  Rv0456c                  2    8.16 convergent                     13 bp    0.643  0.327  WEAK MATCH — multiple hits present but architecture differs
+  Rv0203                   2    3.04 divergent                      28 bp    0.714  0.315  WEAK MATCH — multiple hits present but architecture differs
+  Rv0202c                  2    3.04 divergent                      28 bp    0.714  0.315  WEAK MATCH — multiple hits present but architecture differs
+  Rv2304c                  5    7.15 inverted_repeat                 6 bp    0.729  0.315  WEAK MATCH — multiple hits present but architecture differs
+  Rv1977                   4   34.88 inverted_repeat                  N/A    0.661  0.315  WEAK MATCH — multiple hits present but architecture differs
+  Rv3585                   2    6.25 inverted_repeat                  N/A    0.750  0.315  WEAK MATCH — multiple hits present but architecture differs
+  Rv2517c                  2    8.55 inverted_repeat                 5 bp    0.679  0.315  WEAK MATCH — multiple hits present but architecture differs
+  Rv3035                   2    3.84 inverted_repeat                  N/A    0.786  0.315  WEAK MATCH — multiple hits present but architecture differs
+  Rv0699                   2    5.04 inverted_repeat                  N/A    0.750  0.315  WEAK MATCH — multiple hits present but architecture differs
+  Rv0932c                  2   11.44 inverted_repeat                 4 bp    0.782  0.315  WEAK MATCH — multiple hits present but architecture differs
+  Rv3805c                  2    7.63 inverted_repeat                 0 bp    0.857  0.315  WEAK MATCH — multiple hits present but architecture differs
+  IGR_Rv3034c_Rv3035       2    3.84 inverted_repeat                  N/A    0.786  0.315  WEAK MATCH — multiple hits present but architecture differs
+  IGR_Rv0519c_Rv0522       2    8.96 inverted_repeat                  N/A    0.643  0.312  WEAK MATCH — multiple hits present but architecture differs
+  Rv0519c                  2    8.96 inverted_repeat                  N/A    0.643  0.312  WEAK MATCH — multiple hits present but architecture differs
+  Rv0737                   2    0.56 inverted_repeat                  N/A    0.643  0.312  WEAK MATCH — multiple hits present but architecture differs
+  IGR_Rv2097c_Rv2100       9    5.60 inverted_repeat                 4 bp    0.643  0.312  WEAK MATCH — multiple hits present but architecture differs
+  Rv3016                   1    0.14 isolated                         N/A    0.714  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv1991c                  2    0.41 divergent                        N/A    0.786  0.300  WEAK MATCH — multiple hits present but architecture differs
+  Rv1987                   1   -8.53 isolated                         N/A    0.929  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv2003c                  1    2.13 isolated                         N/A    0.929  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv3015c                  1    0.14 isolated                         N/A    0.714  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv1451                   1    3.31 isolated                         N/A    0.714  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv3025c                  1    4.81 isolated                         N/A    0.714  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv3027c                  1    0.13 isolated                         N/A    0.714  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv2024c                  1    0.75 isolated                         N/A    0.786  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv1932                   1    5.94 isolated                         N/A    0.857  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv3008                   1    0.54 isolated                         N/A    0.929  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv3007c                  1    0.54 isolated                         N/A    0.929  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv1450c                  1    3.31 isolated                         N/A    0.714  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv1992c                  1    1.68 isolated                         N/A    0.714  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv1533                   1   12.95 isolated                         N/A    0.667  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv1931c                  1    5.94 isolated                         N/A    0.857  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv3224                   1   11.57 isolated                         N/A    0.778  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv3196A                  1    1.64 isolated                         N/A    0.857  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv1760                   1   -2.02 isolated                         N/A    0.786  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv1477                   1    3.84 isolated                         N/A    0.786  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv1759c                  1    0.99 isolated                         N/A    0.786  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv3197                   1    1.64 isolated                         N/A    0.857  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv3207c                  1   -3.39 isolated                         N/A    0.714  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv1498c                  2    2.58 divergent                        N/A    0.714  0.300  WEAK MATCH — multiple hits present but architecture differs
+  Rv1511                   1   -3.24 isolated                         N/A    0.929  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv3249c                  1    2.32 isolated                         N/A    0.786  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv1678                   1    1.86 isolated                         N/A    0.714  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv1646                   1   12.03 isolated                         N/A    0.778  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv3046c                  1    3.21 isolated                         N/A    0.786  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv1645c                  1   12.03 isolated                         N/A    0.778  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv3208                   1   -3.39 isolated                         N/A    0.714  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv3208A                  1   -4.04 isolated                         N/A    0.786  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv1617                   1   -0.81 isolated                         N/A    0.714  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv3209                   2    1.39 divergent                        N/A    0.714  0.300  WEAK MATCH — multiple hits present but architecture differs
+  Rv3223c                  1   11.57 isolated                         N/A    0.778  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv1574                   1   -3.39 isolated                         N/A    0.786  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv1532c                  1   12.95 isolated                         N/A    0.667  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv1573                   1   -9.55 isolated                         N/A    0.714  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv1539                   1    8.60 isolated                         N/A    0.786  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv3190c                  1   -1.13 isolated                         N/A    0.786  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv3190A                  1   -1.13 isolated                         N/A    0.786  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv2999                   2    7.69 isolated                         N/A    0.821  0.300  WEAK MATCH — multiple hits present but architecture differs
+  Rv1787                   3    4.67 isolated                         N/A    0.809  0.300  WEAK MATCH — multiple hits present but architecture differs
+  Rv1911c                  1   -8.98 isolated                         N/A    0.714  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv3067                   1   -3.25 isolated                         N/A    0.786  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv1903                   1   12.63 isolated                         N/A    0.857  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv1902c                  1   12.63 isolated                         N/A    0.857  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv1876                   2   14.30 divergent                        N/A    0.750  0.300  WEAK MATCH — multiple hits present but architecture differs
+  Rv1867                   1    1.26 isolated                         N/A    0.714  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv1538c                  1    8.60 isolated                         N/A    0.786  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv1861                   1   13.54 isolated                         N/A    0.786  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv3113                   1    5.13 isolated                         N/A    0.857  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv3122                   1   -9.69 isolated                         N/A    0.929  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv1827                   1    1.51 isolated                         N/A    0.714  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv3124                   1    4.33 isolated                         N/A    0.786  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv3135                   1    7.37 isolated                         N/A    0.857  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv1815                   1   10.67 isolated                         N/A    0.786  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv1812c                  2    1.06 isolated                         N/A    0.821  0.300  WEAK MATCH — multiple hits present but architecture differs
+  Rv3152                   1   -1.24 isolated                         N/A    0.714  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv1799                   1    7.25 isolated                         N/A    0.857  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv1475c                  1    2.87 isolated                         N/A    0.714  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv1791                   2   -1.05 isolated                         N/A    0.750  0.300  WEAK MATCH — multiple hits present but architecture differs
+  Rv1476                   1    2.87 isolated                         N/A    0.714  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv1788                   1    9.13 isolated                         N/A    0.929  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv3178                   1   -0.99 isolated                         N/A    0.929  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv2190c                  1   -4.88 isolated                         N/A    0.857  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv2998                   1   -5.02 isolated                         N/A    0.714  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv2991                   1   -1.51 isolated                         N/A    0.714  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv2478c                  2    0.07 divergent                       9 bp    0.750  0.300  WEAK MATCH — multiple hits present but architecture differs
+  Rv2468c                  1    3.42 isolated                         N/A    0.714  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv2874                   1    2.28 isolated                         N/A    0.857  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv2458                   1   -0.10 isolated                         N/A    0.786  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv2457c                  1   -0.10 isolated                         N/A    0.786  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv2443                   1    1.32 isolated                         N/A    0.857  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv2438c                  1   -3.27 isolated                         N/A    0.857  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv2437                   1  -10.53 isolated                         N/A    0.857  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv2432c                  1    3.55 isolated                         N/A    0.714  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv2428                   1    2.67 isolated                         N/A    0.929  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv2890c                  1    2.22 isolated                         N/A    0.857  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv2423                   1   -0.33 isolated                         N/A    0.714  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv2422                   2    4.61 isolated                         N/A    0.786  0.300  WEAK MATCH — multiple hits present but architecture differs
+  Rv2421c                  2    4.61 isolated                         N/A    0.786  0.300  WEAK MATCH — multiple hits present but architecture differs
+  Rv2407                   2    1.46 isolated                         N/A    0.786  0.300  WEAK MATCH — multiple hits present but architecture differs
+  Rv2406c                  2    1.46 isolated                         N/A    0.786  0.300  WEAK MATCH — multiple hits present but architecture differs
+  Rv2402                   1    9.48 isolated                         N/A    0.857  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv2401A                  1    9.48 isolated                         N/A    0.857  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv2396                   1   -3.15 isolated                         N/A    0.857  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv2391                   1    4.94 isolated                         N/A    0.786  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv2891                   1    2.22 isolated                         N/A    0.857  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv2892c                  1   13.24 isolated                         N/A    0.778  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv2371                   1   -2.60 isolated                         N/A    0.714  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv2488c                  1    1.61 isolated                         N/A    0.786  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv2519                   1    7.09 isolated                         N/A    0.714  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv2523c                  2    8.17 isolated                         N/A    0.821  0.300  WEAK MATCH — multiple hits present but architecture differs
+  Rv2703                   1   12.03 isolated                         N/A    0.778  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv2783c                  2    0.45 isolated                         N/A    0.821  0.300  WEAK MATCH — multiple hits present but architecture differs
+  Rv2777c                  1    0.35 isolated                         N/A    0.714  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv2776c                  1   -1.05 isolated                         N/A    0.786  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv2767c                  1   -1.59 isolated                         N/A    0.714  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv2801c                  1    2.27 isolated                         N/A    0.857  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv2754c                  2   11.34 isolated                         N/A    0.706  0.300  WEAK MATCH — multiple hits present but architecture differs
+  Rv2720                   1   -9.83 isolated                         N/A    0.714  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv2719c                  1   -9.83 isolated                         N/A    0.714  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv2839c                  1   -1.88 isolated                         N/A    0.786  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv2845c                  1    0.00 isolated                         N/A    0.857  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv2633c                  1   -2.81 isolated                         N/A    0.714  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv2527                   1    2.64 isolated                         N/A    0.929  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv2628                   1    7.76 isolated                         N/A    0.714  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv2627c                  1    7.76 isolated                         N/A    0.714  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv2623                   2    0.01 divergent                        N/A    0.714  0.300  WEAK MATCH — multiple hits present but architecture differs
+  Rv2590                   1    0.28 isolated                         N/A    0.714  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv2587c                  1    0.97 isolated                         N/A    0.786  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv2557                   1   16.33 isolated                         N/A    0.667  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv2556c                  1   16.33 isolated                         N/A    0.667  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv2873                   1    9.58 isolated                         N/A    0.929  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv2542                   1   -5.02 isolated                         N/A    0.714  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv2530c                  1   -2.50 isolated                         N/A    0.786  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv2370c                  1   -2.60 isolated                         N/A    0.714  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv2350c                  1   -0.47 isolated                         N/A    0.786  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv2342                   1    9.16 isolated                         N/A    0.786  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv2143                   1   -2.79 isolated                         N/A    0.786  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv3312b                  1    0.35 isolated                         N/A    0.857  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv2187                   1    9.51 isolated                         N/A    0.857  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv2186c                  1    9.51 isolated                         N/A    0.857  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv2185c                  2    6.23 divergent                        N/A    0.786  0.300  WEAK MATCH — multiple hits present but architecture differs
+  Rv2173                   1   -1.98 isolated                         N/A    0.714  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv2172c                  1   -1.98 isolated                         N/A    0.714  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv2170                   3   11.40 isolated                         N/A    0.698  0.300  WEAK MATCH — multiple hits present but architecture differs
+  Rv2169c                  3   11.40 isolated                         N/A    0.698  0.300  WEAK MATCH — multiple hits present but architecture differs
+  Rv2150c                  1    4.77 isolated                         N/A    0.786  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv2145c                  1   -9.41 isolated                         N/A    0.714  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv2971                   2    0.23 isolated                         N/A    0.750  0.300  WEAK MATCH — multiple hits present but architecture differs
+  Rv2222c                  1    4.53 isolated                         N/A    0.714  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv2142A                  1   -2.79 isolated                         N/A    0.786  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv2139                   1    3.76 isolated                         N/A    0.714  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv2974c                  1    3.06 isolated                         N/A    0.786  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv2986c                  1    2.39 isolated                         N/A    0.857  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv2113                   1    0.95 isolated                         N/A    0.786  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv2112c                  1    0.95 isolated                         N/A    0.786  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv2101                   1    1.15 isolated                         N/A    0.714  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv2100                   1    2.41 isolated                         N/A    0.857  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv2990c                  1   -1.51 isolated                         N/A    0.714  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv2088                   1    2.64 isolated                         N/A    0.714  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv2966c                  1    8.35 isolated                         N/A    0.786  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv2236c                  1   -4.60 isolated                         N/A    0.786  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv2341                   1   -0.91 isolated                         N/A    0.857  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv2294                   1   -0.07 isolated                         N/A    0.857  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv2336                   1    0.19 isolated                         N/A    1.000  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv2334                   1    0.16 isolated                         N/A    0.929  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv2329c                  1    0.68 isolated                         N/A    0.714  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv2320c                  3   -1.55 divergent                        N/A    0.738  0.300  WEAK MATCH — multiple hits present but architecture differs
+  Rv2893                   1   13.24 isolated                         N/A    0.778  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv2904c                  2   11.48 isolated                         N/A    0.706  0.300  WEAK MATCH — multiple hits present but architecture differs
+  Rv2905                   2   11.48 isolated                         N/A    0.706  0.300  WEAK MATCH — multiple hits present but architecture differs
+  Rv2940c                  1    2.33 isolated                         N/A    0.857  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv2299c                  1   -4.60 isolated                         N/A    0.714  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv2295                   1    5.35 isolated                         N/A    0.857  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv2293c                  1   -0.07 isolated                         N/A    0.857  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv2237                   1   -4.60 isolated                         N/A    0.786  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv2290                   1   -5.86 isolated                         N/A    0.929  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv2950c                  1    3.02 isolated                         N/A    0.857  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv2266                   1   -2.24 isolated                         N/A    0.786  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv2265                   1    1.58 isolated                         N/A    0.857  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv2264c                  1    1.58 isolated                         N/A    0.857  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv2259                   1    1.50 isolated                         N/A    0.786  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv2954c                  1    0.82 isolated                         N/A    0.857  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv2251                   1   -1.64 isolated                         N/A    0.714  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv2250c                  1   -1.64 isolated                         N/A    0.714  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv2248                   1    1.62 isolated                         N/A    0.786  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv3261                   2    2.78 isolated                         N/A    0.679  0.300  WEAK MATCH — multiple hits present but architecture differs
+  IGR_Rv0154c_Rv0155       1   -2.53 isolated                         N/A    0.857  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv1398c                  1    5.21 isolated                         N/A    0.714  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv0542c                  1    9.46 isolated                         N/A    0.786  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv0605                   1   -1.71 isolated                         N/A    0.714  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv0595c                  1    0.05 isolated                         N/A    0.714  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv0591                   2    2.87 isolated                         N/A    0.679  0.300  WEAK MATCH — multiple hits present but architecture differs
+  Rv0584                   1   -6.00 isolated                         N/A    0.714  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv0583c                  1   -6.00 isolated                         N/A    0.714  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv3646c                  1    0.30 isolated                         N/A    0.857  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv0574c                  1   -0.40 isolated                         N/A    0.857  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv0569                   1   -0.87 isolated                         N/A    0.714  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv0567                   1    1.85 isolated                         N/A    0.714  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv0566c                  1    1.85 isolated                         N/A    0.714  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv3648c                  1    9.19 isolated                         N/A    0.714  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv0797                   2    0.07 divergent                       9 bp    0.750  0.300  WEAK MATCH — multiple hits present but architecture differs
+  Rv3905c                  1    0.61 isolated                         N/A    0.714  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv0418                   1    5.61 isolated                         N/A    1.000  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv0417                   1    0.46 isolated                         N/A    0.714  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv0415                   1   -0.12 isolated                         N/A    0.857  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv0414c                  1   -0.12 isolated                         N/A    0.857  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv3649                   1    9.19 isolated                         N/A    0.714  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv3652                   1   -2.15 isolated                         N/A    0.714  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv3681c                  1    2.23 isolated                         N/A    0.786  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv0362                   1   -5.58 isolated                         N/A    0.857  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv0340                   1    2.19 isolated                         N/A    0.857  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv0607                   1   -7.86 isolated                         N/A    0.857  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv0609                   1   -9.27 isolated                         N/A    0.857  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv0613c                  1    2.46 isolated                         N/A    0.714  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv0614                   1    2.46 isolated                         N/A    0.714  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv3576                   2   34.02 isolated                         N/A    0.821  0.300  WEAK MATCH — multiple hits present but architecture differs
+  Rv3583c                  2    2.99 divergent                      18 bp    0.714  0.300  WEAK MATCH — multiple hits present but architecture differs
+  Rv3584                   2    2.99 divergent                      18 bp    0.714  0.300  WEAK MATCH — multiple hits present but architecture differs
+  Rv0754                   1    9.83 isolated                         N/A    0.929  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv0753c                  1    9.83 isolated                         N/A    0.929  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv0747                   1    0.21 isolated                         N/A    0.714  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv3593                   1    1.18 isolated                         N/A    0.714  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  IGR_Rv2340c_Rv2341       1   -0.91 isolated                         N/A    0.857  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv1392                   1  -10.39 isolated                         N/A    0.786  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv0738                   1   -1.69 isolated                         N/A    0.786  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv0718                   1    9.14 isolated                         N/A    0.857  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv0711                   1    2.52 isolated                         N/A    0.857  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv0698                   1   -3.08 isolated                         N/A    0.857  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv3616c                  1   -9.55 isolated                         N/A    0.714  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv0651                   1    6.11 isolated                         N/A    0.857  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv0634B                  1   13.24 isolated                         N/A    0.778  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv3629c                  1   11.05 isolated                         N/A    0.857  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv3630                   1   11.05 isolated                         N/A    0.857  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv3633                   1    0.90 isolated                         N/A    0.714  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv0617                   1   -1.53 isolated                         N/A    0.857  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  IGR_Rv2390c_Rv2391       1    4.94 isolated                         N/A    0.786  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv0339c                  1    2.19 isolated                         N/A    0.857  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv0338c                  1    2.97 isolated                         N/A    0.786  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv3697c                  1   11.81 isolated                         N/A    0.667  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv0105c                  1   11.72 isolated                         N/A    0.667  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv3812                   1    5.04 isolated                         N/A    0.714  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv0096                   1   -5.71 isolated                         N/A    0.786  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv0095c                  1   -5.71 isolated                         N/A    0.786  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv3841                   1   -7.84 isolated                         N/A    0.786  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv0090                   1    7.19 isolated                         N/A    0.714  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv3846                   1   -9.27 isolated                         N/A    0.714  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv0062                   1   -9.69 isolated                         N/A    0.786  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv0061c                  1   -9.69 isolated                         N/A    0.786  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  IGR_Rv3134c_Rv3135       1    7.37 isolated                         N/A    0.857  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv3859c                  2   -0.24 isolated                         N/A    0.857  0.300  WEAK MATCH — multiple hits present but architecture differs
+  Rv3864                   1   -7.39 isolated                         N/A    0.786  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv0030                   1    4.03 isolated                         N/A    0.929  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv0020c                  1    2.13 isolated                         N/A    0.786  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv0012                   1    8.12 isolated                         N/A    0.929  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv0011c                  1    8.12 isolated                         N/A    0.929  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv0002                   2    0.12 isolated                         N/A    0.714  0.300  WEAK MATCH — multiple hits present but architecture differs
+  IGR_Rv3859c_Rv3860       2   -0.24 isolated                         N/A    0.857  0.300  WEAK MATCH — multiple hits present but architecture differs
+  IGR_Rv3843c_Rv3844       2    6.76 isolated                         N/A    0.786  0.300  WEAK MATCH — multiple hits present but architecture differs
+  Rv3901c                  1   -6.14 isolated                         N/A    0.786  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  IGR_Rv3333c_Rv3334       1   11.74 isolated                         N/A    0.778  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  IGR_Rv3260c_Rv3261       2    2.78 isolated                         N/A    0.679  0.300  WEAK MATCH — multiple hits present but architecture differs
+  IGR_Rv2518c_Rv2519       1    7.09 isolated                         N/A    0.714  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv0106                   1   11.72 isolated                         N/A    0.667  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv3725                   1    1.61 isolated                         N/A    0.929  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv3788                   1   -5.44 isolated                         N/A    0.786  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv0301                   1   -1.20 isolated                         N/A    1.000  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv0278c                  1    0.39 isolated                         N/A    0.786  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv3734c                  1    0.72 isolated                         N/A    0.714  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv3735                   1    0.72 isolated                         N/A    0.714  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv0261c                  1  -10.39 isolated                         N/A    0.857  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv0250c                  1  -10.11 isolated                         N/A    0.714  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv0231                   1    0.92 isolated                         N/A    0.929  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv0230c                  1    0.92 isolated                         N/A    0.929  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv0223c                  1   12.56 isolated                         N/A    0.786  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv0216                   1   -0.64 isolated                         N/A    0.786  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv3750c                  1    0.39 isolated                         N/A    0.786  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv0187                   1    0.17 isolated                         N/A    0.929  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv0186A                  1    0.17 isolated                         N/A    0.929  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv0155                   1   -2.53 isolated                         N/A    0.857  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv0154c                  1   -2.53 isolated                         N/A    0.857  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv0127                   1    6.17 isolated                         N/A    1.000  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv0120c                  1   -2.65 isolated                         N/A    0.857  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv0119                   1    5.82 isolated                         N/A    0.929  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv0118c                  1    5.82 isolated                         N/A    0.929  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv0112                   1   -4.74 isolated                         N/A    0.714  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv3787c                  1   -5.44 isolated                         N/A    0.786  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv3575c                  2   34.02 isolated                         N/A    0.821  0.300  WEAK MATCH — multiple hits present but architecture differs
+  Rv0806c                  1   12.53 isolated                         N/A    0.857  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv1074c                  1   12.13 isolated                         N/A    0.778  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv1135c                  1   -3.02 isolated                         N/A    0.857  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  IGR_Rv0887c_Rv0888       2    5.39 isolated                         N/A    0.750  0.300  WEAK MATCH — multiple hits present but architecture differs
+  Rv1179c                  1   12.69 isolated                         N/A    0.857  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv2795c                  2    0.55 divergent                      19 bp    0.786  0.300  WEAK MATCH — multiple hits present but architecture differs
+  Rv1174c                  1   -9.41 isolated                         N/A    0.857  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv1173                   1   -0.82 isolated                         N/A    0.714  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv1172c                  1   -0.82 isolated                         N/A    0.714  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv1171                   1    4.11 isolated                         N/A    0.786  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv1145                   1    9.95 isolated                         N/A    0.857  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv1140                   1   13.60 isolated                         N/A    0.857  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv1139c                  1   13.60 isolated                         N/A    0.857  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv1133c                  1   -3.14 isolated                         N/A    0.786  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv1072                   1    3.38 isolated                         N/A    0.714  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv1127c                  2    5.90 divergent                       0 bp    0.857  0.300  WEAK MATCH — multiple hits present but architecture differs
+  IGR_Rv1133c_Rv1134       1   -3.14 isolated                         N/A    0.786  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv3485c                  1   10.14 isolated                         N/A    0.786  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv1117                   2   11.49 isolated                         N/A    0.726  0.300  WEAK MATCH — multiple hits present but architecture differs
+  Rv3486                   1   10.14 isolated                         N/A    0.786  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  IGR_Rv1135c_Rv1138a      3   -1.54 isolated                         N/A    0.833  0.300  WEAK MATCH — multiple hits present but architecture differs
+  Rv1088a                  1    1.28 isolated                         N/A    0.714  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv3501c                  1   -5.58 isolated                         N/A    0.857  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv1084                   1  -10.39 isolated                         N/A    0.857  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv3507                   1   -1.97 isolated                         N/A    0.714  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv1185c                  1    0.17 isolated                         N/A    0.786  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv3481c                  1   11.16 isolated                         N/A    0.857  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv3443c                  1    1.11 isolated                         N/A    0.714  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv3423c                  1    4.91 isolated                         N/A    0.857  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv1361c                  1   -7.95 isolated                         N/A    0.929  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv1360                   1    4.28 isolated                         N/A    0.857  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv1332                   1   -2.33 isolated                         N/A    0.786  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv1298                   1   -2.93 isolated                         N/A    0.714  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv1297                   1    4.99 isolated                         N/A    0.929  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv3327                   2    0.07 divergent                       9 bp    0.750  0.300  WEAK MATCH — multiple hits present but architecture differs
+  IGR_Rv0831c_Rv0832       3    4.94 isolated                         N/A    0.786  0.300  WEAK MATCH — multiple hits present but architecture differs
+  Rv1291c                  1    1.24 isolated                         N/A    0.714  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv1285                   1   -7.96 isolated                         N/A    0.786  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv3334                   1   11.74 isolated                         N/A    0.778  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv3344c                  1    0.57 isolated                         N/A    0.786  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv1266c                  1    7.28 isolated                         N/A    0.786  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv1263                   1   -3.00 isolated                         N/A    0.714  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv1262c                  1   -3.00 isolated                         N/A    0.714  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv1256c                  1   -0.07 isolated                         N/A    0.786  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv1248c                  1   -0.63 isolated                         N/A    0.857  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv3346c                  1    1.47 isolated                         N/A    0.786  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv3415c                  1    7.79 isolated                         N/A    0.857  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv3416                   1    7.79 isolated                         N/A    0.857  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv1202                   1   -5.58 isolated                         N/A    0.714  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv1201c                  1   -5.58 isolated                         N/A    0.714  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv0807                   1   12.53 isolated                         N/A    0.857  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  IGR_Rv3191c_Rv3192       1    2.66 isolated                         N/A    0.714  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv1071c                  1    3.38 isolated                         N/A    0.714  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  IGR_Rv2190c_Rv2191       1   -4.88 isolated                         N/A    0.857  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv0894                   1   -8.71 isolated                         N/A    0.714  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv0893c                  1   -8.71 isolated                         N/A    0.714  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv0892                   2    7.05 isolated                         N/A    0.857  0.300  WEAK MATCH — multiple hits present but architecture differs
+  Rv0891c                  2    7.05 isolated                         N/A    0.857  0.300  WEAK MATCH — multiple hits present but architecture differs
+  Rv0888                   2    5.39 isolated                         N/A    0.750  0.300  WEAK MATCH — multiple hits present but architecture differs
+  Rv0877                   1   -9.40 isolated                         N/A    0.786  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv0876c                  1   -9.40 isolated                         N/A    0.786  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv0874c                  1   -0.16 isolated                         N/A    0.714  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv0873                   2    1.75 isolated                         N/A    0.821  0.300  WEAK MATCH — multiple hits present but architecture differs
+  Rv0872c                  2    1.75 isolated                         N/A    0.821  0.300  WEAK MATCH — multiple hits present but architecture differs
+  Rv0852                   2   -0.10 isolated                         N/A    0.786  0.300  WEAK MATCH — multiple hits present but architecture differs
+  Rv0851c                  2   -0.10 isolated                         N/A    0.786  0.300  WEAK MATCH — multiple hits present but architecture differs
+  Rv0841                   1   -3.34 isolated                         N/A    0.714  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv0840c                  1   -3.34 isolated                         N/A    0.714  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv0836c                  1    0.35 isolated                         N/A    0.929  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  IGR_Rv2333c_Rv2334       1    0.16 isolated                         N/A    0.929  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv3553                   1   -2.76 isolated                         N/A    0.714  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv0831c                  1   -0.89 isolated                         N/A    0.714  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv0828c                  1   12.36 isolated                         N/A    0.778  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv3573c                  1   -7.11 isolated                         N/A    0.714  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv3574                   1   -7.11 isolated                         N/A    0.714  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv3508                   1    6.24 isolated                         N/A    0.786  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv0909                   1   -6.14 isolated                         N/A    0.857  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv0917                   1    0.24 isolated                         N/A    0.857  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv0925c                  1    0.09 isolated                         N/A    0.714  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  IGR_Rv1179c_Rv1180       1   12.69 isolated                         N/A    0.857  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv1065                   1    0.10 isolated                         N/A    0.786  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv1064c                  1    0.10 isolated                         N/A    0.786  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv1049                   1   -1.36 isolated                         N/A    0.786  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv1048c                  1   -1.36 isolated                         N/A    0.786  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv1033c                  1    0.33 isolated                         N/A    0.714  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv1029                   1    5.52 isolated                         N/A    0.714  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv1028c                  1    5.52 isolated                         N/A    0.714  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv1028A                  1    5.52 isolated                         N/A    0.714  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  IGR_Rv1291c_Rv1292       2    1.24 isolated                         N/A    0.679  0.300  WEAK MATCH — multiple hits present but architecture differs
+  Rv1015c                  1    0.49 isolated                         N/A    0.857  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv1013                   1    3.04 isolated                         N/A    0.786  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv1008                   1    3.52 isolated                         N/A    0.714  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv1007c                  1    3.52 isolated                         N/A    0.714  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv3536c                  1   25.13 isolated                         N/A    0.857  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv3537                   1   25.13 isolated                         N/A    0.857  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  IGR_Rv1450c_Rv1451       1    3.31 isolated                         N/A    0.714  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv0933                   1   -1.60 isolated                         N/A    0.786  0.300  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  IGR_Rv1759c_Rv1760       2    0.99 isolated                         N/A    0.786  0.300  WEAK MATCH — multiple hits present but architecture differs
+  Rv3907c                  1    0.66 isolated                         N/A    0.643  0.297  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv2799                   1    5.37 isolated                         N/A    0.643  0.297  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv3908                   1    0.66 isolated                         N/A    0.643  0.297  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv2804c                  1   -3.28 isolated                         N/A    0.643  0.297  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv2863                   1   -0.98 isolated                         N/A    0.643  0.297  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv2970A                  1    0.23 isolated                         N/A    0.643  0.297  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv3848                   1  -10.53 isolated                         N/A    0.643  0.297  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv3811                   1    3.83 isolated                         N/A    0.643  0.297  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv3260c                  1    2.78 isolated                         N/A    0.643  0.297  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv3365c                  1    7.85 isolated                         N/A    0.643  0.297  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv3366                   1    7.85 isolated                         N/A    0.643  0.297  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv3483c                  1    4.94 isolated                         N/A    0.643  0.297  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv3484                   1    4.94 isolated                         N/A    0.643  0.297  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv3490                   1   -0.35 isolated                         N/A    0.643  0.297  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv3510c                  2    4.75 isolated                         N/A    0.643  0.297  WEAK MATCH — multiple hits present but architecture differs
+  Rv3109                   1    3.06 isolated                         N/A    0.643  0.297  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv3050c                  1    0.53 isolated                         N/A    0.643  0.297  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv3030                   1    7.45 isolated                         N/A    0.643  0.297  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv3539                   1    4.52 isolated                         N/A    0.643  0.297  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv3029c                  1    7.45 isolated                         N/A    0.643  0.297  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv3547                   1    0.03 isolated                         N/A    0.643  0.297  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv2970c                  1    0.23 isolated                         N/A    0.643  0.297  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv3598c                  1   -3.18 isolated                         N/A    0.643  0.297  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv2959c                  1   -5.16 isolated                         N/A    0.643  0.297  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv2943                   1    1.55 isolated                         N/A    0.643  0.297  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv2798c                  1    5.37 isolated                         N/A    0.643  0.297  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv1837c                  1    5.87 isolated                         N/A    0.643  0.297  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv1243c                  1  -10.11 isolated                         N/A    0.643  0.297  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv1935c                  1   -9.39 isolated                         N/A    0.643  0.297  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv0787A                  1    3.08 isolated                         N/A    0.643  0.297  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv0817c                  1    0.92 isolated                         N/A    0.643  0.297  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv0818                   1    0.92 isolated                         N/A    0.643  0.297  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv0935                   1    2.64 isolated                         N/A    0.643  0.297  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv0992c                  1    1.80 isolated                         N/A    0.643  0.297  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv0993                   1    1.80 isolated                         N/A    0.643  0.297  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv1067c                  1   -7.03 isolated                         N/A    0.643  0.297  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv1091                   1    0.95 isolated                         N/A    0.643  0.297  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv1103c                  1    4.16 isolated                         N/A    0.643  0.297  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv1183                   1   -1.15 isolated                         N/A    0.643  0.297  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv1199c                  1   -2.82 isolated                         N/A    0.643  0.297  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv1244                   1  -10.11 isolated                         N/A    0.643  0.297  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv1292                   1    0.41 isolated                         N/A    0.643  0.297  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv1402                   1    3.57 isolated                         N/A    0.643  0.297  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv1443c                  1    3.55 isolated                         N/A    0.643  0.297  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv1490                   1   -0.41 isolated                         N/A    0.643  0.297  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv1608c                  1   -7.96 isolated                         N/A    0.643  0.297  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv1609                   1   -7.96 isolated                         N/A    0.643  0.297  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv1754c                  1   -1.95 isolated                         N/A    0.643  0.297  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv1801                   1    2.72 isolated                         N/A    0.643  0.297  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv1822                   1   -1.95 isolated                         N/A    0.643  0.297  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv1840c                  1   -0.76 isolated                         N/A    0.643  0.297  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv1849                   1   -1.72 isolated                         N/A    0.643  0.297  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv0768                   1   -6.26 isolated                         N/A    0.643  0.297  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv0767c                  1   -6.26 isolated                         N/A    0.643  0.297  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv0755c                  1   -9.55 isolated                         N/A    0.643  0.297  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv0276                   1   -4.16 isolated                         N/A    0.643  0.297  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv0034                   1    0.39 isolated                         N/A    0.643  0.297  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv0065                   1    1.57 isolated                         N/A    0.643  0.297  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv0094c                  1   -2.63 isolated                         N/A    0.643  0.297  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv0103c                  1    1.04 isolated                         N/A    0.643  0.297  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv0104                   1    1.04 isolated                         N/A    0.643  0.297  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv0108c                  1   -2.14 isolated                         N/A    0.643  0.297  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv0109                   1   -2.14 isolated                         N/A    0.643  0.297  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv0152c                  1    5.32 isolated                         N/A    0.643  0.297  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv0206c                  1    2.41 isolated                         N/A    0.643  0.297  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv0275c                  1   -4.16 isolated                         N/A    0.643  0.297  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv0307c                  1    0.74 isolated                         N/A    0.643  0.297  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv0742                   1    4.16 isolated                         N/A    0.643  0.297  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv0308                   1    0.74 isolated                         N/A    0.643  0.297  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv0378                   1   -1.98 isolated                         N/A    0.643  0.297  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv0380c                  1    2.15 isolated                         N/A    0.643  0.297  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv0579                   1    0.10 isolated                         N/A    0.643  0.297  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv0627                   2    1.18 isolated                         N/A    0.643  0.297  WEAK MATCH — multiple hits present but architecture differs
+  Rv0634A                  1    3.43 isolated                         N/A    0.643  0.297  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv0634c                  1    3.43 isolated                         N/A    0.643  0.297  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv0665                   1   -0.70 isolated                         N/A    0.643  0.297  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv0695                   1  -10.53 isolated                         N/A    0.643  0.297  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv0706                   2    2.46 isolated                         N/A    0.643  0.297  WEAK MATCH — multiple hits present but architecture differs
+  Rv1917c                  1   -5.72 isolated                         N/A    0.643  0.297  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv3924c                  1    2.81 isolated                         N/A    0.643  0.297  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv2710                   1   -0.91 isolated                         N/A    0.643  0.297  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv2256c                  1    1.51 isolated                         N/A    0.643  0.297  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv2462c                  1   -0.31 isolated                         N/A    0.643  0.297  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv2307c                  1    0.28 isolated                         N/A    0.643  0.297  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv2555c                  1   17.37 isolated                         N/A    0.643  0.297  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv2661c                  1  -10.53 isolated                         N/A    0.643  0.297  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv2007c                  1    0.49 isolated                         N/A    0.643  0.297  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv2081c                  1    7.83 isolated                         N/A    0.643  0.297  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv2006                   1   -2.34 isolated                         N/A    0.643  0.297  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv2005c                  1   -2.34 isolated                         N/A    0.643  0.297  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv2303c                  1    2.96 isolated                         N/A    0.643  0.297  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv1983                   1    1.89 isolated                         N/A    0.643  0.297  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv2281                   1    0.82 isolated                         N/A    0.643  0.297  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv2753c                  1    1.90 isolated                         N/A    0.643  0.297  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv2463                   1   -0.31 isolated                         N/A    0.643  0.297  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv2762c                  1   -0.91 isolated                         N/A    0.643  0.297  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv2166c                  1   -2.33 isolated                         N/A    0.643  0.297  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv2198c                  1   -0.10 isolated                         N/A    0.643  0.297  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv1936                   1   -9.39 isolated                         N/A    0.643  0.297  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv2082                   1    7.83 isolated                         N/A    0.643  0.297  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv1979c                  1    2.61 isolated                         N/A    0.643  0.297  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv1982A                  1    1.89 isolated                         N/A    0.643  0.297  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv2224c                  1    7.53 isolated                         N/A    0.643  0.297  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  IGR_Rv2427c_Rv2428       4    2.67 isolated                       19 bp    0.625  0.289  WEAK MATCH — multiple hits present but architecture differs
+  Rv2097c                  4    2.54 convergent                     10 bp    0.554  0.286  WEAK MATCH — multiple hits present but architecture differs
+  Rv2159c                  2    6.78 isolated                         N/A    0.607  0.280  WEAK MATCH — multiple hits present but architecture differs
+  Rv3098c                  2    7.90 isolated                         N/A    0.607  0.280  WEAK MATCH — multiple hits present but architecture differs
+  Rv2705c                  2    9.30 isolated                         N/A    0.607  0.280  WEAK MATCH — multiple hits present but architecture differs
+  Rv1242                   2   14.63 isolated                         N/A    0.599  0.277  WEAK MATCH — multiple hits present but architecture differs
+  Rv1200                   2   11.64 isolated                         N/A    0.599  0.277  WEAK MATCH — multiple hits present but architecture differs
+  Rv2878c                  3    6.39 isolated                       18 bp    0.595  0.275  WEAK MATCH — multiple hits present but architecture differs
+  Rv0624                   3    7.94 convergent                     26 bp    0.524  0.272  WEAK MATCH — multiple hits present but architecture differs
+  Rv3022A                  2   12.15 isolated                         N/A    0.579  0.267  WEAK MATCH — multiple hits present but architecture differs
+  Rv2308                   2    3.17 isolated                         N/A    0.571  0.264  WEAK MATCH — multiple hits present but architecture differs
+  Rv0927c                  1    1.10 isolated                         N/A    0.571  0.264  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv0638                   1   -9.25 isolated                         N/A    0.571  0.264  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv0643c                  1    4.05 isolated                         N/A    0.571  0.264  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv2307D                  2    3.17 isolated                         N/A    0.571  0.264  WEAK MATCH — multiple hits present but architecture differs
+  Rv2386a                  1   -4.88 isolated                         N/A    0.571  0.264  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv2298                   1   -0.99 isolated                         N/A    0.571  0.264  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv2962c                  1    0.73 isolated                         N/A    0.571  0.264  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv2963                   1    0.73 isolated                         N/A    0.571  0.264  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv2941                   1   -9.54 isolated                         N/A    0.571  0.264  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv3705A                  1    6.40 isolated                         N/A    0.571  0.264  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv2386c                  1   -4.88 isolated                         N/A    0.571  0.264  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv2707                   1    1.05 isolated                         N/A    0.571  0.264  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  IGR_Rv0834c_Rv0835       2   11.20 isolated                         N/A    0.571  0.264  WEAK MATCH — multiple hits present but architecture differs
+  IGR_Rv2386c_Rv2386a      1   -4.88 isolated                         N/A    0.571  0.264  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv3900c                  1    0.72 isolated                         N/A    0.571  0.264  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv3878                   1   -1.40 isolated                         N/A    0.571  0.264  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv0042c                  1    3.17 isolated                         N/A    0.571  0.264  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv0050                   1   -3.10 isolated                         N/A    0.571  0.264  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv2756c                  1    2.12 isolated                         N/A    0.571  0.264  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv3802c                  1    7.60 isolated                         N/A    0.571  0.264  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv2828c                  1   -2.28 isolated                         N/A    0.571  0.264  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv2427c                  1    2.06 isolated                         N/A    0.571  0.264  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv2829c                  1    6.36 isolated                         N/A    0.571  0.264  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv2706c                  1    1.05 isolated                         N/A    0.571  0.264  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv3710                   1    0.21 isolated                         N/A    0.571  0.264  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv3709c                  1    0.21 isolated                         N/A    0.571  0.264  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv0835                   1   11.20 isolated                         N/A    0.571  0.264  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv0369c                  1    0.03 isolated                         N/A    0.571  0.264  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv0403c                  1    4.49 isolated                         N/A    0.571  0.264  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv0512                   1    1.98 isolated                         N/A    0.571  0.264  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv0834c                  2   11.20 isolated                         N/A    0.571  0.264  WEAK MATCH — multiple hits present but architecture differs
+  Rv2787                   1    1.11 isolated                         N/A    0.571  0.264  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv3003c                  1    4.16 isolated                         N/A    0.571  0.264  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv1120c                  1    2.24 isolated                         N/A    0.571  0.264  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv1325c                  1   -4.88 isolated                         N/A    0.571  0.264  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv1720c                  1    6.55 isolated                         N/A    0.571  0.264  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv2786c                  1    1.11 isolated                         N/A    0.571  0.264  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv3367                   1    0.21 isolated                         N/A    0.571  0.264  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv3375                   1   -2.16 isolated                         N/A    0.571  0.264  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv3178a                  1    6.14 isolated                         N/A    0.571  0.264  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv3408                   1    0.86 isolated                         N/A    0.571  0.264  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv1981c                  1    4.80 isolated                         N/A    0.571  0.264  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv1121                   1    2.24 isolated                         N/A    0.571  0.264  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv1192                   1   -5.84 isolated                         N/A    0.571  0.264  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv1076                   1   -1.67 isolated                         N/A    0.571  0.264  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv1906c                  1   -9.83 isolated                         N/A    0.571  0.264  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv0928                   1    1.10 isolated                         N/A    0.571  0.264  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv1918c                  1   -6.56 isolated                         N/A    0.571  0.264  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv3511                   1  -10.53 isolated                         N/A    0.571  0.264  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv2142c                  1    2.36 isolated                         N/A    0.571  0.264  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv3004                   1    4.16 isolated                         N/A    0.571  0.264  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv3097c                  1    1.01 isolated                         N/A    0.571  0.264  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv1211                   1   11.23 isolated                         N/A    0.556  0.257  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv1241                   1   14.63 isolated                         N/A    0.556  0.257  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv0277c                  1   12.36 isolated                         N/A    0.556  0.257  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv1088                   1   11.63 isolated                         N/A    0.556  0.257  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv0745                   2    0.02 isolated                         N/A    0.536  0.247  WEAK MATCH — multiple hits present but architecture differs
+  Rv0744c                  2    0.02 isolated                         N/A    0.536  0.247  WEAK MATCH — multiple hits present but architecture differs
+  Rv1842c                  1   -4.04 isolated                         N/A    0.500  0.231  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv1786                   1   -1.65 isolated                         N/A    0.500  0.231  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv1785c                  1   -1.65 isolated                         N/A    0.500  0.231  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv1517                   1   -2.40 isolated                         N/A    0.500  0.231  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv1516c                  1   -2.40 isolated                         N/A    0.500  0.231  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv2781c                  1    0.97 isolated                         N/A    0.500  0.231  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv1922                   1    4.63 isolated                         N/A    0.500  0.231  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv3627c                  1   -3.39 isolated                         N/A    0.500  0.231  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv1921c                  1    4.63 isolated                         N/A    0.500  0.231  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv1356c                  1   -5.44 isolated                         N/A    0.500  0.231  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv0960                   1    5.80 isolated                         N/A    0.500  0.231  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv3628                   1   -3.39 isolated                         N/A    0.500  0.231  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv0600c                  1   -2.62 isolated                         N/A    0.500  0.231  ISOLATED ASYMMETRIC — one asymmetric hit, no partner found
+  Rv2124c                  2   11.65 isolated                         N/A    0.452  0.209  DOES NOT MATCH reference paired-asymmetric architecture
+  Rv2125                   2   11.65 isolated                         N/A    0.452  0.209  DOES NOT MATCH reference paired-asymmetric architecture
+  Rv1283c                  1   12.92 isolated                         N/A    0.444  0.205  ISOLATED — single hit, uncertain model
+  Rv1284                   1   12.92 isolated                         N/A    0.444  0.205  ISOLATED — single hit, uncertain model
+  Rv1068c                  1   11.28 isolated                         N/A    0.444  0.205  ISOLATED — single hit, uncertain model
+  Rv3049c                  1   12.05 isolated                         N/A    0.444  0.205  ISOLATED — single hit, uncertain model
+  Rv0040c                  1  -10.53 isolated                         N/A    0.429  0.198  ISOLATED — single hit, uncertain model
+  Rv0041                   1  -10.53 isolated                         N/A    0.429  0.198  ISOLATED — single hit, uncertain model
+  Rv3863                   1   -8.40 isolated                         N/A    0.429  0.198  ISOLATED — single hit, uncertain model
+  Rv3862c                  1   -8.40 isolated                         N/A    0.429  0.198  ISOLATED — single hit, uncertain model
+  Rv3303c                  1    9.64 isolated                         N/A    0.429  0.198  ISOLATED — single hit, uncertain model
+  Rv1817                   1    4.94 isolated                         N/A    0.429  0.198  ISOLATED — single hit, uncertain model
+  Rv3304                   1    9.64 isolated                         N/A    0.429  0.198  ISOLATED — single hit, uncertain model
+  Rv0113                   1   -3.09 isolated                         N/A    0.429  0.198  ISOLATED — single hit, uncertain model
+  Rv2057c                  1  -10.11 isolated                         N/A    0.429  0.198  ISOLATED — single hit, uncertain model
+  Rv3488                   1  -10.11 isolated                         N/A    0.357  0.165  ISOLATED — single hit, uncertain model
+  Rv3883c                  1   -2.28 isolated                         N/A    0.357  0.165  ISOLATED — single hit, uncertain model
+  IGR_Rv3487c_Rv3488       1  -10.11 isolated                         N/A    0.357  0.165  ISOLATED — single hit, uncertain model
+  Rv0837c                  1   -3.28 isolated                         N/A    0.357  0.165  ISOLATED — single hit, uncertain model
+  Rv1777                   1   12.19 isolated                         N/A    0.333  0.154  ISOLATED — single hit, uncertain model
+  Rv1776c                  1   12.19 isolated                         N/A    0.333  0.154  ISOLATED — single hit, uncertain model
+  Rv0101                   1    9.58 isolated                         N/A    0.286  0.132  ISOLATED — single hit, uncertain model
+  Rv1629                   1   -7.15 isolated                         N/A    0.286  0.132  ISOLATED — single hit, uncertain model
+  Rv1628c                  1   -7.15 isolated                         N/A    0.286  0.132  ISOLATED — single hit, uncertain model
+
+────────────────────────────────────────────────────────────────────────────
+SUMMARY
+────────────────────────────────────────────────────────────────────────────
+  Total candidate regions analyzed  : 707
+  Regions matching validated arch   : 24  (validated_paired_asymmetric, 40–65 bp spacer)
+  Partial matches (tandem_asym)     : 33
+
+  TOP VALIDATED-ARCHITECTURE CANDIDATES:
+    Rv0916c                 spacer=53 bp  asym=0.857  sim=1.000 [Tier3_exploratory]
+    IGR_Rv0916c_Rv0917      spacer=53 bp  asym=0.857  sim=1.000 [Tier3_exploratory]
+    Rv3623                  spacer=53 bp  asym=0.655  sim=1.000 [Tier3_exploratory]
+    Rv3622c                 spacer=53 bp  asym=0.655  sim=1.000 [Tier3_exploratory]
+    IGR_Rv2940c_Rv2941      spacer=54 bp  asym=0.714  sim=0.985 [Tier3_exploratory]
+    Rv3754                  spacer=50 bp  asym=0.750  sim=0.954 [Tier3_exploratory]
+    Rv3753c                 spacer=50 bp  asym=0.750  sim=0.954 [Tier3_exploratory]
+    Rv0491                  spacer=49 bp  asym=0.786  sim=0.938 [Tier3_exploratory]
+    IGR_Rv1765c_Rv1766      spacer=59 bp  asym=0.651  sim=0.908 [Tier3_exploratory]
+    Rv1741                  spacer=59 bp  asym=0.714  sim=0.908 [Tier3_exploratory]
+
+────────────────────────────────────────────────────────────────────────────
+INTERPRETATION
+────────────────────────────────────────────────────────────────────────────
+
+  Architecture similarity = 1.0:
+    Region has two asymmetric sites exactly 40–65 bp apart (ideal 53 bp).
+    This is the HIGHEST PRIORITY target for experimental validation.
+
+  Architecture similarity = 0.5–0.9:
+    Region shows partial similarity. May have paired sites outside the
+    validated spacing window, or single high-scoring asymmetric site.
+    Moderate priority — worth investigating if FIMO score is high.
+
+  Architecture similarity < 0.5:
+    Region does not resemble the validated operator geometry.
+    Could be false positive or a novel Mce3R regulatory strategy.
+    Lower experimental priority.
+
+============================================================================
+END OF ARCHITECTURE COMPARISON REPORT
+============================================================================

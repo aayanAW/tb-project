@@ -1,0 +1,121 @@
+========================================================================
+  MCE3R BINDING SITE PREDICTION REPORT
+  Mce3R Motif Discovery Pipeline — Mycobacterium tuberculosis H37Rv
+========================================================================
+
+IMPORTANT: These are COMPUTATIONAL PREDICTIONS only.
+Experimental validation (EMSA, DNase footprinting, ChIP-seq) is
+required to confirm Mce3R binding at any predicted site.
+
+────────────────────────────────────────────────────────────────────────
+SCIENTIFIC CONTEXT
+────────────────────────────────────────────────────────────────────────
+
+Mce3R (Rv1963c) is a TetR-family transcription factor that represses
+the mce3 operon in M. tuberculosis, affecting mammalian cell entry
+during infection.
+
+Classical assumption (prior to 2024):
+  TetR-family TFs bind palindromic inverted repeat operators where
+  the left half-site is the reverse complement of the right half-site.
+  Assumed consensus: TTGACANNNNNTGTCAA
+
+Updated model (2024 ACS Chemical Biology):
+  Mce3R uses a NONPALINDROMIC, ASYMMETRIC operator. The two half-sites
+  are NOT reverse complements. This pipeline compares both models.
+  Asymmetric consensus used: TTGACATNNNNNTGCCCA
+
+────────────────────────────────────────────────────────────────────────
+MODEL COMPARISON VERDICT
+────────────────────────────────────────────────────────────────────────
+
+RESULT: Predicted sites are predominantly ASYMMETRIC (nonpalindromic), consistent with the 2024 ACS Chemical Biology finding that Mce3R does not use a classic palindromic TetR operator.
+
+  Total predicted sites          : 1035
+  Asymmetric model preference    : 1018 sites (98%)
+  Palindromic model preference   : 0 sites (0%)
+  Ambiguous (0.6-0.8 range)      : 17 sites (2%)
+  Mean palindrome score          : 0.285 (0=fully asymmetric, 1=palindromic)
+  Mean asymmetry score           : 0.715 (0=palindromic, 1=asymmetric)
+
+Site architecture distribution:
+    isolated              :  652 sites  — Isolated (no nearby partner site)
+    tandem_asymmetric     :   92 sites  — Tandem direct-repeat pair (strongest Mce3R model evidence)
+    direct_repeat         :   74 sites  — Direct-repeat pair (wide spacing)
+    divergent             :   64 sites  — Divergent (tail-to-tail) pair
+    convergent            :   55 sites  — Convergent (head-to-head) pair
+    validated_paired_asymmetric:   54 sites  — validated_paired_asymmetric
+    inverted_repeat       :   44 sites  — Inverted repeat / palindromic
+
+────────────────────────────────────────────────────────────────────────
+TOP 10 PREDICTED Mce3R BINDING SITES
+────────────────────────────────────────────────────────────────────────
+(Ranked by composite score: 40% FIMO score, 25% architecture,
+ 20% asymmetry weight, 15% tier prior)
+(NOTE: Palindrome score is descriptive only — NOT used in ranking)
+
+Rank  Locus        Pos          Str  Score   Pal    Asym   Model         Architecture
+  --------------------------------------------------------------------
+  1    IGR_Rv1963c_Rv1964 227-254      -    43.38   0.29   0.71   asymmetric    validated_paired_asymmetric
+  2    Rv1964       146-173      +    42.68   0.21   0.79   asymmetric    validated_paired_asymmetric
+  3    IGR_Rv1963c_Rv1964 743-770      +    42.68   0.21   0.79   asymmetric    validated_paired_asymmetric
+  4    Rv1963c      47-74        +    43.38   0.29   0.71   asymmetric    tandem_asymmetric
+  5    Rv1963c      129-156      +    36.05   0.21   0.79   asymmetric    validated_paired_asymmetric
+  6    Rv1964       232-259      +    25.67   0.29   0.71   asymmetric    validated_paired_asymmetric
+  7    IGR_Rv1963c_Rv1964 829-856      +    25.67   0.29   0.71   asymmetric    validated_paired_asymmetric
+  8    Rv1976c      88-115       +    43.94   0.21   0.79   asymmetric    tandem_asymmetric
+  9    IGR_Rv1963c_Rv1964 272-299      -    41.56   0.21   0.79   asymmetric    tandem_asymmetric
+  10   Rv1964       71-98        +    31.19   0.36   0.64   asymmetric    tandem_asymmetric
+
+────────────────────────────────────────────────────────────────────────
+METHODOLOGICAL NOTES
+────────────────────────────────────────────────────────────────────────
+
+Motif discovery (MEME):
+  Input: Promoter regions of candidate Mce3R-regulated genes
+  Parameters: -dna -mod zoops -nmotifs 5 -minw 12 -maxw 20
+  Mode: Simulation (no MEME Suite) or real MEME if installed
+
+Motif scanning (FIMO):
+  Target: All ~2,000-4,000 M. tb H37Rv promoters (300 bp upstream)
+  Overlap handling: Promoters trimmed at adjacent CDS boundaries
+  p-value cutoff: 1e-4
+
+Model comparison (per 2024 ACS Chemical Biology):
+  Palindrome score: 1 - (Hamming distance between half-sites / half-site length)
+    DESCRIPTIVE ONLY — not used in ranking.
+    Low palindrome score (< 0.6) is consistent with Mce3R asymmetric binding.
+  Asymmetry score:  1 - palindrome score
+  Model preference: palindromic (>=0.8), asymmetric (<0.6), ambiguous (0.6-0.8)
+
+Composite ranking score (2024 ACS Chem. Biol. updated weights):
+  40% FIMO log-odds score
+  25% Site architecture (validated_paired_asymmetric highest)
+  20% Asymmetry weight (peaks for palindrome_score 0.3–0.65)
+  15% Tier prior (1.0=Tier1, 0.6=Tier2, 0.2=Tier3)
+
+────────────────────────────────────────────────────────────────────────
+INTERPRETATION GUIDE
+────────────────────────────────────────────────────────────────────────
+
+Palindrome score < 0.6  → Consistent with asymmetric Mce3R binding (2024 model)
+  NOTE: This is a descriptive observation, not a ranking criterion.
+Palindrome score > 0.8  → Consistent with classic palindromic TetR binding
+  NOTE: NOT used as a ranking bonus; palindromic sites score LOW in architecture.
+
+Architecture 'validated_paired_asymmetric':
+  Two same-strand asymmetric sites, 40–65 bp apart (ideal ~53 bp).
+  MATCHES the proven Mce3R operator geometry (2024 ACS Chem. Biol.).
+  HIGHEST priority for experimental validation.
+
+Architecture 'tandem_asymmetric' → same strand, 0–39 bp spacing
+  Consistent with Mce3R model but tighter than validated window.
+  Moderate priority.
+
+Architecture 'inverted_repeat'  → Classic TetR palindrome architecture
+  LEAST consistent with the 2024 Mce3R nonpalindromic model.
+  Lowest architectural priority.
+
+========================================================================
+END OF REPORT
+========================================================================
