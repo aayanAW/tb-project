@@ -1,0 +1,5 @@
+gene,condition,fold_change,source
+yrbE3A,cholesterol_induction,8.5,Santangelo_2009_Table2
+mce3R,cholesterol_induction,3.2,Santangelo_2009_Table2
+mce3A,cholesterol_induction,6.1,Santangelo_2009_Table2
+fadD21,cholesterol_induction,4.8,Santangelo_2009_Table2

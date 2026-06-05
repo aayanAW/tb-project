@@ -1,0 +1,10 @@
+locus_tag,gene,confidence,rationale,promoter_length,gc_content
+Rv1963c,mce3R,primary,Mce3R TF itself; TetR-family autoregulation,300,0.56
+Rv1964,lprK,primary,"mce3 locus; lipoprotein, surface-exposed",300,0.6
+Rv1976c,lprN,primary,mce3 operon; exported lipoprotein N,300,0.59
+Rv1977,Rv1977,primary,mce3 locus downstream gene,300,0.5966666666666667
+Rv1978,Rv1978,primary,mce3 locus downstream gene,107,0.6822429906542056
+Rv3575c,kshA,extended,3-ketosteroid-9α-hydroxylase; cholesterol catabolism,189,0.6137566137566137
+Rv3537,kshB,extended,3-ketosteroid-9α-hydroxylase reductase,72,0.6111111111111112
+Rv3545c,cyp125A1,extended,Cytochrome P450; cholesterol side-chain oxidation,111,0.4864864864864865
+Rv1176c,fadD4,extended,Fatty-acyl-CoA synthetase; lipid activation,212,0.5707547169811321
