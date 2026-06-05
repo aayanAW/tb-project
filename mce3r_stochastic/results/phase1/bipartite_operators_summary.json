@@ -1,0 +1,25 @@
+{
+  "pipeline": "bipartite_operator_search",
+  "known_operator_recovered": true,
+  "known_operator_rank": 1,
+  "total_candidates": 1,
+  "intergenic_candidates": 1,
+  "regulon_candidates": 1,
+  "strong_site_used": "AGTTGTCCAAGCAATCGCGTATTGGCT",
+  "weak_site_used": "GCCCCGCGCTATAGGATACTAGCAAGA",
+  "spacer_range": "30-80bp",
+  "known_spacer": 46,
+  "top_10": [
+    {
+      "rank": 1,
+      "center_pos": 2207526,
+      "spacer": 46,
+      "combined_score": 74.44,
+      "normalized_score": 1.0,
+      "nearest_gene": "Rv1964",
+      "gene_name": "yrbE3A",
+      "is_intergenic": true,
+      "near_regulon": true
+    }
+  ]
+}

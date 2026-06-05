@@ -1,0 +1,49 @@
+{
+  "description": "Aim 3: Extended phase diagram with repeated pulses",
+  "n_ratios": 7,
+  "n_environments": 5,
+  "n_rounds": 4,
+  "n_cells": 500,
+  "wall_time_sec": 6.7,
+  "n_sanity_pass": 2,
+  "n_sanity_fail": 0,
+  "n_science_expected": 2,
+  "n_science_unexpected": 1,
+  "environment_benefits": [
+    {
+      "environment": "baseline",
+      "asymmetric_survival": 0.256,
+      "symmetric_survival": 0.232,
+      "asymmetry_beneficial": "True",
+      "fold_advantage": 1.103448275862069
+    },
+    {
+      "environment": "cholesterol",
+      "asymmetric_survival": 0.276,
+      "symmetric_survival": 0.368,
+      "asymmetry_beneficial": "False",
+      "fold_advantage": 0.7500000000000001
+    },
+    {
+      "environment": "acidic_pH",
+      "asymmetric_survival": 0.298,
+      "symmetric_survival": 0.284,
+      "asymmetry_beneficial": "True",
+      "fold_advantage": 1.0492957746478875
+    },
+    {
+      "environment": "oxidative",
+      "asymmetric_survival": 0.268,
+      "symmetric_survival": 0.282,
+      "asymmetry_beneficial": "False",
+      "fold_advantage": 0.9503546099290782
+    },
+    {
+      "environment": "combined_macrophage",
+      "asymmetric_survival": 0.276,
+      "symmetric_survival": 0.274,
+      "asymmetry_beneficial": "True",
+      "fold_advantage": 1.0072992700729928
+    }
+  ]
+}

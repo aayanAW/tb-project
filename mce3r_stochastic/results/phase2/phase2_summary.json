@@ -1,0 +1,129 @@
+{
+  "phase": 2,
+  "description": "Mce3R stochastic simulation \u2014 4-state operator model",
+  "total_time_seconds": 592.9,
+  "parameters": {
+    "Kd_strong": 2.4,
+    "Kd_weak": 49.0,
+    "Kd_ratio": 20.4,
+    "k_on": 0.0167,
+    "k_max": 0.15,
+    "block_strong": 0.85,
+    "block_weak": 0.5,
+    "Kd_symmetric": 10.8444,
+    "block_symmetric": 0.6519,
+    "k_translation": 0.5,
+    "gamma_mRNA": 0.073,
+    "gamma_protein": 0.000462,
+    "t_max": 30000,
+    "t_burn_in": 15000
+  },
+  "conditions": {
+    "D": {
+      "n_cells": 50000,
+      "mean_protein": 2224.01,
+      "std_protein": 131.44,
+      "cv": 0.0591,
+      "fano": 7.77,
+      "elapsed_seconds": 83.4
+    },
+    "B": {
+      "n_cells": 50000,
+      "mean_protein": 292.58,
+      "std_protein": 45.85,
+      "cv": 0.1567,
+      "fano": 7.18,
+      "elapsed_seconds": 36.4
+    },
+    "C": {
+      "n_cells": 50000,
+      "mean_protein": 341.77,
+      "std_protein": 51.08,
+      "cv": 0.1495,
+      "fano": 7.63,
+      "elapsed_seconds": 390.2
+    },
+    "A": {
+      "n_cells": 50000,
+      "mean_protein": 197.31,
+      "std_protein": 36.82,
+      "cv": 0.1866,
+      "fano": 6.87,
+      "elapsed_seconds": 42.1
+    },
+    "E": {
+      "n_ratios": 10,
+      "n_cells_per_ratio": 5000,
+      "ratios": [
+        1.0,
+        2.0,
+        5.0,
+        8.0,
+        10.0,
+        15.0,
+        20.0,
+        30.0,
+        40.0,
+        50.0
+      ],
+      "means": [
+        292.92,
+        286.75,
+        265.82,
+        248.28,
+        238.25,
+        216.66,
+        199.32,
+        199.62,
+        202.0,
+        203.75
+      ],
+      "cvs": [
+        0.1576,
+        0.1587,
+        0.1637,
+        0.1699,
+        0.1713,
+        0.176,
+        0.1837,
+        0.1852,
+        0.1854,
+        0.1763
+      ],
+      "fanos": [
+        7.28,
+        7.22,
+        7.12,
+        7.17,
+        6.99,
+        6.71,
+        6.73,
+        6.85,
+        6.94,
+        6.33
+      ],
+      "intermediate_fractions": [
+        0.9482,
+        0.9314,
+        0.8434,
+        0.7138,
+        0.6444,
+        0.4122,
+        0.254,
+        0.2558,
+        0.2744,
+        0.2906
+      ],
+      "elapsed_seconds": 40.8
+    }
+  },
+  "predictions": {
+    "cv_A_gt_cv_B": true,
+    "cv_A": 0.1866,
+    "cv_B": 0.1567,
+    "cv_C": 0.1495,
+    "cv_D": 0.0591,
+    "fano_D_approx_expected": 7.77,
+    "expected_fano_unregulated": 7.85
+  }
+}

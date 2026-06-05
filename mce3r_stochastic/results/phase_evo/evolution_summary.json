@@ -1,0 +1,32 @@
+{
+  "description": "Evolutionary simulation of operator architecture under selection",
+  "pop_size": 50,
+  "n_generations": 100,
+  "n_cells_per_eval": 200,
+  "mce3r_wt_ratio": 20.416666666666668,
+  "persister_threshold": 112.0,
+  "n_sanity_pass": 2,
+  "n_sanity_fail": 0,
+  "n_science_expected": 1,
+  "n_science_unexpected": 1,
+  "errors": [],
+  "growth_elapsed_sec": 3014.0,
+  "growth_final_mean_ratio": 2239.354467151368,
+  "growth_final_mean_cv": 0.06308483863198713,
+  "growth_final_best_fitness": 4.0359,
+  "persist_elapsed_sec": 3020.8,
+  "persist_final_mean_ratio": 1043.1893267435591,
+  "persist_final_mean_cv": 0.06377716451121639,
+  "persist_final_best_fitness": 2.837933,
+  "persist_more_asymmetric": false,
+  "persist_closer_to_wt": true,
+  "ratio_comparison": {
+    "growth_mean_ratio": 2239.354467151368,
+    "persist_mean_ratio": 1043.1893267435591,
+    "mce3r_wt_ratio": 20.416666666666668,
+    "growth_log_dist_to_wt": 4.697591358251857,
+    "persist_log_dist_to_wt": 3.933686399097562
+  },
+  "wall_time_sec": 6035.4,
+  "status": "complete"
+}

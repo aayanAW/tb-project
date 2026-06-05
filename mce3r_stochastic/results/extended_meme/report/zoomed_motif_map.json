@@ -1,0 +1,170 @@
+{
+  "description": "Zoomed, ABC/DEF/HXG-annotated Mce3R motif map (Balazsi 2026-05-18 slideshow feedback).",
+  "motif": "99 bp de novo (extended MEME, regions_1_2_combined, MEME-1, E=3.9e-08)",
+  "region_lengths": {
+    "Region1_mce3R_yrbE3A": 897,
+    "Region2_echA13_Rv1936": 224
+  },
+  "clusters": {
+    "ABC": {
+      "region": 1,
+      "occurrence_start0": 237,
+      "occurrence_end0": 336,
+      "strand": "+",
+      "site_pvalue": "2.3e-44",
+      "eram_49bp_identity": "73%",
+      "description": "Region 1 proximal (near mce3R)",
+      "subsites": [
+        {
+          "label": "A",
+          "role": "first",
+          "start0": 244,
+          "end0": 260,
+          "strand": 1,
+          "mm": 0,
+          "matched": "GACTAACAAAATACAT"
+        },
+        {
+          "label": "B",
+          "role": "second",
+          "start0": 278,
+          "end0": 295,
+          "strand": 1,
+          "mm": 0,
+          "matched": "GATTACATTGCAATTTA"
+        },
+        {
+          "label": "C",
+          "role": "first",
+          "start0": 320,
+          "end0": 336,
+          "strand": 1,
+          "mm": 0,
+          "matched": "TATCAGTAATAGACAT"
+        }
+      ],
+      "inter_site_gaps_bp": {
+        "order": [
+          "A",
+          "B",
+          "C"
+        ],
+        "gaps_bp": [
+          18,
+          25
+        ],
+        "order_along": "5'->3' on binding strand"
+      }
+    },
+    "DEF": {
+      "region": 1,
+      "occurrence_start0": 683,
+      "occurrence_end0": 782,
+      "strand": "+",
+      "site_pvalue": "1.6e-45",
+      "eram_49bp_identity": "100%",
+      "description": "Region 1 distal (near yrbE3A)",
+      "subsites": [
+        {
+          "label": "D",
+          "role": "first",
+          "start0": 690,
+          "end0": 706,
+          "strand": 1,
+          "mm": 0,
+          "matched": "TACTAGCAAGATACAT"
+        },
+        {
+          "label": "E",
+          "role": "second",
+          "start0": 722,
+          "end0": 741,
+          "strand": 1,
+          "mm": 0,
+          "matched": "CAGTTTGCATTGCTATTTA"
+        },
+        {
+          "label": "F",
+          "role": "first",
+          "start0": 766,
+          "end0": 782,
+          "strand": 1,
+          "mm": 0,
+          "matched": "TATTGGCTATGGACAT"
+        }
+      ],
+      "inter_site_gaps_bp": {
+        "order": [
+          "D",
+          "E",
+          "F"
+        ],
+        "gaps_bp": [
+          16,
+          25
+        ],
+        "order_along": "5'->3' on binding strand"
+      }
+    },
+    "HXG": {
+      "region": 2,
+      "occurrence_start0": 61,
+      "occurrence_end0": 160,
+      "strand": "-",
+      "site_pvalue": "4.2e-45",
+      "eram_49bp_identity": "67%",
+      "description": "Region 2 (echA13-Rv1936)",
+      "subsites": [
+        {
+          "label": "H",
+          "role": "first",
+          "start0": 137,
+          "end0": 152,
+          "strand": -1,
+          "mm": 0,
+          "matched": "AAGTATCTTGGTAGT"
+        },
+        {
+          "label": "X",
+          "role": "second",
+          "start0": 102,
+          "end0": 122,
+          "strand": 1,
+          "mm": 0,
+          "matched": "CAAATTCCCATGCAAAGAAG"
+        },
+        {
+          "label": "G",
+          "role": "first",
+          "start0": 61,
+          "end0": 76,
+          "strand": -1,
+          "mm": 0,
+          "matched": "ATGTCCATAGCCAAT"
+        }
+      ],
+      "inter_site_gaps_bp": {
+        "order": [
+          "H",
+          "X",
+          "G"
+        ],
+        "gaps_bp": [
+          15,
+          26
+        ],
+        "order_along": "5'->3' on binding strand"
+      }
+    }
+  },
+  "eram_49bp_core_region1": {
+    "start0": 691,
+    "end0": 740,
+    "strand": "+",
+    "mismatches": 0
+  },
+  "outputs": [
+    "/Users/aayanalwani/tb project/mce3r_stochastic/results/extended_meme/report/dna_motif_map_zoomed.png",
+    "/Users/aayanalwani/tb project/mce3r_stochastic/results/eram_validation/dna_motif_map_zoomed.png"
+  ]
+}

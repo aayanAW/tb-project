@@ -1,0 +1,22 @@
+region,motif,position,strand,mismatches,identity,matched_seq
+Region 1,Eram_Motif1_49bp,691,+,0,1.0,ACTAGCAAGATACATCATAGCCAATATATGCCAGTTTGCATTGCTATTT
+Region 1,Eram_Motif2_site2_21bp,760,+,0,1.0,ATCGCGTATTGGCTATGGACA
+Region 1,Eram_Motif2_site3_21bp,238,+,0,1.0,ATATCGGACTAACAAAATACA
+Region 1,Eram_Motif2_site4_21bp,314,+,0,1.0,AGTGCATATCAGTAATAGACA
+Region 1,Eram_Motif2_site5_21bp,725,-,1,0.9523809523809523,TTTGCATTGCTATTTACCGAT
+Region 1,Eram_Motif3_10bp,195,-,2,0.8,CTCCGTGGTA
+Region 2,Eram_Motif2_site2_21bp,62,-,3,0.8571428571428572,TGTCCATAGCCAATACGCACA
+Region 2,Eram_Motif3_10bp,130,+,0,1.0,TACAACGAAG
+Region 2,Eram_Motif3_10bp,112,+,2,0.8,TGCAAAGAAG
+Region 2,Eram_Motif3_10bp,203,+,2,0.8,TACAACCAGG
+Region 5,Eram_Motif3_10bp,36,-,2,0.8,CTTCGTAGAA
+Region 1,Santangelo_fwd_1,244,+,0,1.0,GACTAACAAAATACAT
+Region 1,Santangelo_fwd_1,690,+,3,0.8125,TACTAGCAAGATACAT
+Region 1,Santangelo_fwd_2,320,+,0,1.0,TATCAGTAATAGACAT
+Region 1,Santangelo_fwd_3,690,+,0,1.0,TACTAGCAAGATACAT
+Region 1,Santangelo_fwd_3,244,+,3,0.8125,GACTAACAAAATACAT
+Region 1,Santangelo_fwd_4,766,+,0,1.0,TATTGGCTATGGACAT
+Region 1,Santangelo_rev_1,721,-,0,1.0,CCAGTTTGCATTGCTATTTA
+Region 1,Santangelo_rev_2,275,-,0,1.0,CGCGATTACATTGCAATTTA
+Region 2,Santangelo_fwd_3,137,-,2,0.875,AAGTATCTTGGTAGTA
+Region 2,Santangelo_fwd_4,61,-,0,1.0,ATGTCCATAGCCAATA

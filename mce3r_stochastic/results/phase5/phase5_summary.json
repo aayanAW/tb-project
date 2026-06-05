@@ -1,0 +1,45 @@
+{
+  "phase": 5,
+  "description": "Mce3R thermodynamic model \u2014 PWM energy calibration + MCMC cooperativity inference",
+  "status": "complete",
+  "wall_time_sec": 3.2,
+  "n_sanity_pass": 9,
+  "n_sanity_fail": 0,
+  "n_science_expected": 2,
+  "n_science_unexpected": 3,
+  "output_files": [
+    "energy_parameters.json",
+    "repression_curves.csv",
+    "mcmc_posteriors.npz",
+    "mcmc_summary.json",
+    "operator_classifications.csv"
+  ],
+  "energy_calibration": {
+    "motif_width": 21,
+    "dG_strong": -12.225647579436,
+    "dG_weak": -10.367665508556678,
+    "Kd_strong_exp": 2.4,
+    "Kd_weak_exp": 49.0,
+    "kT": 0.61597
+  },
+  "mcmc": {
+    "omega_median": 1.0832926442128858,
+    "dG_spacer_median": -0.14828029365030426,
+    "skipped": false
+  },
+  "operator_classifications": {
+    "n_classified": 20,
+    "n_categories": 1,
+    "distribution": {
+      "graded_repressor": 20
+    }
+  },
+  "dna_shape": {
+    "status": "skipped",
+    "reason": "DNAshapeR R package not installed"
+  },
+  "scientific_predictions": {
+    "P_intermediate_at_Khalf": 4.810072888363957e-05,
+    "n_classification_categories": 1
+  }
+}

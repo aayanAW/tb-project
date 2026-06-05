@@ -1,0 +1,19 @@
+{
+  "status": "complete",
+  "n_sanity_pass": 6,
+  "n_sanity_fail": 0,
+  "n_science_expected": 0,
+  "n_science_unexpected": 0,
+  "n_warn": 0,
+  "mock_used": false,
+  "wall_time_sec": 0.76,
+  "output_files": [
+    "fig9_repression_curves.png",
+    "fig10_cooperativity.png",
+    "fig11_environmental_distributions.png",
+    "fig12_mutual_information.png",
+    "fig13_persistence_phase.png",
+    "fig14_two_species_traces.png"
+  ],
+  "n_figures": 6
+}

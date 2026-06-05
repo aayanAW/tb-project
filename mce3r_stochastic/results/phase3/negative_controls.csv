@@ -1,0 +1,12 @@
+test,detail,value,p_value,pass,note
+shuffle,site_0,0.56,1.0,False,mock=True
+shuffle,site_1,0.36,1.0,False,mock=True
+shuffle,site_2,0.36,1.0,False,mock=True
+shuffle,site_3,0.44,1.0,False,mock=True
+shuffle,site_4,0.4,1.0,False,mock=True
+shuffle,site_5,0.44,1.0,False,mock=True
+shuffle,site_6,0.48,1.0,False,mock=True
+shuffle,site_7,0.48,1.0,False,mock=True
+shuffle,site_8,0.6,1.0,False,mock=True
+symmetric_control,Kd=5.0nM,1.0,,True,CV=0.2585
+poisson_baseline,condition_D,7.7680458094514275,,True,"expected [5, 12]"

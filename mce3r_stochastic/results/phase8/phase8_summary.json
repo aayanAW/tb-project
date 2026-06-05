@@ -1,0 +1,29 @@
+{
+  "phase": 8,
+  "description": "Temporal noise dynamics: autocorrelation, dwell times, PSD",
+  "status": "complete",
+  "n_sanity_pass": 5,
+  "n_sanity_fail": 0,
+  "n_science_expected": 2,
+  "n_science_unexpected": 0,
+  "output_files": [
+    "autocorrelation.csv",
+    "acf_data.npz",
+    "dwell_times.csv",
+    "power_spectrum.csv",
+    "psd_data.npz"
+  ],
+  "errors": [],
+  "tau_c_A_min": 1123.9432528335788,
+  "tau_c_B_min": 1001.8752422667435,
+  "tau_c_A_hr": 18.732387547226313,
+  "tau_c_B_hr": 16.697920704445725,
+  "tau_c_ratio_A_over_B": 1.121839531926806,
+  "tau_c_A_gt_B": true,
+  "dwell_asymmetry_ratio_A": 1.1412381227225201,
+  "dwell_asymmetry_ratio_B": 1.0,
+  "dwell_asym_more_different": true,
+  "low_freq_power_A": 0.9714235213056108,
+  "low_freq_power_B": 0.9685076299724426,
+  "wall_time_sec": 0.83
+}

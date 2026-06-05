@@ -1,0 +1,125 @@
+{
+  "pipeline": "bipartite_operator_search_v2",
+  "site_length": 25,
+  "strong_site": "AATCGCGTATTGGCTATGGACATCA",
+  "weak_site": "GCCCCGCGCTATAGGATACTAGCAA",
+  "spacer_range": "25-80bp",
+  "known_spacer": 60,
+  "individual_pval_threshold": 0.0005,
+  "total_strong_hits": 4953,
+  "total_weak_hits": 4450,
+  "total_bipartite_candidates": 983,
+  "known_operator_rank": 1,
+  "top_candidates": [
+    {
+      "rank": 1,
+      "center_pos": 2207531,
+      "spacer": 60,
+      "combined_pval": 3.999984000048e-12,
+      "adjusted_score": 53.69,
+      "nearest_gene": "Rv1964",
+      "gene_name": "yrbE3A",
+      "is_intergenic": true,
+      "near_regulon": true
+    },
+    {
+      "rank": 2,
+      "center_pos": 2207089,
+      "spacer": 51,
+      "combined_pval": 1.1999952000144e-11,
+      "adjusted_score": 28.38,
+      "nearest_gene": "Rv1963c",
+      "gene_name": "mce3R",
+      "is_intergenic": true,
+      "near_regulon": true
+    },
+    {
+      "rank": 3,
+      "center_pos": 2187273,
+      "spacer": 60,
+      "combined_pval": 5.999976000071999e-10,
+      "adjusted_score": 28.24,
+      "nearest_gene": "Rv1936",
+      "gene_name": "",
+      "is_intergenic": true,
+      "near_regulon": true
+    },
+    {
+      "rank": 4,
+      "center_pos": 1240171,
+      "spacer": 58,
+      "combined_pval": 1.5999936000192e-11,
+      "adjusted_score": 26.56,
+      "nearest_gene": "Rv1115",
+      "gene_name": "",
+      "is_intergenic": true,
+      "near_regulon": false
+    },
+    {
+      "rank": 5,
+      "center_pos": 4062360,
+      "spacer": 33,
+      "combined_pval": 3.5999856000432e-11,
+      "adjusted_score": 25.38,
+      "nearest_gene": "Rv3622c",
+      "gene_name": "PE32",
+      "is_intergenic": true,
+      "near_regulon": false
+    },
+    {
+      "rank": 6,
+      "center_pos": 1730056,
+      "spacer": 49,
+      "combined_pval": 5.719977120068641e-10,
+      "adjusted_score": 24.66,
+      "nearest_gene": "Rv1529",
+      "gene_name": "fadD24",
+      "is_intergenic": false,
+      "near_regulon": false
+    },
+    {
+      "rank": 7,
+      "center_pos": 2917839,
+      "spacer": 58,
+      "combined_pval": 4.1599833600499196e-10,
+      "adjusted_score": 24.17,
+      "nearest_gene": "Rv2590",
+      "gene_name": "fadD9",
+      "is_intergenic": true,
+      "near_regulon": false
+    },
+    {
+      "rank": 8,
+      "center_pos": 1647477,
+      "spacer": 68,
+      "combined_pval": 2.8799884800345596e-10,
+      "adjusted_score": 23.97,
+      "nearest_gene": "Rv1461",
+      "gene_name": "",
+      "is_intergenic": false,
+      "near_regulon": false
+    },
+    {
+      "rank": 9,
+      "center_pos": 3242654,
+      "spacer": 62,
+      "combined_pval": 1.4399942400172798e-10,
+      "adjusted_score": 23.89,
+      "nearest_gene": "Rv2928",
+      "gene_name": "tesA",
+      "is_intergenic": false,
+      "near_regulon": false
+    },
+    {
+      "rank": 10,
+      "center_pos": 1941801,
+      "spacer": 50,
+      "combined_pval": 7.1999712000864e-11,
+      "adjusted_score": 23.55,
+      "nearest_gene": "Rv1714",
+      "gene_name": "",
+      "is_intergenic": true,
+      "near_regulon": false
+    }
+  ]
+}

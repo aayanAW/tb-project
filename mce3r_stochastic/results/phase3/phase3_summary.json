@@ -1,0 +1,19 @@
+{
+  "status": "PASS",
+  "n_sanity_pass": 10,
+  "n_sanity_fail": 0,
+  "n_science_expected": 4,
+  "n_science_unexpected": 0,
+  "n_warn": 0,
+  "mock_used": true,
+  "wall_time_sec": 71.79,
+  "output_files": [
+    "results/phase3/noise_metrics.csv",
+    "results/phase3/bootstrap_results.csv",
+    "results/phase3/sensitivity_data.csv",
+    "results/phase3/statistical_tests.csv",
+    "results/phase3/experimental_comparison.csv",
+    "results/phase3/negative_controls.csv"
+  ],
+  "errors": []
+}

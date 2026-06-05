@@ -1,0 +1,31 @@
+{
+  "description": "Genome-wide TetR-family operator classification",
+  "n_cells_per_tf": 300,
+  "n_sanity_pass": 4,
+  "n_sanity_fail": 0,
+  "n_science_expected": 1,
+  "n_science_unexpected": 2,
+  "errors": [],
+  "n_tetR_genes": 68,
+  "architecture_distribution": {
+    "asymmetric": 39,
+    "single_site": 25,
+    "palindromic": 4
+  },
+  "pct_single_site": 36.8,
+  "pct_palindromic": 5.9,
+  "pct_unresolved": 0.0,
+  "pct_tandem": 0.0,
+  "pct_asymmetric": 57.4,
+  "mce3r_found": true,
+  "mce3r_classification": "single_site",
+  "mean_cv_palindromic": 0.1561,
+  "mean_persister_palindromic": 0.0,
+  "mean_cv_asymmetric": 0.1857,
+  "mean_persister_asymmetric": 0.0032,
+  "mean_cv_single_site": 0.139,
+  "mean_persister_single_site": 0.0,
+  "asymmetric_noisier": true,
+  "wall_time_sec": 28.6,
+  "status": "complete"
+}

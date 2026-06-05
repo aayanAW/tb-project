@@ -1,0 +1,7 @@
+# 0-order Markov frequencies from file /Users/aayanalwani/tb project/mce3r_stochastic/data/sequences/meme_input_orthologs.fasta
+# seqs: 3    min: 200    max: 200    avg: 200.0    sum: 600    alph: DNA
+# order 0
+A 2.042e-01
+C 2.958e-01
+G 2.958e-01
+T 2.042e-01

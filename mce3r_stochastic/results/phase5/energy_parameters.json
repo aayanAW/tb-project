@@ -1,0 +1,17 @@
+{
+  "motif_width": 21,
+  "dG_strong": -12.225647579436,
+  "dG_weak": -10.367665508556678,
+  "dG_strong_exp": -12.225647579436,
+  "dG_weak_exp": -10.367665508556678,
+  "offset_strong": 3.544663883524107,
+  "offset_weak": -35.107663958664645,
+  "offset_mean": -15.781500037570268,
+  "Kd_strong_exp": 2.4,
+  "Kd_weak_exp": 49.0,
+  "Kd_strong_pred": 2.399999999999998,
+  "Kd_weak_pred": 49.00000000000005,
+  "kT": 0.61597,
+  "strong_seq": "GTTGTCCAAGCAATCGCGTAT",
+  "weak_seq": "TTTGCATTGCTATTTACCGAT"
+}

@@ -1,0 +1,2 @@
+rank,center_pos,weak_pos,strong_pos,weak_strand,strong_strand,spacer_bp,weak_score,strong_score,combined_score,normalized_score,arrangement,weak_sequence,strong_sequence,nearest_gene,gene_name,gene_distance,gene_location,is_intergenic,near_regulon
+1,2207526,2207476,2207549,+,+,46,36.289777122138695,38.15235162197067,74.44212874410937,1.0000,weak-spacer-strong,GCCCCGCGCTATAGGATACTAGCAAGA,AGTTGTCCAAGCAATCGCGTATTGGCT,Rv1964,yrbE3A,174,upstream,True,True

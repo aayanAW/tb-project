@@ -1,0 +1,25 @@
+{
+  "phase": 9,
+  "description": "Noise quenching: symmetrization sweep and IC50",
+  "status": "complete",
+  "n_sanity_pass": 2,
+  "n_sanity_fail": 0,
+  "n_science_expected": 2,
+  "n_science_unexpected": 0,
+  "output_files": [
+    "symmetrization_sweep.csv",
+    "phase9_summary.json"
+  ],
+  "errors": [],
+  "ic50_valid": true,
+  "cv_asymmetric": 0.1873088736781418,
+  "cv_symmetric": 0.1600251319533377,
+  "delta_cv": 0.027283741724804106,
+  "ic50_of_noise": 0.3009505451019642,
+  "n_doses": 20,
+  "n_cells_per_dose": 5000,
+  "persister_fraction_asymmetric": 0.5568,
+  "persister_fraction_symmetric": 0.0152,
+  "persister_fold_reduction": 36.63157894736842,
+  "wall_time_sec": 237.4
+}

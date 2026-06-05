@@ -1,0 +1,18 @@
+{
+  "description": "Aim 2: State-switching logic comparison",
+  "n_cells": 200,
+  "threshold": 200.8836774515499,
+  "n_architectures": 4,
+  "wall_time_sec": 1.4,
+  "n_sanity_pass": 1,
+  "n_sanity_fail": 0,
+  "n_science_expected": 2,
+  "n_science_unexpected": 1,
+  "wt_longer_dwells_than_symmetric": true,
+  "asymmetry_creates_longer_tails": false,
+  "wt_mean_dwell": 715.1016175860639,
+  "sym_eq_mean_dwell": 187.2049689440994,
+  "sym_var_mean_dwell": 15010.0,
+  "wt_tail_6hr": 0.3425964330153463,
+  "sym_var_tail_6hr": 1.0
+}

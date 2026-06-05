@@ -1,0 +1,167 @@
+{
+  "description": "Extended MEME analysis replicating Eram Kabir 2021 protocol",
+  "parameters": {
+    "minw": 8,
+    "maxw": 120,
+    "nmotifs": 10,
+    "mode": "anr",
+    "revcomp": true
+  },
+  "inputs": [
+    "region_1_only",
+    "region_2_only",
+    "regions_1_2_combined",
+    "all_5_regions"
+  ],
+  "eram_recovered_in": [],
+  "results": {
+    "region_1_only": {
+      "status": "ok",
+      "n_motifs": 10,
+      "top_motifs": [
+        {
+          "id": "ATHGSDTAHTAGCAATRBACA",
+          "width": 21,
+          "e_value": "9.6e+000",
+          "n_sites": 5
+        },
+        {
+          "id": "ATCCYTATCACCCYT",
+          "width": 15,
+          "e_value": "1.2e+004",
+          "n_sites": 2
+        },
+        {
+          "id": "ATCGAGSCTGT",
+          "width": 11,
+          "e_value": "1.7e+004",
+          "n_sites": 4
+        },
+        {
+          "id": "TKACATTG",
+          "width": 8,
+          "e_value": "2.4e+004",
+          "n_sites": 2
+        },
+        {
+          "id": "AAAWCCTG",
+          "width": 8,
+          "e_value": "2.8e+004",
+          "n_sites": 2
+        }
+      ],
+      "eram_recovered": false
+    },
+    "region_2_only": {
+      "status": "ok",
+      "n_motifs": 9,
+      "top_motifs": [
+        {
+          "id": "AYTTGTSTATADCVAA",
+          "width": 16,
+          "e_value": "2.7e+002",
+          "n_sites": 4
+        },
+        {
+          "id": "TGGTWGTAC",
+          "width": 9,
+          "e_value": "2.9e+003",
+          "n_sites": 2
+        },
+        {
+          "id": "GAASGGYTGAC",
+          "width": 11,
+          "e_value": "7.5e+003",
+          "n_sites": 2
+        },
+        {
+          "id": "GCTYCTTW",
+          "width": 8,
+          "e_value": "8.7e+003",
+          "n_sites": 2
+        },
+        {
+          "id": "MTGTGCGW",
+          "width": 8,
+          "e_value": "1.3e+004",
+          "n_sites": 2
+        }
+      ],
+      "eram_recovered": false
+    },
+    "regions_1_2_combined": {
+      "status": "ok",
+      "n_motifs": 10,
+      "top_motifs": [
+        {
+          "id": "WWYABVRKACTAVCAARATACWTCRTHGYVMMYRWRTRCBHSWTTRCATKGSWATTTRYCBWTMWSDHBYHYHHKMRWKYGCRTATYRGYWATRGACAT",
+          "width": 99,
+          "e_value": "3.9e-008",
+          "n_sites": 3
+        },
+        {
+          "id": "GCTGSCAAGRCHVCA",
+          "width": 15,
+          "e_value": "5.1e+004",
+          "n_sites": 4
+        },
+        {
+          "id": "TAGCAGCA",
+          "width": 8,
+          "e_value": "4.1e+004",
+          "n_sites": 2
+        },
+        {
+          "id": "TCACCRAT",
+          "width": 8,
+          "e_value": "7.9e+004",
+          "n_sites": 2
+        },
+        {
+          "id": "AAAWCCTG",
+          "width": 8,
+          "e_value": "4.8e+004",
+          "n_sites": 2
+        }
+      ],
+      "eram_recovered": false
+    },
+    "all_5_regions": {
+      "status": "ok",
+      "n_motifs": 10,
+      "top_motifs": [
+        {
+          "id": "ATHGSDTAHTAGCAATRBACA",
+          "width": 21,
+          "e_value": "9.6e+000",
+          "n_sites": 5
+        },
+        {
+          "id": "ATCCYTATCACCCYT",
+          "width": 15,
+          "e_value": "1.2e+004",
+          "n_sites": 2
+        },
+        {
+          "id": "ATCGAGSCTGT",
+          "width": 11,
+          "e_value": "1.7e+004",
+          "n_sites": 4
+        },
+        {
+          "id": "TKACATTG",
+          "width": 8,
+          "e_value": "2.4e+004",
+          "n_sites": 2
+        },
+        {
+          "id": "AAAWCCTG",
+          "width": 8,
+          "e_value": "2.8e+004",
+          "n_sites": 2
+        }
+      ],
+      "eram_recovered": false
+    }
+  }
+}

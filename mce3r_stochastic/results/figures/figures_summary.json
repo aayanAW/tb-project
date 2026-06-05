@@ -1,0 +1,84 @@
+{
+  "phase": "phase4_figures",
+  "figures": {
+    "fig1_binding_sites": {
+      "status": "real_data",
+      "n_sites": 1442,
+      "top_score": 34.8551,
+      "output": "/Users/aayanalwani/tb project/mce3r_stochastic/results/figures/fig1_binding_sites.png",
+      "elapsed_seconds": 0.31
+    },
+    "fig2_distributions": {
+      "status": "success",
+      "conditions_plotted": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "output": "/Users/aayanalwani/tb project/mce3r_stochastic/results/figures/fig2_distributions.png",
+      "elapsed_seconds": 4.12
+    },
+    "fig3_asymmetry_sweep": {
+      "status": "success",
+      "n_ratios": 10,
+      "ratio_range": [
+        1.0,
+        50.0
+      ],
+      "output": "/Users/aayanalwani/tb project/mce3r_stochastic/results/figures/fig3_asymmetry_sweep.png",
+      "elapsed_seconds": 0.2
+    },
+    "fig4_sensitivity": {
+      "status": "success",
+      "n_parameters": 7,
+      "n_conditions": 24,
+      "output": "/Users/aayanalwani/tb project/mce3r_stochastic/results/figures/fig4_sensitivity.png",
+      "elapsed_seconds": 0.33
+    },
+    "fig5_validation": {
+      "status": "success",
+      "has_exp_comparison": true,
+      "has_neg_controls": true,
+      "output": "/Users/aayanalwani/tb project/mce3r_stochastic/results/figures/fig5_validation.png",
+      "elapsed_seconds": 0.47
+    },
+    "fig6_single_cell_traces": {
+      "status": "success",
+      "conditions_with_traces": [
+        "A",
+        "B",
+        "C"
+      ],
+      "output": "/Users/aayanalwani/tb project/mce3r_stochastic/results/figures/fig6_single_cell_traces.png",
+      "elapsed_seconds": 0.2
+    },
+    "fig7_bic_comparison": {
+      "status": "success",
+      "conditions": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "best_k": {
+        "A": 2,
+        "B": 2,
+        "C": 2,
+        "D": 1
+      },
+      "output": "/Users/aayanalwani/tb project/mce3r_stochastic/results/figures/fig7_bic_comparison.png",
+      "elapsed_seconds": 1.89
+    },
+    "fig8_methods_architecture": {
+      "status": "success",
+      "output": "/Users/aayanalwani/tb project/mce3r_stochastic/results/figures/fig8_methods_architecture.png",
+      "file_size_kb": 623.2,
+      "elapsed_seconds": 0.18
+    }
+  },
+  "n_success": 8,
+  "n_placeholder": 0,
+  "n_error": 0,
+  "total": 8
+}

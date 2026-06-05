@@ -1,0 +1,11 @@
+system,CV,source,mechanism,is_this_work
+Typical E. coli constitutive gene,0.050,Taniguchi et al. 2010 Science,Constitutive expression baseline,no
+Typical E. coli regulated gene,0.150,Taniguchi et al. 2010 Science,Regulated expression baseline,no
+Mce3R target (symmetric control),0.157,This work,Symmetric operator control,yes
+Mce3R target (asymmetric operator),0.187,This work,Operator binding asymmetry,yes
+"Mce3R target (two-species, asym)",0.200,This work (autoregulated),With Mce3R autoregulation,yes
+acrAB (E. coli efflux),0.250,El Meouche et al. 2016 Mol Cell,Efflux pump noise,no
+katG (M. tuberculosis catalase),0.300,Wakamoto et al. 2013 Science,Catalase heterogeneity -> INH tolerance,no
+relBE (E. coli TA module),0.350,Cataudella et al. 2012 PLoS Comp Biol,TA bistability,no
+rel (M. smegmatis stringent response),0.400,Sureka et al. 2008 PLoS ONE,Stringent response bimodality,no
+hipA (E. coli TA module),0.450,Rotem et al. 2010 PNAS,TA stochastic switching,no

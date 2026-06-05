@@ -1,0 +1,30 @@
+{
+  "description": "Aim 1: Local sequence-phenotype tradeoff landscape",
+  "n_mutants": 126,
+  "n_strong_site": 63,
+  "n_weak_site": 63,
+  "n_cells_per_variant": 500,
+  "n_pareto_points": 7,
+  "wt_is_pareto": true,
+  "wt_pareto_distance": 0.0,
+  "wt_growth_score": 0.39232799999999995,
+  "wt_persister_fraction": 0.008,
+  "wt_cv": 0.1972795815462816,
+  "wt_Kd_ratio": 20.416666666666668,
+  "n_mutations_erasing_asymmetry": 34,
+  "mean_cv_strong_muts": 0.16681968810018558,
+  "mean_cv_weak_muts": 0.18578615077287283,
+  "conservation": {
+    "status": "available",
+    "n_sites_checked": 50,
+    "n_conserved_both_species": 44,
+    "n_conserved_bovis": 50,
+    "interpretation": "High conservation in M. bovis (closely related) supports functional constraint; conservation in M. marinum (distant) supports ancient selection."
+  },
+  "wall_time_sec": 47.5,
+  "n_sanity_pass": 2,
+  "n_sanity_fail": 0,
+  "n_science_expected": 1,
+  "n_science_unexpected": 0,
+  "wt_near_pareto": true
+}

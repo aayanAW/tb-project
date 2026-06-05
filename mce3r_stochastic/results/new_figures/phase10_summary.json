@@ -1,0 +1,14 @@
+{
+  "phase": 10,
+  "description": "New publication figures 15-19",
+  "n_success": 5,
+  "n_error": 0,
+  "figures": {
+    "fig15_autocorrelation": "success",
+    "fig16_dwell_times": "success",
+    "fig17_power_spectrum": "success",
+    "fig18_dose_response": "success",
+    "fig19_summary_dashboard": "success"
+  },
+  "wall_time_sec": 1.49
+}

@@ -1,0 +1,35 @@
+{
+  "n_regions": 5,
+  "regions": {
+    "Region 1": {
+      "length": 897,
+      "gene1": "Rv1963c",
+      "gene2": "Rv1964"
+    },
+    "Region 2": {
+      "length": 224,
+      "gene1": "Rv1935c",
+      "gene2": "Rv1936"
+    },
+    "Region 3": {
+      "length": 209,
+      "gene1": "Rv1941",
+      "gene2": "Rv1942c"
+    },
+    "Region 4": {
+      "length": 1335,
+      "gene1": "Rv1970",
+      "gene2": "Rv1972"
+    },
+    "Region 5": {
+      "length": 54,
+      "gene1": "Rv1944c",
+      "gene2": "Rv1945"
+    }
+  },
+  "n_motif_hits": 21,
+  "eram_motif1_found": true,
+  "santangelo_found_region1": true,
+  "santangelo_found_region2": true,
+  "region2_fimo_hits": 1
+}

@@ -1,0 +1,26 @@
+{
+  "status": "COMPLETED",
+  "n_sanity_pass": 10,
+  "n_sanity_fail": 0,
+  "n_science_expected": 2,
+  "n_science_unexpected": 0,
+  "n_warn": 0,
+  "mock_used": false,
+  "wall_time_sec": 26.52,
+  "output_files": [
+    "/Users/aayanalwani/tb project/mce3r_stochastic/data/genomes/H37Rv.fasta",
+    "/Users/aayanalwani/tb project/mce3r_stochastic/data/genomes/H37Rv.gb",
+    "/Users/aayanalwani/tb project/mce3r_stochastic/data/genomes/M_bovis.fasta",
+    "/Users/aayanalwani/tb project/mce3r_stochastic/data/genomes/M_marinum.fasta",
+    "/Users/aayanalwani/tb project/mce3r_stochastic/data/genomes/H37Rv.gff",
+    "/Users/aayanalwani/tb project/mce3r_stochastic/data/sequences/all_upstream_200bp.fasta",
+    "/Users/aayanalwani/tb project/mce3r_stochastic/data/sequences/meme_input_orthologs.fasta",
+    "/Users/aayanalwani/tb project/mce3r_stochastic/data/sequences/known_operator.fasta",
+    "/Users/aayanalwani/tb project/mce3r_stochastic/results/phase1/meme_output",
+    "/Users/aayanalwani/tb project/mce3r_stochastic/results/phase1/meme_output/meme.txt",
+    "/Users/aayanalwani/tb project/mce3r_stochastic/results/phase1/background.model",
+    "/Users/aayanalwani/tb project/mce3r_stochastic/results/phase1/fimo_output/fimo.tsv",
+    "/Users/aayanalwani/tb project/mce3r_stochastic/results/phase1/predicted_sites.csv",
+    "/Users/aayanalwani/tb project/mce3r_stochastic/results/phase1/conservation_status.csv"
+  ]
+}
