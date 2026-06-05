@@ -1,0 +1,118 @@
+============================================================
+pipeline_main.py — Phase 1 Pipeline Self-test
+============================================================
+
+============================================================
+STEP: download_genomes
+============================================================
+  Already exists: /Users/aayanalwani/tb project/mce3r_stochastic/data/genomes/H37Rv.fasta
+  Already exists: /Users/aayanalwani/tb project/mce3r_stochastic/data/genomes/H37Rv.gb
+  Already exists: /Users/aayanalwani/tb project/mce3r_stochastic/data/genomes/M_bovis.fasta
+  Already exists: /Users/aayanalwani/tb project/mce3r_stochastic/data/genomes/M_marinum.fasta
+  Already exists: /Users/aayanalwani/tb project/mce3r_stochastic/data/genomes/H37Rv.gff
+  download_genomes: COMPLETED
+
+============================================================
+STEP: extract_upstream
+============================================================
+  H37Rv genome loaded: 4411532 bp
+  GFF parsed: 3906 CDS features
+  After dedup: 3906 unique CDS features
+  Extracted 3906 upstream regions
+  Written: /Users/aayanalwani/tb project/mce3r_stochastic/data/sequences/all_upstream_200bp.fasta
+  Found M. bovis yrbE3A ortholog upstream
+  Found M. marinum yrbE3A ortholog upstream
+  MEME input written: /Users/aayanalwani/tb project/mce3r_stochastic/data/sequences/meme_input_orthologs.fasta (3 sequences)
+  Known operator written: /Users/aayanalwani/tb project/mce3r_stochastic/data/sequences/known_operator.fasta
+  extract_upstream: COMPLETED
+
+============================================================
+STEP: run_meme
+============================================================
+  Background model generated: /Users/aayanalwani/tb project/mce3r_stochastic/results/phase1/background.model
+  MEME suite found, running real MEME...
+  Running MEME: meme /Users/aayanalwani/tb project/mce3r_stochastic/data/sequences/meme_input_orthologs.fasta -dna -mod zoops -revcomp -minw 20 -maxw 30 -nmotifs 3 -bfile /Users/aayanalwani/tb project/mce3r_stochastic/results/phase1/background.model -oc /Users/aayanalwani/tb project/mce3r_stochastic/results/phase1/meme_output
+  MEME stderr: =  30, psites=   2, iter=   0 
+em: w=  30, psites=   3, iter=   0 Warning: Cannot convert EPS file to PNG as no install of Image Magick or Ghostscript is usable.
+Warning: Cannot convert EPS file to PNG as no install of Image Magick or Ghostscript is usable.
+
+motif=3
+SEED DEPTHS: 2 3
+SEED WIDTHS: 20 28 30
+starts: w=20, seq=0, l=200				
+starts: w=28, seq=0, l=200				
+starts: w=30, seq=0, l=200				
+
+em: w=  20, psites=   2, iter=   0 
+em: w=  20, psites=   3, iter=   0 
+em: w=  28, psites=   2, iter=   0 
+em: w=  28, psites=   3, iter=   0 
+em: w=  30, psites=   2, iter=   0 
+em: w=  30, psites=   3, iter=   0 Warning: Cannot convert EPS file to PNG as no install of Image Magick or Ghostscript is usable.
+Warning: Cannot convert EPS file to PNG as no install of Image Magick or Ghostscript is usable.
+
+The MEME XML file specified does not exist
+Usage:
+    meme_xml_to_html <MEME XML file> <MEME HTML file>
+
+Warning: meme_xml_to_html exited abnormally and may have failed to create HTML output.
+
+  WARNING: MEME returncode=1 but meme.txt was produced — continuing
+  MEME completed, output in /Users/aayanalwani/tb project/mce3r_stochastic/results/phase1/meme_output
+  run_meme: COMPLETED
+
+============================================================
+STEP: run_fimo
+============================================================
+  FIMO found, running real FIMO...
+  Running FIMO: fimo --thresh 0.0001 --oc /Users/aayanalwani/tb project/mce3r_stochastic/results/phase1/fimo_output --bfile /Users/aayanalwani/tb project/mce3r_stochastic/results/phase1/background.model /Users/aayanalwani/tb project/mce3r_stochastic/results/phase1/meme_output/meme.txt /Users/aayanalwani/tb project/mce3r_stochastic/data/genomes/H37Rv.fasta
+  FIMO completed, output in /Users/aayanalwani/tb project/mce3r_stochastic/results/phase1/fimo_output
+  Predicted sites written: /Users/aayanalwani/tb project/mce3r_stochastic/results/phase1/predicted_sites.csv (1442 rows)
+  run_fimo: COMPLETED
+
+============================================================
+STEP: conservation_check
+============================================================
+  Checking conservation for 50 sites...
+  M. bovis genome loaded: 4349904 bp
+  M. marinum genome loaded: 6636827 bp
+  Processed 10/50 sites...
+  Processed 20/50 sites...
+  Processed 30/50 sites...
+  Processed 40/50 sites...
+  Processed 50/50 sites...
+  Conservation results written: /Users/aayanalwani/tb project/mce3r_stochastic/results/phase1/conservation_status.csv
+  Conserved in M. bovis: 50/50
+  Conserved in M. marinum: 44/50
+  Conserved in both: 44/50
+  conservation_check: COMPLETED
+
+============================================================
+POST-PIPELINE CHECKS
+============================================================
+  SANITY PASS: H37Rv genome exists
+  SANITY PASS: All upstream exists
+  SANITY PASS: MEME output exists
+  SANITY PASS: Predicted sites exists
+  SANITY PASS: Conservation exists
+  SCIENCE EXPECTED: Known operator found in predicted sites
+  SCIENCE EXPECTED: 50 sites conserved in M. bovis
+
+  Summary written: /Users/aayanalwani/tb project/mce3r_stochastic/results/phase1/phase1_summary.json
+SANITY PASS: Summary dict has all required keys
+SANITY PASS: phase1_summary.json matches returned dict
+SANITY PASS: All pipeline steps completed without sanity failures
+SANITY PASS: Wall time 26.5s (< 30 min)
+SANITY PASS: 14 output files tracked
+SCIENCE EXPECTED: 2 scientific checks passed
+
+============================================================
+PIPELINE STATUS: COMPLETED
+Wall time: 26.5 seconds
+Mock tools used: False
+Output files: 14
+
+Self-test SANITY:  5 pass, 0 fail
+Self-test SCIENCE: 1 expected, 0 unexpected
+
+All self-test sanity checks passed.

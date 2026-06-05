@@ -1,0 +1,39 @@
+[Phase 2] Running Condition D (no regulation)...
+  Condition D (no regulation): 50000 cells...
+    Done in 83.4s — mean=2224.0, CV=0.059, Fano=7.77
+[Phase 2] Running Condition B (symmetric)...
+  Condition B (symmetric): 50000 cells...
+    Done in 36.4s — mean=292.6, CV=0.157, Fano=7.18
+[Phase 2] Running Condition C (single-site)...
+  Condition C (single-site): 50000 cells...
+    Done in 390.2s — mean=341.8, CV=0.149, Fano=7.63
+[Phase 2] Running Condition A (asymmetric)...
+  Condition A (asymmetric): 50000 cells...
+    Done in 42.1s — mean=197.3, CV=0.187, Fano=6.87
+[Phase 2] Running Condition E (asymmetry sweep)...
+  Condition E (asymmetry sweep): 10 ratios × 5000 cells...
+    Ratio   1: mean=  292.9, CV=0.158, Fano=7.3, inter_frac=0.948 (3.2s)
+    Ratio   2: mean=  286.7, CV=0.159, Fano=7.2, inter_frac=0.931 (3.2s)
+    Ratio   5: mean=  265.8, CV=0.164, Fano=7.1, inter_frac=0.843 (3.4s)
+    Ratio   8: mean=  248.3, CV=0.170, Fano=7.2, inter_frac=0.714 (3.6s)
+    Ratio  10: mean=  238.2, CV=0.171, Fano=7.0, inter_frac=0.644 (3.7s)
+    Ratio  15: mean=  216.7, CV=0.176, Fano=6.7, inter_frac=0.412 (4.0s)
+    Ratio  20: mean=  199.3, CV=0.184, Fano=6.7, inter_frac=0.254 (4.2s)
+    Ratio  30: mean=  199.6, CV=0.185, Fano=6.8, inter_frac=0.256 (4.8s)
+    Ratio  40: mean=  202.0, CV=0.185, Fano=6.9, inter_frac=0.274 (5.1s)
+    Ratio  50: mean=  203.7, CV=0.176, Fano=6.3, inter_frac=0.291 (5.4s)
+    Done in 40.8s
+
+[Phase 2] All conditions complete in 592.9s
+[Phase 2] Summary written to /Users/aayanalwani/tb project/mce3r_stochastic/results/phase2/phase2_summary.json
+
+============================================================
+PHASE 2 SUMMARY
+  Status: PASS
+  Total time: 592.9s
+  Condition D: 50000 cells, mean=2224.0, CV=0.0591, Fano=7.77
+  Condition B: 50000 cells, mean=292.6, CV=0.1567, Fano=7.18
+  Condition C: 50000 cells, mean=341.8, CV=0.1495, Fano=7.63
+  Condition A: 50000 cells, mean=197.3, CV=0.1866, Fano=6.87
+  Condition E: 10 ratios × 5000 cells
+============================================================
