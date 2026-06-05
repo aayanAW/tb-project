@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>TBC2026 Poster - Cracking the Code of Life</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Mono:wght@400;700&family=Playfair+Display:wght@700;800;900&display=swap');
+
+  * {
+    margin: 0; padding: 0; box-sizing: border-box;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    color-adjust: exact !important;
+  }
+
+  @page {
+    size: 30in 40in;
+    margin: 0;
+  }
+
+  @media print {
+    * {
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
+      color-adjust: exact !important;
+    }
+    body {
+      width: 30in !important;
+      height: 40in !important;
+    }
+  }
+
+  body {
+    width: 30in;
+    height: 40in;
+    font-family: 'Inter', sans-serif;
+    background: #0a0e1a;
+    color: #e8eaf0;
+    overflow: auto;
+    position: relative;
+  }
+
+  /* === BACKGROUND PATTERN === */
+  .bg-pattern {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.04;
+    background-image:
+      repeating-linear-gradient(0deg, transparent, transparent 59px, rgba(99,179,237,0.4) 59px, rgba(99,179,237,0.4) 60px),
+      repeating-linear-gradient(90deg, transparent, transparent 59px, rgba(99,179,237,0.4) 59px, rgba(99,179,237,0.4) 60px);
+    z-index: 0;
+  }
+
+  /* DNA helix decorative stripes */
+  .dna-stripe {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    overflow: hidden;
+  }
+  .dna-stripe::before {
+    content: '';
+    position: absolute;
+    top: -5%;
+    right: -2in;
+    width: 6in;
+    height: 110%;
+    background: linear-gradient(180deg,
+      rgba(56,189,248,0.06) 0%,
+      rgba(139,92,246,0.08) 30%,
+      rgba(56,189,248,0.06) 60%,
+      rgba(139,92,246,0.08) 100%);
+    transform: skewX(-8deg);
+    border-radius: 2in;
+  }
+  .dna-stripe::after {
+    content: '';
+    position: absolute;
+    top: -5%;
+    left: -2in;
+    width: 4in;
+    height: 110%;
+    background: linear-gradient(180deg,
+      rgba(139,92,246,0.05) 0%,
+      rgba(56,189,248,0.07) 50%,
+      rgba(139,92,246,0.05) 100%);
+    transform: skewX(6deg);
+    border-radius: 2in;
+  }
+
+  .poster {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    padding: 0.6in 0.7in;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25in;
+  }
+
+  /* === HEADER === */
+  .header {
+    text-align: center;
+    padding: 0.4in 0.5in 0.35in;
+    background: linear-gradient(135deg, rgba(30,41,82,0.9) 0%, rgba(15,23,52,0.95) 100%);
+    border: 2px solid rgba(99,179,237,0.3);
+    border-radius: 0.2in;
+    position: relative;
+    overflow: hidden;
+  }
+  .header::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, #38bdf8, #8b5cf6, #38bdf8);
+  }
+  .header-category {
+    font-family: 'Space Mono', monospace;
+    font-size: 18pt;
+    color: #38bdf8;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    margin-bottom: 0.12in;
+  }
+  .header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 56pt;
+    font-weight: 900;
+    line-height: 1.1;
+    background: linear-gradient(135deg, #ffffff 0%, #c7d2fe 50%, #38bdf8 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 0.08in;
+  }
+  .header h2 {
+    font-family: 'Inter', sans-serif;
+    font-size: 28pt;
+    font-weight: 400;
+    color: #94a3b8;
+    letter-spacing: 1px;
+    margin-bottom: 0.15in;
+  }
+  .header .student-info {
+    font-size: 22pt;
+    font-weight: 500;
+    color: #cbd5e1;
+  }
+
+  /* === HOOK BANNER === */
+  .hook-banner {
+    background: linear-gradient(135deg, rgba(56,189,248,0.12) 0%, rgba(139,92,246,0.12) 100%);
+    border: 1.5px solid rgba(139,92,246,0.3);
+    border-radius: 0.15in;
+    padding: 0.25in 0.4in;
+    text-align: center;
+  }
+  .hook-banner p {
+    font-size: 21pt;
+    font-weight: 400;
+    font-style: italic;
+    color: #c7d2fe;
+    line-height: 1.5;
+  }
+  .hook-banner .stat {
+    font-weight: 700;
+    color: #38bdf8;
+    font-style: normal;
+  }
+
+  /* === MAIN CONTENT GRID === */
+  .content-grid {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto auto;
+    gap: 0.25in;
+  }
+
+  /* === SECTION STYLING === */
+  .section {
+    background: linear-gradient(160deg, rgba(22,33,62,0.92) 0%, rgba(13,19,42,0.95) 100%);
+    border: 1.5px solid rgba(99,179,237,0.2);
+    border-radius: 0.15in;
+    padding: 0.3in;
+    position: relative;
+    overflow: hidden;
+  }
+  .section::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 4px;
+    height: 100%;
+    border-radius: 0 2px 2px 0;
+  }
+  .section.blue::before { background: linear-gradient(180deg, #38bdf8, #0ea5e9); }
+  .section.purple::before { background: linear-gradient(180deg, #8b5cf6, #7c3aed); }
+  .section.green::before { background: linear-gradient(180deg, #34d399, #10b981); }
+  .section.amber::before { background: linear-gradient(180deg, #fbbf24, #f59e0b); }
+
+  .section-num {
+    font-family: 'Space Mono', monospace;
+    font-size: 14pt;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 0.06in;
+  }
+  .section.blue .section-num { color: #38bdf8; }
+  .section.purple .section-num { color: #a78bfa; }
+  .section.green .section-num { color: #34d399; }
+  .section.amber .section-num { color: #fbbf24; }
+
+  .section h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 28pt;
+    font-weight: 800;
+    color: #f1f5f9;
+    margin-bottom: 0.15in;
+    line-height: 1.2;
+  }
+
+  .section p, .section li {
+    font-size: 18pt;
+    line-height: 1.55;
+    color: #cbd5e1;
+  }
+
+  .section ul {
+    padding-left: 0.25in;
+    margin-top: 0.08in;
+  }
+  .section li {
+    margin-bottom: 0.06in;
+  }
+  .section li::marker {
+    color: #64748b;
+  }
+
+  /* === TOPIC BACKGROUND (full width) === */
+  .topic-bg {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 0.3in;
+    align-items: start;
+  }
+
+  .topic-text p {
+    margin-bottom: 0.12in;
+  }
+
+  .analogy-box {
+    background: rgba(56,189,248,0.08);
+    border: 1.5px solid rgba(56,189,248,0.25);
+    border-radius: 0.12in;
+    padding: 0.25in;
+  }
+  .analogy-grid {
+    display: grid;
+    grid-template-columns: 1fr 0.15fr 1fr;
+    gap: 0.15in;
+    align-items: center;
+    text-align: center;
+  }
+  .analogy-col h4 {
+    font-family: 'Space Mono', monospace;
+    font-size: 16pt;
+    font-weight: 700;
+    margin-bottom: 0.1in;
+  }
+  .analogy-col.left h4 { color: #38bdf8; }
+  .analogy-col.right h4 { color: #34d399; }
+  .analogy-col p {
+    font-size: 16pt !important;
+    color: #94a3b8 !important;
+    line-height: 1.6 !important;
+  }
+  .analogy-vs {
+    font-family: 'Playfair Display', serif;
+    font-size: 24pt;
+    font-weight: 900;
+    color: #475569;
+  }
+
+  .dna-visual-box {
+    background: rgba(15,23,52,0.8);
+    border: 1.5px solid rgba(139,92,246,0.25);
+    border-radius: 0.12in;
+    padding: 0.25in;
+    text-align: center;
+  }
+  .dna-visual-box .caption {
+    font-size: 15pt;
+    color: #64748b;
+    font-style: italic;
+    margin-top: 0.1in;
+  }
+
+  /* DNA sequence display */
+  .dna-sequence {
+    font-family: 'Space Mono', monospace;
+    font-size: 20pt;
+    letter-spacing: 3px;
+    line-height: 1.8;
+    padding: 0.15in 0;
+  }
+  .nt-a { color: #38bdf8; }
+  .nt-t { color: #f472b6; }
+  .nt-g { color: #34d399; }
+  .nt-c { color: #fbbf24; }
+  .nt-predict {
+    color: #0a0e1a;
+    background: #38bdf8;
+    padding: 2px 4px;
+    border-radius: 4px;
+    font-weight: 700;
+  }
+
+  .model-diagram {
+    margin: 0.15in 0;
+    padding: 0.2in;
+    background: rgba(139,92,246,0.08);
+    border-radius: 0.1in;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.2in;
+  }
+  .model-step {
+    text-align: center;
+    flex: 1;
+  }
+  .model-step .icon {
+    font-size: 36pt;
+    margin-bottom: 0.05in;
+  }
+  .model-step .label {
+    font-size: 14pt;
+    color: #94a3b8;
+    font-weight: 600;
+  }
+  .model-step .sublabel {
+    font-size: 12pt;
+    color: #64748b;
+  }
+  .model-arrow {
+    font-size: 28pt;
+    color: #4b5563;
+  }
+
+  /* === TIMELINE === */
+  .timeline-section {
+    grid-column: 1 / -1;
+  }
+  .timeline-track {
+    display: flex;
+    gap: 0;
+    margin-top: 0.15in;
+    position: relative;
+  }
+  .timeline-track::before {
+    content: '';
+    position: absolute;
+    top: 0.55in;
+    left: 0.3in;
+    right: 0.3in;
+    height: 3px;
+    background: linear-gradient(90deg, #1e3a5f, #38bdf8, #8b5cf6, #38bdf8, #1e3a5f);
+    z-index: 0;
+  }
+  .tl-item {
+    flex: 1;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+    padding: 0 0.04in;
+  }
+  .tl-year {
+    font-family: 'Space Mono', monospace;
+    font-size: 16pt;
+    font-weight: 700;
+    color: #38bdf8;
+    margin-bottom: 0.06in;
+  }
+  .tl-dot {
+    width: 14px;
+    height: 14px;
+    background: #38bdf8;
+    border: 3px solid #0a0e1a;
+    border-radius: 50%;
+    margin: 0 auto 0.06in;
+    box-shadow: 0 0 12px rgba(56,189,248,0.5);
+  }
+  .tl-item.highlight .tl-dot {
+    width: 18px;
+    height: 18px;
+    background: #8b5cf6;
+    box-shadow: 0 0 16px rgba(139,92,246,0.6);
+  }
+  .tl-item.highlight .tl-year {
+    color: #a78bfa;
+    font-size: 17pt;
+  }
+  .tl-desc {
+    font-size: 14pt;
+    color: #94a3b8;
+    line-height: 1.4;
+    max-width: 2.5in;
+    margin: 0 auto;
+  }
+  .tl-desc strong {
+    color: #e2e8f0;
+    font-weight: 600;
+  }
+
+  /* === INNOVATORS === */
+  .innovators-grid {
+    display: grid;
+    grid-template-rows: auto auto auto auto;
+    gap: 0.15in;
+    margin-top: 0.1in;
+  }
+
+  .innovator-card {
+    background: rgba(56,189,248,0.06);
+    border: 1px solid rgba(56,189,248,0.15);
+    border-radius: 0.1in;
+    padding: 0.2in;
+  }
+  .innovator-card h4 {
+    font-size: 20pt;
+    font-weight: 700;
+    color: #e2e8f0;
+    margin-bottom: 0.04in;
+  }
+  .innovator-card .org {
+    font-family: 'Space Mono', monospace;
+    font-size: 13pt;
+    color: #38bdf8;
+    margin-bottom: 0.06in;
+  }
+  .innovator-card p {
+    font-size: 16pt !important;
+    line-height: 1.5 !important;
+  }
+  .money-tag {
+    display: inline-block;
+    background: rgba(52,211,153,0.15);
+    color: #34d399;
+    font-family: 'Space Mono', monospace;
+    font-size: 14pt;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 6px;
+    margin-top: 0.04in;
+  }
+
+  /* === ELSI === */
+  .elsi-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.15in;
+    margin-top: 0.1in;
+  }
+  .elsi-card {
+    background: rgba(139,92,246,0.06);
+    border: 1px solid rgba(139,92,246,0.2);
+    border-radius: 0.1in;
+    padding: 0.18in;
+  }
+  .elsi-card .elsi-icon {
+    font-size: 32pt;
+    margin-bottom: 0.04in;
+  }
+  .elsi-card h4 {
+    font-size: 18pt;
+    font-weight: 700;
+    color: #e2e8f0;
+    margin-bottom: 0.04in;
+  }
+  .elsi-card p {
+    font-size: 15pt !important;
+    line-height: 1.45 !important;
+    color: #94a3b8 !important;
+  }
+
+  /* === REFERENCES === */
+  .references {
+    grid-column: 1 / -1;
+    display: flex;
+    gap: 0.3in;
+    align-items: start;
+  }
+  .ref-list {
+    flex: 1;
+  }
+  .ref-list ol {
+    padding-left: 0.25in;
+    counter-reset: ref-counter;
+    list-style: none;
+  }
+  .ref-list ol li {
+    font-size: 14.5pt !important;
+    color: #64748b !important;
+    line-height: 1.4 !important;
+    margin-bottom: 0.05in;
+    counter-increment: ref-counter;
+    padding-left: 0.05in;
+  }
+  .ref-list ol li::before {
+    content: "[" counter(ref-counter) "] ";
+    font-family: 'Space Mono', monospace;
+    font-weight: 700;
+    color: #475569;
+  }
+  .ref-list ol li em {
+    color: #94a3b8;
+  }
+  .qr-box {
+    text-align: center;
+    padding: 0.15in;
+    background: rgba(255,255,255,0.04);
+    border-radius: 0.1in;
+    border: 1px solid rgba(255,255,255,0.1);
+  }
+  .qr-placeholder {
+    width: 1.4in;
+    height: 1.4in;
+    background: white;
+    border-radius: 0.08in;
+    margin: 0 auto 0.06in;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #0a0e1a;
+    font-size: 13pt;
+    font-weight: 700;
+  }
+  .qr-label {
+    font-size: 13pt;
+    color: #64748b;
+  }
+
+  /* AI disclosure */
+  .ai-note {
+    font-size: 12pt;
+    color: #475569;
+    margin-top: 0.05in;
+  }
+
+  /* === UTILITY === */
+  .highlight-text { color: #38bdf8; font-weight: 600; }
+  .purple-text { color: #a78bfa; font-weight: 600; }
+  .green-text { color: #34d399; font-weight: 600; }
+  .amber-text { color: #fbbf24; font-weight: 600; }
+
+  .stat-row {
+    display: flex;
+    gap: 0.2in;
+    margin: 0.12in 0;
+  }
+  .stat-box {
+    flex: 1;
+    text-align: center;
+    padding: 0.12in;
+    background: rgba(56,189,248,0.08);
+    border-radius: 0.08in;
+    border: 1px solid rgba(56,189,248,0.15);
+  }
+  .stat-box .stat-num {
+    font-family: 'Space Mono', monospace;
+    font-size: 26pt;
+    font-weight: 700;
+    color: #38bdf8;
+  }
+  .stat-box .stat-label {
+    font-size: 13pt;
+    color: #94a3b8;
+    margin-top: 0.02in;
+  }
+
+</style>
+</head>
+<body>
+
+<div class="bg-pattern"></div>
+<div class="dna-stripe"></div>
+
+<div class="poster">
+
+  <!-- ============ HEADER ============ -->
+  <div class="header">
+    <div class="header-category">Category 3: Platform Tools &amp; Technologies &mdash; Computational Biology</div>
+    <h1>A, T, G, GPT</h1>
+    <h2>Teaching Machines the Language of Life</h2>
+    <div class="student-info">Aayan Alwani &nbsp;|&nbsp; Grade __ &nbsp;|&nbsp; __________ High School</div>
+  </div>
+
+  <!-- ============ HOOK BANNER ============ -->
+  <div class="hook-banner">
+    <p>In 2003, it took <span class="stat">13 years</span> and <span class="stat">$2.7 billion</span> to read one human genome. Today, AI models trained on <span class="stat">9.3 trillion</span> DNA letters from every domain of life are learning to read genomes the way ChatGPT reads English&mdash;and they're beginning to write new ones.</p>
+  </div>
+
+  <!-- ============ CONTENT GRID ============ -->
+  <div class="content-grid">
+
+    <!-- ---- I. TOPIC BACKGROUND (full width) ---- -->
+    <div class="section blue topic-bg">
+      <div class="topic-text">
+        <div class="section-num">Section I</div>
+        <h3>Topic Background</h3>
+        <p><span class="highlight-text">Genomic foundation models</span> are large AI systems trained on billions of DNA sequences (A, T, G, C) from thousands of species. Just as ChatGPT learned the rules of English by reading the internet, these models learn the <span class="highlight-text">"grammar" of genomes</span>&mdash;which patterns regulate genes, how mutations affect function, and what makes DNA from a human different from a bacterium.</p>
+
+        <p>The core idea is <span class="highlight-text">next-token prediction</span>: given a stretch of DNA, predict what nucleotide comes next. By training on trillions of bases, the AI builds a deep internal model of how genomes work&mdash;without being explicitly taught biology.</p>
+
+        <p>These models can then <span class="highlight-text">predict whether a mutation causes disease</span>, design synthetic genes with specific functions, annotate newly sequenced genomes, and transfer knowledge across species&mdash;all without running a single wet-lab experiment. Every prediction still requires experimental validation, but the speed of discovery is transformed.</p>
+
+        <!-- ANALOGY BOX -->
+        <div class="analogy-box" style="margin-top: 0.15in;">
+          <div class="analogy-grid">
+            <div class="analogy-col left">
+              <h4>ChatGPT</h4>
+              <p>Trained on <strong style="color:#e2e8f0;">text from the internet</strong></p>
+              <p>Learns grammar &amp; meaning</p>
+              <p>Predicts the next <strong style="color:#e2e8f0;">word</strong></p>
+              <p>Generates new text</p>
+            </div>
+            <div class="analogy-vs">=</div>
+            <div class="analogy-col right">
+              <h4>Evo 2</h4>
+              <p>Trained on <strong style="color:#e2e8f0;">DNA from all life on Earth</strong></p>
+              <p>Learns genetic "grammar"</p>
+              <p>Predicts the next <strong style="color:#e2e8f0;">nucleotide</strong></p>
+              <p>Generates new DNA sequences</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT: DNA visual + model diagram -->
+      <div>
+        <div class="dna-visual-box">
+          <p style="font-size:15pt; color:#94a3b8; font-weight:600; margin-bottom:0.08in;">How the AI "reads" DNA</p>
+          <div class="dna-sequence">
+            <span class="nt-a">A</span><span class="nt-t">T</span><span class="nt-g">G</span><span class="nt-c">C</span><span class="nt-a">A</span><span class="nt-g">G</span><span class="nt-t">T</span><span class="nt-a">A</span><span class="nt-c">C</span><span class="nt-g">G</span><span class="nt-t">T</span><span class="nt-a">A</span><span class="nt-c">C</span><span class="nt-g">G</span> <span class="nt-predict">?</span>
+          </div>
+          <p class="caption">"Given this DNA context, what nucleotide comes next?"</p>
+          <div class="model-diagram">
+            <div class="model-step">
+              <div class="icon">&#x1F9EC;</div>
+              <div class="label">DNA Input</div>
+              <div class="sublabel">Raw sequence</div>
+            </div>
+            <div class="model-arrow">&rarr;</div>
+            <div class="model-step">
+              <div class="icon">&#x1F9E0;</div>
+              <div class="label">Foundation Model</div>
+              <div class="sublabel">40B parameters</div>
+            </div>
+            <div class="model-arrow">&rarr;</div>
+            <div class="model-step">
+              <div class="icon">&#x1F52C;</div>
+              <div class="label">Predictions</div>
+              <div class="sublabel">Variants, genes, designs</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- KEY STATS -->
+        <div class="stat-row" style="margin-top: 0.15in;">
+          <div class="stat-box">
+            <div class="stat-num">40B</div>
+            <div class="stat-label">Parameters in Evo 2</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-num">9.3T</div>
+            <div class="stat-label">DNA letters trained on</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-num">1M</div>
+            <div class="stat-label">Base pair context window</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ---- II. TECHNOLOGY TIMELINE (full width) ---- -->
+    <div class="section purple timeline-section">
+      <div class="section-num">Section II</div>
+      <h3>Technology Timeline</h3>
+      <div class="timeline-track">
+        <div class="tl-item">
+          <div class="tl-year">1990</div>
+          <div class="tl-dot"></div>
+          <div class="tl-desc"><strong>Human Genome Project</strong> launches&mdash;a 13-year, $2.7B global effort to sequence human DNA</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-year">2003</div>
+          <div class="tl-dot"></div>
+          <div class="tl-desc"><strong>Genome completed</strong>&mdash;reading DNA is possible, but understanding it remains the challenge</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-year">2017</div>
+          <div class="tl-dot"></div>
+          <div class="tl-desc"><strong>Transformer architecture</strong> invented (Vaswani et al.)&mdash;the engine behind all modern AI</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-year">2021</div>
+          <div class="tl-dot"></div>
+          <div class="tl-desc"><strong>DNABERT</strong>&mdash;first language model applied to DNA sequences (Zhou et al.)</div>
+        </div>
+        <div class="tl-item highlight">
+          <div class="tl-year">2024</div>
+          <div class="tl-dot"></div>
+          <div class="tl-desc"><strong>Evo</strong>&mdash;7B-param model published in <em>Science</em> (Hsu, Hie, Nguyen, Arc Institute)</div>
+        </div>
+        <div class="tl-item highlight">
+          <div class="tl-year">2025</div>
+          <div class="tl-dot"></div>
+          <div class="tl-desc"><strong>Evo 2</strong>&mdash;40B params, all domains of life, 1M base pair context</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ---- III. BIOTECH INNOVATORS (left column) ---- -->
+    <div class="section green">
+      <div class="section-num">Section III</div>
+      <h3>Biotech Innovators &amp; Economic Impact</h3>
+      <div class="innovators-grid">
+        <div class="innovator-card">
+          <h4>Evo &amp; Evo 2</h4>
+          <div class="org">Arc Institute &bull; Stanford &bull; UC Berkeley</div>
+          <p>Open-source models led by <span class="green-text">Patrick Hsu</span> and <span class="green-text">Brian Hie</span>. Evo 2 predicts variant pathogenicity across the human genome. Arc Institute was co-founded with a <span class="green-text">$650M endowment</span> by Stripe CEO Patrick Collison.</p>
+          <div class="money-tag">Free &amp; Open Source</div>
+        </div>
+
+        <div class="innovator-card">
+          <h4>Nucleotide Transformer</h4>
+          <div class="org">BioNTech / InstaDeep</div>
+          <p>Deployed in <span class="green-text">mRNA vaccine</span> and cancer therapeutic design. BioNTech acquired InstaDeep for ~$680M in 2023&mdash;one of the largest AI-biotech acquisitions in history.</p>
+          <div class="money-tag">$680M Acquisition</div>
+        </div>
+
+        <div class="innovator-card">
+          <h4>BioNeMo Platform</h4>
+          <div class="org">NVIDIA</div>
+          <p>GPU infrastructure powering genomic AI across pharma. Partners include Genentech/Roche and Amgen. The AI-in-genomics market is projected to reach <span class="green-text">$5&ndash;10B by 2030</span>.</p>
+          <div class="money-tag">$5-10B Market by 2030</div>
+        </div>
+
+        <div class="innovator-card">
+          <h4>Illumina</h4>
+          <div class="org">The Data Engine</div>
+          <p>Sequencing machines that generate virtually all the DNA data these models train on. Dropped genome cost from $2.7B to under $200. Now investing in AI variant interpretation (SpliceAI, PrimateAI).</p>
+          <div class="money-tag">$4.5B Revenue | ~80% Market Share</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ---- IV. ELSI (right column) ---- -->
+    <div class="section amber">
+      <div class="section-num">Section IV</div>
+      <h3>Ethical, Legal &amp; Social Issues</h3>
+      <div class="elsi-grid">
+        <div class="elsi-card">
+          <div class="elsi-icon">&#x1F6A8;</div>
+          <h4>Biosecurity</h4>
+          <p>AI that generates realistic DNA could theoretically design pathogens. The 2024 U.S. Executive Order on AI specifically flagged risks from generative biology. Arc Institute uses responsible-release policies and red-teaming before publication.</p>
+        </div>
+        <div class="elsi-card">
+          <div class="elsi-icon">&#x2696;&#xFE0F;</div>
+          <h4>Genomic Bias</h4>
+          <p>Training data is heavily skewed toward European-ancestry genomes. Models may produce worse predictions for underrepresented populations, risking amplification of existing health disparities in clinical genomics.</p>
+        </div>
+        <div class="elsi-card">
+          <div class="elsi-icon">&#x1F512;</div>
+          <h4>Privacy &amp; Consent</h4>
+          <p>Biobank samples were collected before anyone imagined AI training. Genomic data can re-identify individuals. The Genetic Information Nondiscrimination Act (GINA) has significant gaps&mdash;it does not cover life insurance.</p>
+        </div>
+        <div class="elsi-card">
+          <div class="elsi-icon">&#x1F4DC;</div>
+          <h4>IP &amp; Ownership</h4>
+          <p>If AI designs a novel gene sequence, who holds the patent? Current IP law does not address AI-generated biological material. Regulatory frameworks remain untested.</p>
+        </div>
+        <div class="elsi-card" style="grid-column: 1 / -1;">
+          <div class="elsi-icon">&#x1F30D;</div>
+          <h4>Access &amp; Equity</h4>
+          <p>Training a 40B-parameter model requires thousands of GPU-hours&mdash;resources only wealthy institutions can afford. Open-sourcing helps, but infrastructure and expertise gaps risk creating a two-tier system in genomic medicine.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ---- V. REFERENCES (full width) ---- -->
+    <div class="section references" style="background: rgba(22,33,62,0.7); padding: 0.2in 0.3in;">
+      <div class="ref-list">
+        <div class="section-num" style="color: #64748b;">Section V</div>
+        <h3 style="font-size: 22pt; margin-bottom: 0.1in;">References</h3>
+        <ol>
+          <li>Nguyen, E., Poli, M., Durrant, M.G. <em>et al.</em> "Sequence modeling and design from molecular to genome scale with Evo." <em>Science</em> 386, 6723 (2024).</li>
+          <li>Nguyen, E., Poli, M., Hie, B., Hsu, P. <em>et al.</em> "Genome modeling and design across all domains of life with Evo 2." <em>bioRxiv</em> (2025).</li>
+          <li>Dalla-Torre, H., Gonzalez, L. <em>et al.</em> "The Nucleotide Transformer: Building and evaluating robust foundation models for human genomics." <em>Nature Machine Intelligence</em> 5 (2023).</li>
+          <li>Zhou, Z., Ji, Y., Li, W. <em>et al.</em> "DNABERT-2: Efficient foundation model and benchmark for multi-species genomes." <em>arXiv</em> (2023).</li>
+          <li>National Human Genome Research Institute. "The Human Genome Project." genome.gov (2025).</li>
+        </ol>
+        <p class="ai-note">Generative AI (Claude, Anthropic) was used to assist with research and poster content development. All facts were independently verified.</p>
+      </div>
+      <div class="qr-box">
+        <div class="qr-placeholder">QR CODE</div>
+        <div class="qr-label">Scan for full<br>reference list</div>
+      </div>
+    </div>
+
+  </div><!-- end content-grid -->
+
+</div><!-- end poster -->
+
+</body>
+</html>
