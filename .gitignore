@@ -1,0 +1,25 @@
+# macOS
+.DS_Store
+
+# R
+.Rhistory
+
+# Java
+*.class
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.ipynb_checkpoints/
+.pytest_cache/
+
+# Node
+node_modules/
+
+# Office temp/lock files
+~$*
+
+# Conda/Miniconda installers (large binaries, not project code)
+Miniconda3-latest-MacOSX-arm64.sh
+miniforge.sh
