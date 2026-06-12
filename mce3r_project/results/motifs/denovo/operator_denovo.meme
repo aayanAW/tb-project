@@ -1,0 +1,600 @@
+********************************************************************************
+MEME - Motif discovery tool
+********************************************************************************
+MEME version 5.5.9 (Release date: Fri Nov 21 15:33:51 2025 -0800)
+
+For further information on how to interpret these results please access https://meme-suite.org/meme.
+To get a copy of the MEME Suite software please access https://meme-suite.org.
+
+********************************************************************************
+
+
+********************************************************************************
+REFERENCE
+********************************************************************************
+If you use this program in your research, please cite:
+
+Timothy L. Bailey and Charles Elkan,
+"Fitting a mixture model by expectation maximization to
+discover motifs in biopolymers",
+Proceedings of the Second International Conference on Intelligent Systems
+for Molecular Biology, pp. 28-36, AAAI Press, Menlo Park, California, 1994.
+********************************************************************************
+
+
+********************************************************************************
+TRAINING SET
+********************************************************************************
+PRIMARY SEQUENCES= /Users/aayanalwani/tb project/mce3r_project/results/motifs/denovo/positive_set.fasta
+CONTROL SEQUENCES= /Users/aayanalwani/tb project/mce3r_project/results/motifs/denovo/control_set.fasta
+ALPHABET= ACGT
+Sequence name            Weight Length  Sequence name            Weight Length  
+-------------            ------ ------  -------------            ------ ------  
+IGR_Rv1963c_Rv1964       1.0000    897  IGR_Rv1935c_Rv1936       1.0000    224  
+mycobacterium_tuberculos 1.0000    250  mycobacterium_bovis_yrbE 1.0000    250  
+mycobacterium_liflandii_ 1.0000    250  mycobacterium_canettii_y 1.0000    250  
+mycobacterium_smegmatis_ 1.0000    250  mycobacterium_africanum_ 1.0000    250  
+mycobacterium_marinum_yr 1.0000    250  mycobacterium_ulcerans_y 1.0000    250  
+********************************************************************************
+
+********************************************************************************
+COMMAND LINE SUMMARY
+********************************************************************************
+This information can also be useful in the event you wish to report a
+problem with the MEME software.
+
+command: meme /Users/aayanalwani/tb project/mce3r_project/results/motifs/denovo/positive_set.fasta -dna -mod anr -nmotifs 3 -minw 21 -maxw 29 -oc /Users/aayanalwani/tb project/mce3r_project/results/motifs/denovo/meme -p 4 -revcomp -bfile /Users/aayanalwani/tb project/mce3r_project/results/background/mtb_genome.bg -neg /Users/aayanalwani/tb project/mce3r_project/results/motifs/denovo/control_set.fasta -objfun de 
+
+model:  mod=           anr    nmotifs=         3    evt=           inf
+objective function:           em=       Differential Enrichment mHG
+                              starts=   log likelihood ratio (LLR)
+strands: + -
+width:  minw=           21    maxw=           29
+nsites: minsites=        2    maxsites=       50    wnsites=       0.8
+theta:  spmap=         uni    spfuzz=        0.5
+em:     prior=   dirichlet    b=            0.01    maxiter=        50
+        distance=    1e-05
+data:   n=            3121    N=              10
+sample: seed=            0    hsfrac=        0.5
+        searchsize=   3121    norand=         no    csites=         -1
+Letter frequencies in dataset:
+A 0.212 C 0.288 G 0.288 T 0.212 
+Background letter frequencies (from file /Users/aayanalwani/tb project/mce3r_project/results/background/mtb_genome.bg):
+A 0.172 C 0.328 G 0.328 T 0.172 
+Background model order: 2
+********************************************************************************
+
+
+********************************************************************************
+MOTIF ATWGCYAWTAHSCGATWGYTT MEME-1	width =  21  sites =  29  llr = 436  p-value = 3.1e-011  E-value = 3.1e-011
+********************************************************************************
+--------------------------------------------------------------------------------
+	Motif ATWGCYAWTAHSCGATWGYTT MEME-1 Description
+--------------------------------------------------------------------------------
+Simplified        A  6:5:1:9417321171521:2
+pos.-specific     C  2:1:94::::35713222512
+probability       G  :::9:1:2:::3:6:::622:
+matrix            T  1a411513924:22:73:376
+
+         bits    2.5  *                   
+                 2.3  *    * *            
+                 2.0  *    * *            
+                 1.8  *    * *            
+Relative         1.5  *    * *     *      
+Entropy          1.3  * *  * **    *      
+(21.7 bits)      1.0  **** * **    ***  **
+                 0.8 *********** * ***  **
+                 0.5 *********** * ***  **
+                 0.3 *********************
+                 0.0 ---------------------
+
+Multilevel           ATAGCTAATATCCGATAGCTT
+consensus            C T  C T TCGTTCCTATGA
+sequence                    G  AA         
+                                          
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+	Motif ATWGCYAWTAHSCGATWGYTT MEME-1 sites sorted by position p-value
+--------------------------------------------------------------------------------
+Sequence name            Strand  Start   P-value                    Site       
+-------------            ------  ----- ---------            ---------------------
+mycobacterium_africanum_     -    108  4.25e-11 GCTGATGTCC ATAGCCAATACGCGATTGCTT GGACAACTGA
+mycobacterium_bovis_yrbE     -    108  4.25e-11 GCTGATGTCC ATAGCCAATACGCGATTGCTT GGACAACTGA
+mycobacterium_tuberculos     -    109  4.25e-11 GCTGATGTCC ATAGCCAATACGCGATTGCTT GGACAACTGA
+IGR_Rv1963c_Rv1964           -    756  4.25e-11 GCTGATGTCC ATAGCCAATACGCGATTGCTT GGACAACTGA
+mycobacterium_africanum_     +     60  1.28e-09 AAGATACATC ATAGCCAATATATGCCAGTTT GCATTGCTAT
+mycobacterium_canettii_y     +     60  1.28e-09 AAGATACATC ATAGCCAATATATGCCAGTTT GCATCGCTAT
+mycobacterium_bovis_yrbE     +     60  1.28e-09 AAGATACATC ATAGCCAATATATGCCAGTTT GCATTGCTAT
+mycobacterium_tuberculos     +     61  1.28e-09 AAGATACATC ATAGCCAATATATGCCAGTTT GCATTGCTAT
+IGR_Rv1963c_Rv1964           +    708  1.28e-09 AAGATACATC ATAGCCAATATATGCCAGTTT GCATTGCTAT
+mycobacterium_africanum_     +     83  1.67e-09 GCCAGTTTGC ATTGCTATTTACCGATCAGTT GTCCAAGCAA
+mycobacterium_bovis_yrbE     +     83  1.67e-09 GCCAGTTTGC ATTGCTATTTACCGATCAGTT GTCCAAGCAA
+mycobacterium_tuberculos     +     84  1.67e-09 GCCAGTTTGC ATTGCTATTTACCGATCAGTT GTCCAAGCAA
+IGR_Rv1963c_Rv1964           +    731  1.67e-09 GCCAGTTTGC ATTGCTATTTACCGATCAGTT GTCCAAGCAA
+mycobacterium_canettii_y     -    108  2.17e-09 GCTGATGTCC ATAGTCAATACGCAATTGCTT GGACAACTGA
+mycobacterium_canettii_y     +     83  1.99e-08 GCCAGTTTGC ATCGCTATTTACCGATCAGTT GTCCAAGCAA
+mycobacterium_africanum_     -     32  2.21e-08 TATGATGTAT CTTGCTAGTATCCTATAGCGC GGGGCGATGT
+mycobacterium_bovis_yrbE     -     32  2.21e-08 TATGATGTAT CTTGCTAGTATCCTATAGCGC GGGGCGATGT
+mycobacterium_tuberculos     -     33  2.21e-08 TATGATGTAT CTTGCTAGTATCCTATAGCGC GGGGCGATGT
+IGR_Rv1963c_Rv1964           -    680  2.21e-08 TATGATGTAT CTTGCTAGTATCCTATAGCGC GGGGCGATGT
+mycobacterium_canettii_y     -     32  8.74e-08 TATGATGTAT CTTGCTAGTATCCTATAGCAC GGAGCGATGC
+mycobacterium_liflandii_     -     44  1.94e-07 ACTGATGTAT CTTGCTAGTACCCTAATGATA GGCGCGCTTG
+mycobacterium_liflandii_     +     95  3.44e-07 GGCATCTTGC TTCGCTATTTACAGATACCGA GGCTTCAATA
+IGR_Rv1935c_Rv1936           +     68  7.93e-07 CAACATGTCC ATAGCCAATACGCACATGAGA GTGATCGATA
+mycobacterium_liflandii_     -    120  9.81e-07 GCACATGTCC ATAGACAATACGAGCTATTGA AGCCTCGGTA
+mycobacterium_smegmatis_     -     49  3.15e-06 AAGTTAGTAA TTTTCGATTCACTCATACTTT GCGATACGCC
+mycobacterium_smegmatis_     +     11  6.22e-06 GAGTGCATGC GTATTTATTATGCAACACCCT TGGGCTGGGC
+IGR_Rv1935c_Rv1936           -    149  6.92e-06 GGTGGCGCCC TTTGCGTATATCACAGTACTA CCAAGATACT
+IGR_Rv1963c_Rv1964           +    293  2.35e-05 ACATTGCAAT TTATCCTTATCACCCTTCTTA GAGTGCATAT
+IGR_Rv1935c_Rv1936           +     92  3.24e-05 CATGAGAGTG ATCGATATAGACAAATTCCCA TGCAAAGAAG
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+	Motif ATWGCYAWTAHSCGATWGYTT MEME-1 block diagrams
+--------------------------------------------------------------------------------
+SEQUENCE NAME            POSITION P-VALUE  MOTIF DIAGRAM
+-------------            ----------------  -------------
+mycobacterium_africanum_          1.7e-09  31_[-1]_7_[+1]_2_[+1]_4_[-1]_122
+mycobacterium_bovis_yrbE          1.7e-09  31_[-1]_7_[+1]_2_[+1]_4_[-1]_122
+mycobacterium_tuberculos          1.7e-09  32_[-1]_7_[+1]_2_[+1]_4_[-1]_121
+IGR_Rv1963c_Rv1964                2.3e-05  292_[+1]_366_[-1]_7_[+1]_2_[+1]_
+                                           4_[-1]_121
+mycobacterium_canettii_y            2e-08  31_[-1]_7_[+1]_2_[+1]_4_[-1]_122
+mycobacterium_liflandii_          9.8e-07  43_[-1]_30_[+1]_4_[-1]_110
+IGR_Rv1935c_Rv1936                3.2e-05  67_[+1]_3_[+1]_36_[-1]_55
+mycobacterium_smegmatis_          3.2e-06  10_[+1]_17_[-1]_181
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+	Motif ATWGCYAWTAHSCGATWGYTT MEME-1 in BLOCKS format
+--------------------------------------------------------------------------------
+BL   MOTIF ATWGCYAWTAHSCGATWGYTT width=21 seqs=29
+mycobacterium_africanum_ (  108) ATAGCCAATACGCGATTGCTT  1 
+mycobacterium_bovis_yrbE (  108) ATAGCCAATACGCGATTGCTT  1 
+mycobacterium_tuberculos (  109) ATAGCCAATACGCGATTGCTT  1 
+IGR_Rv1963c_Rv1964       (  756) ATAGCCAATACGCGATTGCTT  1 
+mycobacterium_africanum_ (   60) ATAGCCAATATATGCCAGTTT  1 
+mycobacterium_canettii_y (   60) ATAGCCAATATATGCCAGTTT  1 
+mycobacterium_bovis_yrbE (   60) ATAGCCAATATATGCCAGTTT  1 
+mycobacterium_tuberculos (   61) ATAGCCAATATATGCCAGTTT  1 
+IGR_Rv1963c_Rv1964       (  708) ATAGCCAATATATGCCAGTTT  1 
+mycobacterium_africanum_ (   83) ATTGCTATTTACCGATCAGTT  1 
+mycobacterium_bovis_yrbE (   83) ATTGCTATTTACCGATCAGTT  1 
+mycobacterium_tuberculos (   84) ATTGCTATTTACCGATCAGTT  1 
+IGR_Rv1963c_Rv1964       (  731) ATTGCTATTTACCGATCAGTT  1 
+mycobacterium_canettii_y (  108) ATAGTCAATACGCAATTGCTT  1 
+mycobacterium_canettii_y (   83) ATCGCTATTTACCGATCAGTT  1 
+mycobacterium_africanum_ (   32) CTTGCTAGTATCCTATAGCGC  1 
+mycobacterium_bovis_yrbE (   32) CTTGCTAGTATCCTATAGCGC  1 
+mycobacterium_tuberculos (   33) CTTGCTAGTATCCTATAGCGC  1 
+IGR_Rv1963c_Rv1964       (  680) CTTGCTAGTATCCTATAGCGC  1 
+mycobacterium_canettii_y (   32) CTTGCTAGTATCCTATAGCAC  1 
+mycobacterium_liflandii_ (   44) CTTGCTAGTACCCTAATGATA  1 
+mycobacterium_liflandii_ (   95) TTCGCTATTTACAGATACCGA  1 
+IGR_Rv1935c_Rv1936       (   68) ATAGCCAATACGCACATGAGA  1 
+mycobacterium_liflandii_ (  120) ATAGACAATACGAGCTATTGA  1 
+mycobacterium_smegmatis_ (   49) TTTTCGATTCACTCATACTTT  1 
+mycobacterium_smegmatis_ (   11) GTATTTATTATGCAACACCCT  1 
+IGR_Rv1935c_Rv1936       (  149) TTTGCGTATATCACAGTACTA  1 
+IGR_Rv1963c_Rv1964       (  293) TTATCCTTATCACCCTTCTTA  1 
+IGR_Rv1935c_Rv1936       (   92) ATCGATATAGACAAATTCCCA  1 
+//
+
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+	Motif ATWGCYAWTAHSCGATWGYTT MEME-1 position-specific scoring matrix
+--------------------------------------------------------------------------------
+log-odds matrix: alength= 4 w= 21 n= 2921 bayes= 7.41636 E= 3.1e-011 
+   185    -66   -325    -32 
+ -1150  -1150  -1150    254 
+   149   -166  -1150    127 
+ -1150  -1150    145    -73 
+  -132    139  -1150   -132 
+ -1150     45   -225    149 
+   244  -1150  -1150   -132 
+   138  -1150    -66    100 
+  -132  -1150  -1150    244 
+   200   -325   -325     49 
+    68     -8  -1150    127 
+    27     66    -25  -1150 
+   -32    100  -1150     27 
+   -32   -166     75     27 
+   207    -25  -1150  -1150 
+  -132    -66   -325    200 
+   149    -93  -1150    100 
+    27    -93     84   -232 
+  -132     56    -93     68 
+  -232   -225    -44    193 
+    49    -93  -1150    177 
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+	Motif ATWGCYAWTAHSCGATWGYTT MEME-1 position-specific probability matrix
+--------------------------------------------------------------------------------
+letter-probability matrix: alength= 4 w= 21 nsites= 29 E= 3.1e-011 
+ 0.620690  0.206897  0.034483  0.137931 
+ 0.000000  0.000000  0.000000  1.000000 
+ 0.482759  0.103448  0.000000  0.413793 
+ 0.000000  0.000000  0.896552  0.103448 
+ 0.068966  0.862069  0.000000  0.068966 
+ 0.000000  0.448276  0.068966  0.482759 
+ 0.931034  0.000000  0.000000  0.068966 
+ 0.448276  0.000000  0.206897  0.344828 
+ 0.068966  0.000000  0.000000  0.931034 
+ 0.689655  0.034483  0.034483  0.241379 
+ 0.275862  0.310345  0.000000  0.413793 
+ 0.206897  0.517241  0.275862  0.000000 
+ 0.137931  0.655172  0.000000  0.206897 
+ 0.137931  0.103448  0.551724  0.206897 
+ 0.724138  0.275862  0.000000  0.000000 
+ 0.068966  0.206897  0.034483  0.689655 
+ 0.482759  0.172414  0.000000  0.344828 
+ 0.206897  0.172414  0.586207  0.034483 
+ 0.068966  0.482759  0.172414  0.275862 
+ 0.034483  0.068966  0.241379  0.655172 
+ 0.241379  0.172414  0.000000  0.586207 
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+	Motif ATWGCYAWTAHSCGATWGYTT MEME-1 regular expression
+--------------------------------------------------------------------------------
+[AC]T[AT]GC[TC]A[ATG]T[AT][TCA][CGA][CT][GT][AC][TC][AT][GA][CT][TG][TA]
+--------------------------------------------------------------------------------
+
+
+
+
+Time  0.40 secs.
+
+********************************************************************************
+
+
+********************************************************************************
+MOTIF CRGYBTSYGCCRCSTMMSCYMACSRMYSW MEME-2	width =  29  sites =  12  llr = 265  p-value = 9.9e-001  E-value = 1.9e+000
+********************************************************************************
+--------------------------------------------------------------------------------
+	Motif CRGYBTSYGCCRCSTMMSCYMACSRMYSW MEME-2 Description
+--------------------------------------------------------------------------------
+Simplified        A  :5::11:::1:4:::65:::49:146::4
+pos.-specific     C  82153:45:9a:94:456a46:a51444:
+probability       G  33924:61a::616:::4:::1:45:16:
+matrix            T  :::339:4::::::a::::6::::::5:6
+
+         bits    2.5               *              
+                 2.3               *              
+                 2.0      *        *      *       
+                 1.8      *        *      *       
+Relative         1.5      *  * *   *   *  **     *
+Entropy          1.3   *  *  *** * **  ** **  *  *
+(31.9 bits)      1.0   *  *  ***** *** *****  *  *
+                 0.8 * *  * ****** *** ***** *** *
+                 0.5 **** ****************** *****
+                 0.3 **** ************************
+                 0.0 -----------------------------
+
+Multilevel           CAGCGTGCGCCGCGTAACCTCACCGATGT
+consensus            GG TC CT   A C CCG CA  GACCCA
+sequence                 T                        
+                                                  
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+	Motif CRGYBTSYGCCRCSTMMSCYMACSRMYSW MEME-2 sites sorted by position p-value
+--------------------------------------------------------------------------------
+Sequence name            Strand  Start   P-value                        Site           
+-------------            ------  ----- ---------            -----------------------------
+mycobacterium_liflandii_     +    150  3.00e-14 TGGACATGTG CAGCTTGCGCCGCGTACCCTCACCGATGT CACCCGTCCA
+mycobacterium_africanum_     +    138  5.08e-13 TGGACATCAG CGGTCTCTGCCGCGTACGCTCACCAATGT CACCGATCGT
+mycobacterium_canettii_y     +    138  5.08e-13 TGGACATCAG CGGTCTCTGCCGCGTACGCTCACCAATGT CACCGATCGT
+mycobacterium_bovis_yrbE     +    138  5.08e-13 TGGACATCAG CGGTCTCTGCCGCGTACGCTCACCAATGT CACCGATCGT
+mycobacterium_tuberculos     +    138  2.28e-11 ATGGACATCA GCGGTTCTGCCGCGTACGCTCACCAATGT CACCGATCGT
+IGR_Rv1963c_Rv1964           +    785  2.28e-11 ATGGACATCA GCGGTTCTGCCGCGTACGCTCACCAATGT CACCGATCGT
+mycobacterium_africanum_     +    194  2.52e-11 TCCGGGGGGC CAGCGTGCGCCACCTCACCCAACGGCCCA GCATCGAATC
+mycobacterium_canettii_y     +    194  2.52e-11 TCCGGGGGGC CAGCGTGCGCCACCTCACCCAACGGCCCA GCATCGAATC
+mycobacterium_bovis_yrbE     +    194  2.52e-11 TCCGGGGGGC CAGCGTGCGCCACCTCACCCAACGGCCCA GCATCGAATC
+mycobacterium_tuberculos     +    194  2.52e-11 TCCGGGGGGC CAGCGTGCGCCACCTCACCCAACGGCCCA GCATCGAATC
+IGR_Rv1963c_Rv1964           +    841  2.52e-11 TCCGGGGGGC CAGCGTGCGCCACCTCACCCAACGGCCCA GCATCGAATC
+IGR_Rv1935c_Rv1936           -     30  2.71e-07 TGGACATGTT GGCTAAGGGACGGGTAACCTCGCACAGGT CAGCCGTTCA
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+	Motif CRGYBTSYGCCRCSTMMSCYMACSRMYSW MEME-2 block diagrams
+--------------------------------------------------------------------------------
+SEQUENCE NAME            POSITION P-VALUE  MOTIF DIAGRAM
+-------------            ----------------  -------------
+mycobacterium_liflandii_            3e-14  149_[+2]_72
+mycobacterium_africanum_          5.1e-13  137_[+2]_27_[+2]_28
+mycobacterium_canettii_y          5.1e-13  137_[+2]_27_[+2]_28
+mycobacterium_bovis_yrbE          5.1e-13  137_[+2]_27_[+2]_28
+mycobacterium_tuberculos          2.3e-11  137_[+2]_27_[+2]_28
+IGR_Rv1963c_Rv1964                2.3e-11  784_[+2]_27_[+2]_28
+IGR_Rv1935c_Rv1936                2.7e-07  29_[-2]_166
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+	Motif CRGYBTSYGCCRCSTMMSCYMACSRMYSW MEME-2 in BLOCKS format
+--------------------------------------------------------------------------------
+BL   MOTIF CRGYBTSYGCCRCSTMMSCYMACSRMYSW width=29 seqs=12
+mycobacterium_liflandii_ (  150) CAGCTTGCGCCGCGTACCCTCACCGATGT  1 
+mycobacterium_africanum_ (  138) CGGTCTCTGCCGCGTACGCTCACCAATGT  1 
+mycobacterium_canettii_y (  138) CGGTCTCTGCCGCGTACGCTCACCAATGT  1 
+mycobacterium_bovis_yrbE (  138) CGGTCTCTGCCGCGTACGCTCACCAATGT  1 
+mycobacterium_tuberculos (  138) GCGGTTCTGCCGCGTACGCTCACCAATGT  1 
+IGR_Rv1963c_Rv1964       (  785) GCGGTTCTGCCGCGTACGCTCACCAATGT  1 
+mycobacterium_africanum_ (  194) CAGCGTGCGCCACCTCACCCAACGGCCCA  1 
+mycobacterium_canettii_y (  194) CAGCGTGCGCCACCTCACCCAACGGCCCA  1 
+mycobacterium_bovis_yrbE (  194) CAGCGTGCGCCACCTCACCCAACGGCCCA  1 
+mycobacterium_tuberculos (  194) CAGCGTGCGCCACCTCACCCAACGGCCCA  1 
+IGR_Rv1963c_Rv1964       (  841) CAGCGTGCGCCACCTCACCCAACGGCCCA  1 
+IGR_Rv1935c_Rv1936       (   30) GGCTAAGGGACGGGTAACCTCGCACAGGT  1 
+//
+
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+	Motif CRGYBTSYGCCRCSTMMSCYMACSRMYSW MEME-2 position-specific scoring matrix
+--------------------------------------------------------------------------------
+log-odds matrix: alength= 4 w= 29 n= 2841 bayes= 8.79086 E= 1.9e+000 
+ -1023    119    -39  -1023 
+   154    -98      2  -1023 
+ -1023   -197    148  -1023 
+ -1023     61    -98     95 
+  -104    -39     34     54 
+  -104  -1023  -1023    241 
+ -1023     34     83  -1023 
+ -1023     61   -197    128 
+ -1023  -1023    161  -1023 
+  -104    148  -1023  -1023 
+ -1023    161  -1023  -1023 
+   128  -1023     83  -1023 
+ -1023    148   -197  -1023 
+ -1023     34     83  -1023 
+ -1023  -1023  -1023    254 
+   176     34  -1023  -1023 
+   154     61  -1023  -1023 
+ -1023     83     34  -1023 
+ -1023    161  -1023  -1023 
+ -1023     34  -1023    176 
+   128     83  -1023  -1023 
+   241  -1023   -197  -1023 
+ -1023    161  -1023  -1023 
+  -104     61     34  -1023 
+   128   -197     61  -1023 
+   176     34  -1023  -1023 
+ -1023     34   -197    154 
+ -1023     34     83  -1023 
+   128  -1023  -1023    176 
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+	Motif CRGYBTSYGCCRCSTMMSCYMACSRMYSW MEME-2 position-specific probability matrix
+--------------------------------------------------------------------------------
+letter-probability matrix: alength= 4 w= 29 nsites= 12 E= 1.9e+000 
+ 0.000000  0.750000  0.250000  0.000000 
+ 0.500000  0.166667  0.333333  0.000000 
+ 0.000000  0.083333  0.916667  0.000000 
+ 0.000000  0.500000  0.166667  0.333333 
+ 0.083333  0.250000  0.416667  0.250000 
+ 0.083333  0.000000  0.000000  0.916667 
+ 0.000000  0.416667  0.583333  0.000000 
+ 0.000000  0.500000  0.083333  0.416667 
+ 0.000000  0.000000  1.000000  0.000000 
+ 0.083333  0.916667  0.000000  0.000000 
+ 0.000000  1.000000  0.000000  0.000000 
+ 0.416667  0.000000  0.583333  0.000000 
+ 0.000000  0.916667  0.083333  0.000000 
+ 0.000000  0.416667  0.583333  0.000000 
+ 0.000000  0.000000  0.000000  1.000000 
+ 0.583333  0.416667  0.000000  0.000000 
+ 0.500000  0.500000  0.000000  0.000000 
+ 0.000000  0.583333  0.416667  0.000000 
+ 0.000000  1.000000  0.000000  0.000000 
+ 0.000000  0.416667  0.000000  0.583333 
+ 0.416667  0.583333  0.000000  0.000000 
+ 0.916667  0.000000  0.083333  0.000000 
+ 0.000000  1.000000  0.000000  0.000000 
+ 0.083333  0.500000  0.416667  0.000000 
+ 0.416667  0.083333  0.500000  0.000000 
+ 0.583333  0.416667  0.000000  0.000000 
+ 0.000000  0.416667  0.083333  0.500000 
+ 0.000000  0.416667  0.583333  0.000000 
+ 0.416667  0.000000  0.000000  0.583333 
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+	Motif CRGYBTSYGCCRCSTMMSCYMACSRMYSW MEME-2 regular expression
+--------------------------------------------------------------------------------
+[CG][AG]G[CT][GCT]T[GC][CT]GCC[GA]C[GC]T[AC][AC][CG]C[TC][CA]AC[CG][GA][AC][TC][GC][TA]
+--------------------------------------------------------------------------------
+
+
+
+
+Time  0.74 secs.
+
+********************************************************************************
+
+
+********************************************************************************
+MOTIF CAAGGCAGCAGAGCACATCGC MEME-3	width =  21  sites =   6  llr = 143  p-value = 7.2e-003  E-value = 7.2e-003
+********************************************************************************
+--------------------------------------------------------------------------------
+	Motif CAAGGCAGCAGAGCACATCGC MEME-3 Description
+--------------------------------------------------------------------------------
+Simplified        A  :88:::a::a:82:7:a::::
+pos.-specific     C  a222:a::8::::82a::a:a
+probability       G  :::8a::a2:a28:2::::8:
+matrix            T  :::::::::::::2:::a:2:
+
+         bits    2.5       *  *      **   
+                 2.3       *  *      **   
+                 2.0       *  *      **   
+                 1.8  **   *  * *    **   
+Relative         1.5 *** **** ***   **** *
+Entropy          1.3 *** **** ***   **** *
+(34.5 bits)      1.0 *********************
+                 0.8 *********************
+                 0.5 *********************
+                 0.3 *********************
+                 0.0 ---------------------
+
+Multilevel           CAAGGCAGCAGAGCACATCGC
+consensus                                 
+sequence                                  
+                                          
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+	Motif CAAGGCAGCAGAGCACATCGC MEME-3 sites sorted by position p-value
+--------------------------------------------------------------------------------
+Sequence name            Strand  Start   P-value                    Site       
+-------------            ------  ----- ---------            ---------------------
+mycobacterium_africanum_     +      8  3.90e-13    CGGCCGC CAAGGCAGCAGAGCACATCGC CCCGCGCTAT
+mycobacterium_bovis_yrbE     +      8  3.90e-13    CGGCCGC CAAGGCAGCAGAGCACATCGC CCCGCGCTAT
+mycobacterium_tuberculos     +      9  3.90e-13   TCGGCCGC CAAGGCAGCAGAGCACATCGC CCCGCGCTAT
+IGR_Rv1963c_Rv1964           +    656  3.90e-13 TGTCGGCCGC CAAGGCAGCAGAGCACATCGC CCCGCGCTAT
+mycobacterium_canettii_y     +      8  3.59e-12    CAGCCGC CAAGGCAGCAGAGCGCATCGC TCCGTGCTAT
+mycobacterium_smegmatis_     +    128  9.70e-09 CCGCTTGTGC CCCCGCAGGAGGATCCATCTC CCCCCGCGAG
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+	Motif CAAGGCAGCAGAGCACATCGC MEME-3 block diagrams
+--------------------------------------------------------------------------------
+SEQUENCE NAME            POSITION P-VALUE  MOTIF DIAGRAM
+-------------            ----------------  -------------
+mycobacterium_africanum_          3.9e-13  7_[+3]_222
+mycobacterium_bovis_yrbE          3.9e-13  7_[+3]_222
+mycobacterium_tuberculos          3.9e-13  8_[+3]_221
+IGR_Rv1963c_Rv1964                3.9e-13  655_[+3]_221
+mycobacterium_canettii_y          3.6e-12  7_[+3]_222
+mycobacterium_smegmatis_          9.7e-09  127_[+3]_102
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+	Motif CAAGGCAGCAGAGCACATCGC MEME-3 in BLOCKS format
+--------------------------------------------------------------------------------
+BL   MOTIF CAAGGCAGCAGAGCACATCGC width=21 seqs=6
+mycobacterium_africanum_ (    8) CAAGGCAGCAGAGCACATCGC  1 
+mycobacterium_bovis_yrbE (    8) CAAGGCAGCAGAGCACATCGC  1 
+mycobacterium_tuberculos (    9) CAAGGCAGCAGAGCACATCGC  1 
+IGR_Rv1963c_Rv1964       (  656) CAAGGCAGCAGAGCACATCGC  1 
+mycobacterium_canettii_y (    8) CAAGGCAGCAGAGCGCATCGC  1 
+mycobacterium_smegmatis_ (  128) CCCCGCAGGAGGATCCATCTC  1 
+//
+
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+	Motif CAAGGCAGCAGAGCACATCGC MEME-3 position-specific scoring matrix
+--------------------------------------------------------------------------------
+log-odds matrix: alength= 4 w= 21 n= 2921 bayes= 10.0254 E= 7.2e-003 
+  -923    161   -923   -923 
+   228    -97   -923   -923 
+   228    -97   -923   -923 
+  -923    -97    134   -923 
+  -923   -923    161   -923 
+  -923    161   -923   -923 
+   254   -923   -923   -923 
+  -923   -923    161   -923 
+  -923    134    -97   -923 
+   254   -923   -923   -923 
+  -923   -923    161   -923 
+   228   -923    -97   -923 
+    -4   -923    134   -923 
+  -923    134   -923     -4 
+   195    -97    -97   -923 
+  -923    161   -923   -923 
+   254   -923   -923   -923 
+  -923   -923   -923    254 
+  -923    161   -923   -923 
+  -923   -923    134     -4 
+  -923    161   -923   -923 
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+	Motif CAAGGCAGCAGAGCACATCGC MEME-3 position-specific probability matrix
+--------------------------------------------------------------------------------
+letter-probability matrix: alength= 4 w= 21 nsites= 6 E= 7.2e-003 
+ 0.000000  1.000000  0.000000  0.000000 
+ 0.833333  0.166667  0.000000  0.000000 
+ 0.833333  0.166667  0.000000  0.000000 
+ 0.000000  0.166667  0.833333  0.000000 
+ 0.000000  0.000000  1.000000  0.000000 
+ 0.000000  1.000000  0.000000  0.000000 
+ 1.000000  0.000000  0.000000  0.000000 
+ 0.000000  0.000000  1.000000  0.000000 
+ 0.000000  0.833333  0.166667  0.000000 
+ 1.000000  0.000000  0.000000  0.000000 
+ 0.000000  0.000000  1.000000  0.000000 
+ 0.833333  0.000000  0.166667  0.000000 
+ 0.166667  0.000000  0.833333  0.000000 
+ 0.000000  0.833333  0.000000  0.166667 
+ 0.666667  0.166667  0.166667  0.000000 
+ 0.000000  1.000000  0.000000  0.000000 
+ 1.000000  0.000000  0.000000  0.000000 
+ 0.000000  0.000000  0.000000  1.000000 
+ 0.000000  1.000000  0.000000  0.000000 
+ 0.000000  0.000000  0.833333  0.166667 
+ 0.000000  1.000000  0.000000  0.000000 
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+	Motif CAAGGCAGCAGAGCACATCGC MEME-3 regular expression
+--------------------------------------------------------------------------------
+CAAGGCAGCAGAGCACATCGC
+--------------------------------------------------------------------------------
+
+
+
+
+Time  1.00 secs.
+
+********************************************************************************
+
+
+********************************************************************************
+SUMMARY OF MOTIFS
+********************************************************************************
+
+--------------------------------------------------------------------------------
+	Combined block diagrams: non-overlapping sites with p-value < 0.0001
+--------------------------------------------------------------------------------
+SEQUENCE NAME            COMBINED P-VALUE  MOTIF DIAGRAM
+-------------            ----------------  -------------
+IGR_Rv1963c_Rv1964               3.12e-21  235_[-1(6.55e-05)]_36_\
+    [+1(2.35e-05)]_342_[+3(3.90e-13)]_3_[-1(2.21e-08)]_7_[+1(1.28e-09)]_2_\
+    [+1(1.67e-09)]_4_[-1(4.25e-11)]_8_[+2(2.28e-11)]_27_[+2(2.52e-11)]_28
+IGR_Rv1935c_Rv1936               5.13e-06  29_[-2(2.71e-07)]_9_[+1(7.93e-07)]_\
+    3_[+1(3.24e-05)]_36_[-1(6.92e-06)]_55
+mycobacterium_tuberculos         6.30e-23  8_[+3(3.90e-13)]_3_[-1(2.21e-08)]_7_\
+    [+1(1.28e-09)]_2_[+1(1.67e-09)]_4_[-1(4.25e-11)]_8_[+2(2.28e-11)]_27_\
+    [+2(2.52e-11)]_28
+mycobacterium_bovis_yrbE         1.59e-24  7_[+3(3.90e-13)]_3_[-1(2.21e-08)]_7_\
+    [+1(1.28e-09)]_2_[+1(1.67e-09)]_4_[-1(4.25e-11)]_9_[+2(5.08e-13)]_27_\
+    [+2(2.52e-11)]_28
+mycobacterium_liflandii_         7.38e-13  43_[-1(1.94e-07)]_30_[+1(3.44e-07)]_\
+    4_[-1(9.81e-07)]_9_[+2(3.00e-14)]_72
+mycobacterium_canettii_y         3.66e-22  7_[+3(3.59e-12)]_3_[-1(8.74e-08)]_7_\
+    [+1(1.28e-09)]_2_[+1(1.99e-08)]_4_[-1(2.17e-09)]_9_[+2(5.08e-13)]_27_\
+    [+2(2.52e-11)]_28
+mycobacterium_smegmatis_         1.26e-06  10_[+1(6.22e-06)]_17_[-1(3.15e-06)]_\
+    58_[+3(9.70e-09)]_102
+mycobacterium_africanum_         1.59e-24  7_[+3(3.90e-13)]_3_[-1(2.21e-08)]_7_\
+    [+1(1.28e-09)]_2_[+1(1.67e-09)]_4_[-1(4.25e-11)]_9_[+2(5.08e-13)]_27_\
+    [+2(2.52e-11)]_28
+mycobacterium_marinum_yr         4.27e-01  250
+mycobacterium_ulcerans_y         4.27e-01  250
+--------------------------------------------------------------------------------
+
+********************************************************************************
+
+
+********************************************************************************
+Stopped because requested number of motifs (3) found.
+********************************************************************************
+
+CPU: Aayans-MacBook-Air.local
+
+********************************************************************************

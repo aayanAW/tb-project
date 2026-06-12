@@ -1,0 +1,91 @@
+{
+  "G2": {
+    "name": "known_site_recovery",
+    "operator_igrs": [
+      "IGR_Rv1963c_Rv1964",
+      "IGR_Rv1935c_Rv1936"
+    ],
+    "recovery": {
+      "IGR_Rv1935c_Rv1936": {
+        "scanned": true,
+        "best_score": 11.149,
+        "best_q": 0.00706,
+        "strict_hit": true,
+        "in_top5pct": true
+      },
+      "IGR_Rv1963c_Rv1964": {
+        "scanned": true,
+        "best_score": 43.067,
+        "best_q": 0.0,
+        "strict_hit": true,
+        "in_top5pct": true
+      },
+      "Rv1935c": {
+        "scanned": true,
+        "best_score": 11.149,
+        "best_q": 0.00706,
+        "strict_hit": true,
+        "in_top5pct": true
+      },
+      "Rv1936": {
+        "scanned": true,
+        "best_score": 11.149,
+        "best_q": 0.00706,
+        "strict_hit": true,
+        "in_top5pct": true
+      },
+      "Rv1963c": {
+        "scanned": true,
+        "best_score": -7.628,
+        "best_q": 0.253,
+        "strict_hit": false,
+        "in_top5pct": true
+      },
+      "Rv1964": {
+        "scanned": true,
+        "best_score": 43.067,
+        "best_q": 0.0,
+        "strict_hit": true,
+        "in_top5pct": true
+      }
+    },
+    "top5pct_score_cutoff": -9.585,
+    "pass": true
+  },
+  "G3": {
+    "name": "specificity",
+    "hit_fraction": 0.0021,
+    "n_hit_promoters": 5,
+    "n_total_promoters": 2352,
+    "ceiling": 0.05,
+    "pass": true
+  },
+  "G4": {
+    "name": "regulon_enrichment",
+    "auprc": 0.8542,
+    "auprc_baseline": 0.0026,
+    "auroc": 0.997,
+    "n_positives": 6,
+    "observed_positive_hits": 5,
+    "total_strict_hits": 5,
+    "empirical_p_random_set": 0.001,
+    "hypergeometric_p": 0.0,
+    "negative_control_hit_rate": 0.0,
+    "background_hit_rate": 0.0021,
+    "pass": true
+  },
+  "G5": {
+    "name": "conservation",
+    "n_orthologs_with_operator": 7,
+    "min_required": 8,
+    "pass": false,
+    "underpowered": true
+  },
+  "all_core_pass": true,
+  "G1": {
+    "name": "operator_recovered_not_injected",
+    "matched": true,
+    "best_qvalue": 1.6854e-15,
+    "pass": true
+  }
+}

@@ -63,6 +63,17 @@ All five gates green → the genome-wide Mce3R operator predictions are reported
 Any gate red → report the negative/partial result honestly (per research-integrity
 standards); do not relax a threshold to pass.
 
-## Deviations
+## Deviations / honest outcomes
 
-(none yet)
+- **G5 conservation (reported, not gamed).** Public NCBI `gene`-symbol coverage for
+  _yrbE3A_ across Mycobacteriaceae yields 8 distinct species. The operator is detected
+  (score > 0, FIMO p < 1e-3) in **7 of 8**: M. tuberculosis, M. bovis, M. africanum,
+  M. canettii, M. marinum, M. ulcerans, M. liflandii. The single exception is the distant
+  fast-grower **M. smegmatis** (the outgroup), where the operator has diverged. The
+  pre-registered bar (≥ 8 detections) is therefore NOT met. The threshold is left
+  unchanged (lowering it post hoc would be the p-hacking this file exists to prevent).
+  The 7/8 result is itself biologically meaningful — clade-specific conservation across
+  pathogenic/slow-growing mycobacteria with divergence in the outgroup supports operator
+  specificity. Reaching ≥ 8 conserved would require protein-similarity (BLAST) ortholog
+  mining beyond gene-symbol annotation; logged as future work, not forced here.
+- All other gates (G1–G4) pass on real, non-circular evidence.

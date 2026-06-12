@@ -84,16 +84,71 @@ def step_extract(root: Path) -> None:
     igrs = root / "data" / "raw" / "divergent_igrs.fasta"
     if promoters.exists() and igrs.exists():
         logger.info(
-            "promoters.fasta and divergent_igrs.fasta present — skipping extraction."
+            "promoters.fasta and divergent_igrs.fasta present — skipping base extraction."
         )
+    else:
+        logger.info("Extracting genome-wide promoters + divergent IGRs...")
+        extract_all_promoters(gb, promoters, promoter_length=300)
+        igr_df = extract_divergent_igrs(gb, igrs, min_igr_length=400)
+        if not igr_df.empty:
+            igr_records = list(SeqIO.parse(str(igrs), "fasta"))
+            with open(str(promoters), "a") as f:
+                SeqIO.write(igr_records, f, "fasta")
+    # Always ensure the mapped operator IGRs are present, even when shorter than the
+    # genome-wide IGR length cutoff (the Rv1935c-Rv1936 operator region is < 400 bp).
+    ensure_operator_igrs(root, gb, igrs, promoters)
+
+
+def ensure_operator_igrs(root: Path, gb: Path, igrs: Path, promoters: Path) -> None:
+    """
+    Make sure each mapped operator IGR (mce3r_biology.OPERATOR_IGRS) is present in
+    divergent_igrs.fasta and promoters.fasta, extracting it from the genome regardless of
+    length. Operator regions are short and would otherwise be filtered out of the scan.
+    """
+    from Bio import SeqIO
+    from Bio.Seq import Seq
+    from Bio.SeqRecord import SeqRecord
+    from extract_promoters import build_cds_interval_tree
+    from utils import compute_gc_content
+
+    present = (
+        {r.id for r in SeqIO.parse(str(igrs), "fasta")} if igrs.exists() else set()
+    )
+    pairs = {igr: igr.replace("IGR_", "").split("_") for igr in bio.OPERATOR_IGRS}
+    missing = {igr: gp for igr, gp in pairs.items() if igr not in present}
+    if not missing:
+        logger.info("Both operator IGRs already present.")
         return
-    logger.info("Extracting genome-wide promoters + divergent IGRs...")
-    extract_all_promoters(gb, promoters, promoter_length=300)
-    igr_df = extract_divergent_igrs(gb, igrs, min_igr_length=400)
-    if not igr_df.empty:
-        igr_records = list(SeqIO.parse(str(igrs), "fasta"))
+
+    record = SeqIO.read(str(gb), "genbank")
+    genome = str(record.seq).upper()
+    by_tag = {c["locus_tag"]: c for c in build_cds_interval_tree(record)}
+
+    new_records = []
+    for igr_id, (t1, t2) in missing.items():
+        a, b = by_tag.get(t1), by_tag.get(t2)
+        if a is None or b is None:
+            logger.warning(f"Cannot extract {igr_id}: missing CDS for {t1} or {t2}")
+            continue
+        lo, hi = sorted([a, b], key=lambda c: c["start"])
+        igr_start, igr_end = lo["end"], hi["start"]
+        if igr_end <= igr_start:
+            logger.warning(f"{igr_id}: genes overlap (no intergenic gap) — skipping")
+            continue
+        seq = genome[igr_start:igr_end]
+        desc = (
+            f"divergent_igr gene1={lo['locus_tag']} gene2={hi['locus_tag']} "
+            f"igr_start={igr_start} igr_end={igr_end} "
+            f"gc_content={compute_gc_content(seq):.3f} length={len(seq)} operator_region=True"
+        )
+        new_records.append(SeqRecord(Seq(seq), id=igr_id, description=desc))
+        logger.info(f"Extracted operator region {igr_id}: {len(seq)} bp")
+
+    if new_records:
+        with open(str(igrs), "a") as f:
+            SeqIO.write(new_records, f, "fasta")
         with open(str(promoters), "a") as f:
-            SeqIO.write(igr_records, f, "fasta")
+            SeqIO.write(new_records, f, "fasta")
 
 
 def main():

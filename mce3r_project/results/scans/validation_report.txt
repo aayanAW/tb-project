@@ -1,0 +1,35 @@
+========================================================================
+  MCE3R OPERATOR SCAN — VALIDATION REPORT
+========================================================================
+
+[G2] known_site_recovery    PASS
+      operator_igrs: ['IGR_Rv1963c_Rv1964', 'IGR_Rv1935c_Rv1936']
+      top5pct_score_cutoff: -9.585
+      operator IGR_Rv1935c_Rv1936: {'scanned': True, 'best_score': 11.149, 'best_q': 0.00706, 'strict_hit': True, 'in_top5pct': True}
+      operator IGR_Rv1963c_Rv1964: {'scanned': True, 'best_score': 43.067, 'best_q': 0.0, 'strict_hit': True, 'in_top5pct': True}
+
+[G3] specificity            PASS
+      hit_fraction: 0.0021
+      n_hit_promoters: 5
+      n_total_promoters: 2352
+      ceiling: 0.05
+
+[G4] regulon_enrichment     PASS
+      auprc: 0.8542
+      auprc_baseline: 0.0026
+      auroc: 0.997
+      n_positives: 6
+      observed_positive_hits: 5
+      total_strict_hits: 5
+      empirical_p_random_set: 0.001
+      hypergeometric_p: 0.0
+      negative_control_hit_rate: 0.0
+      background_hit_rate: 0.0021
+
+[G5] conservation           FAIL
+      n_orthologs_with_operator: 7
+      min_required: 8
+      underpowered: True
+
+CORE GATES (G2-G4) PASS: True
+========================================================================
