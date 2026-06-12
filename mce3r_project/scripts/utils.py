@@ -13,13 +13,16 @@ proteins involved in mammalian cell entry during infection.
 """
 
 import logging
+import os
 import shutil
 import sys
 from pathlib import Path
 
-import numpy as np
 import pandas as pd
 from Bio import SeqIO
+
+# Candidate conda envs that may hold a Rosetta/osx-64 MEME Suite install.
+_MEME_ENV_CANDIDATES = ("meme_x64", "meme", "mce3r")
 
 
 def get_project_root() -> Path:
@@ -65,6 +68,71 @@ def check_tool_available(tool_name: str) -> bool:
         True if tool is found in PATH, False otherwise
     """
     return shutil.which(tool_name) is not None
+
+
+def get_meme_tool(name: str) -> str | None:
+    """
+    Locate a MEME Suite executable (meme, fimo, tomtom, fasta-get-markov, ...).
+
+    Resolution order:
+        1. System PATH (shutil.which)
+        2. $MEME_BIN/<name> if MEME_BIN is set
+        3. <conda_base>/envs/{meme_x64,meme,mce3r}/bin/<name> for common conda bases
+
+    On Apple Silicon the MEME Suite is typically installed as an osx-64 (Rosetta)
+    conda env, so it is not on PATH by default; this locator finds it anyway.
+
+    Args:
+        name: MEME Suite binary name.
+
+    Returns:
+        Absolute path string to the executable, or None if not found.
+    """
+    on_path = shutil.which(name)
+    if on_path:
+        return on_path
+
+    env_bin = os.environ.get("MEME_BIN")
+    if env_bin:
+        cand = Path(env_bin) / name
+        if cand.exists():
+            return str(cand)
+
+    conda_bases = []
+    for var in ("CONDA_PREFIX", "CONDA_PREFIX_1"):
+        val = os.environ.get(var)
+        if val:
+            # Strip a trailing /envs/<name> to recover the base.
+            p = Path(val)
+            conda_bases.append(p)
+            if p.parent.name == "envs":
+                conda_bases.append(p.parent.parent)
+    conda_bases += [Path.home() / "miniforge3", Path.home() / "miniconda3"]
+
+    seen = set()
+    for base in conda_bases:
+        if base in seen:
+            continue
+        seen.add(base)
+        for env in _MEME_ENV_CANDIDATES:
+            cand = base / "envs" / env / "bin" / name
+            if cand.exists():
+                return str(cand)
+    return None
+
+
+def require_meme_tool(name: str) -> str:
+    """Like get_meme_tool but raises a clear error if the tool is missing."""
+    path = get_meme_tool(name)
+    if path is None:
+        raise FileNotFoundError(
+            f"Required MEME Suite tool '{name}' not found on PATH, in $MEME_BIN, "
+            f"or in a conda env named one of {_MEME_ENV_CANDIDATES}.\n"
+            "Install it (Apple Silicon):\n"
+            "  CONDA_SUBDIR=osx-64 conda create -y -n meme_x64 -c conda-forge -c bioconda meme\n"
+            "or set MEME_BIN to the directory containing the MEME executables."
+        )
+    return path
 
 
 def ensure_directories(paths: list) -> None:
