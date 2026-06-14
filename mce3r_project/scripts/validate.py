@@ -1,25 +1,32 @@
 """
-validate.py — Paper-grade validation of the genome-wide Mce3R operator scan.
+validate.py — Non-circular, paper-grade validation of the genome-wide Mce3R operator scan.
 
-Computes the pre-registered gates (PREREGISTRATION.md) against the known ground truth in
-mce3r_biology.py. This is the part the old pipeline never did: it asks whether the scan
-behaves like a specific repressor or like a GC detector.
+This is a rewrite that addresses the cross-model audit (audit_report.md). The previous
+gates were circular/leaky: they validated the knowledge PWM against the very regions it was
+built from, and the q-values were not a genuine genome-wide BH FDR. The corrected gates:
 
-Gates:
-  G2 known sites recovered  — both mapped operator regions have a hit at q<0.05 & score>0,
-                              in the top 5% of genome-wide scores.
-  G3 specificity            — genome-wide promoter hit fraction <= 5%.
-  G4 regulon enrichment     — AUPRC > 0.5 and empirical p < 0.05 (random-set + hypergeometric);
-                              negative controls (mce1/2/4) behave like background.
-  G5 conservation           — operator detected in >= 8 mycobacterial orthologs.
+  G2 held-out site recovery — the Rv1935c-Rv1936 operator region is NEVER used to build the
+                              knowledge PWM (it is trained on the mce3R-yrbE3A window + the
+                              ortholog windows only), so recovering it is a true generalization
+                              test, not re-recovery of training data. The mce3R-yrbE3A region
+                              is reported as a positive control, not counted toward the gate.
+  G3 specificity            — genome-wide promoter hit fraction <= 5% at a real BH q<0.05.
+  G4 negative-control       — mce1/mce2/mce4 promoters (Mce3R does NOT bind them; Santangelo
+     specificity             2008) must behave like background: no strict hits, not in top 5%.
 
-No sklearn dependency required (AUPRC/AUROC implemented locally; uses sklearn if present).
+G1 (external corroboration vs a published motif) and G5 (leave-one-lineage-out conservation)
+are computed in main.py, where the MEME/Tomtom tooling lives, and merged into the gate set.
+
+FDR: q-values are recomputed here as a transparent, pooled, genome-wide Benjamini-Hochberg
+correction over ALL candidate positions (both motifs, both strands), not FIMO's per-report
+estimate. Because FIMO is run with a permissive p<1e-3 reporting threshold, every site that
+could possibly reach q<0.05 is present in the report (all reported p-values are strictly
+smaller than every un-reported one), so the recomputed BH is exact for the significant set.
 """
 
 import argparse
 import json
 import sys
-from math import comb
 from pathlib import Path
 
 import numpy as np
@@ -35,26 +42,28 @@ logger = setup_logging(__name__)
 Q_THRESH = 0.05
 SPECIFICITY_CEILING = 0.05
 TOP_FRACTION = 0.05
-N_RANDOM_NULL = 1000
-NULL_SEED = 7
-CONSERVATION_MIN_ORTHOLOGS = 8
+N_STRANDS = 2  # FIMO scans both strands; each is an independent test.
 
 
 def _load_fimo(fimo_tsv: Path) -> pd.DataFrame:
     fimo_tsv = Path(fimo_tsv)
+    cols = [
+        "sequence_name",
+        "start",
+        "stop",
+        "strand",
+        "score",
+        "p-value",
+        "q-value",
+    ]
     if not fimo_tsv.exists():
-        return pd.DataFrame(
-            columns=[
-                "sequence_name",
-                "start",
-                "stop",
-                "strand",
-                "score",
-                "p-value",
-                "q-value",
-            ]
-        )
-    df = pd.read_csv(fimo_tsv, sep="\t", comment="#")
+        return pd.DataFrame(columns=cols)
+    try:
+        df = pd.read_csv(fimo_tsv, sep="\t", comment="#")
+    except pd.errors.EmptyDataError:
+        # FIMO writes an empty/header-only file when a scan yields no hits (e.g. a
+        # diverged ortholog with no operator) — a valid "no detection" result.
+        return pd.DataFrame(columns=cols)
     df.columns = [c.strip() for c in df.columns]
     for c in ("score", "p-value", "q-value"):
         if c in df.columns:
@@ -62,228 +71,270 @@ def _load_fimo(fimo_tsv: Path) -> pd.DataFrame:
     return df.dropna(subset=["sequence_name"])
 
 
-def _auprc_auroc(scores: np.ndarray, labels: np.ndarray) -> tuple[float, float]:
-    """Average precision + AUROC. Uses sklearn if available, else a local implementation."""
-    try:
-        from sklearn.metrics import average_precision_score, roc_auc_score
+def _motif_widths(motif_file: Path | None) -> list[int]:
+    """Return the width of every motif in a MEME file (for the genome-wide test count)."""
+    if motif_file is None or not Path(motif_file).exists():
+        return []
+    from run_meme import extract_evalues_from_meme
 
-        return float(average_precision_score(labels, scores)), float(
-            roc_auc_score(labels, scores)
-        )
-    except Exception:
-        pass
-    # Local fallback.
-    order = np.argsort(-scores, kind="mergesort")
-    y = labels[order]
-    P = y.sum()
-    N = len(y) - P
-    if P == 0 or N == 0:
-        return float("nan"), float("nan")
-    tp = np.cumsum(y)
-    fp = np.cumsum(1 - y)
-    precision = tp / (tp + fp)
-    recall = tp / P
-    # Average precision = sum over thresholds of (recall change * precision).
-    rec_prev = np.concatenate([[0.0], recall[:-1]])
-    ap = float(np.sum((recall - rec_prev) * precision))
-    # AUROC via rank statistic (Mann-Whitney).
-    ranks = np.argsort(np.argsort(scores)) + 1
-    auroc = (ranks[labels == 1].sum() - P * (P + 1) / 2) / (P * N)
-    return ap, float(auroc)
+    return [
+        m["width"] for m in extract_evalues_from_meme(Path(motif_file)) if m["width"]
+    ]
 
 
-def evaluate(
-    promoters_fasta: Path,
-    genome_fimo_tsv: Path,
-    ortholog_fimo_tsv: Path | None = None,
-    q_thresh: float = Q_THRESH,
+def genome_wide_test_count(seq_lengths: list[int], motif_widths: list[int]) -> int:
+    """
+    Total number of independent FIMO tests across the scanned universe:
+        sum over motifs, sum over sequences, of max(0, L - w + 1), times both strands.
+
+    This is the denominator for the pooled genome-wide BH FDR.
+    """
+    total = 0
+    for w in motif_widths:
+        for L in seq_lengths:
+            if L >= w:
+                total += L - w + 1
+    return total * N_STRANDS
+
+
+def benjamini_hochberg_q(pvalues: np.ndarray, n_tests: int) -> np.ndarray:
+    """
+    Genome-wide BH q-values for a set of reported p-values drawn from n_tests total tests.
+
+    Valid when the reported p-values are exactly the smallest of all n_tests p-values
+    (guaranteed here: FIMO reports every site below the p-threshold, so all un-reported
+    p-values are larger). q_(k) = min_{j>=k} ( p_(j) * n_tests / j ), capped at 1.
+    """
+    p = np.asarray(pvalues, dtype=float)
+    if p.size == 0:
+        return p
+    order = np.argsort(p, kind="mergesort")
+    ranked = p[order]
+    ranks = np.arange(1, p.size + 1)
+    raw = ranked * n_tests / ranks
+    # Enforce monotonicity from the largest rank downward.
+    q_sorted = np.minimum.accumulate(raw[::-1])[::-1]
+    q_sorted = np.clip(q_sorted, 0.0, 1.0)
+    q = np.empty_like(q_sorted)
+    q[order] = q_sorted
+    return q
+
+
+def _per_sequence_stats(
+    hits: pd.DataFrame, universe: list[str], n_tests: int, q_thresh: float
 ) -> dict:
-    """Compute all gate metrics. Returns a dict with per-gate results + summary."""
-    universe = [r.id for r in SeqIO.parse(str(promoters_fasta), "fasta")]
-    n_total = len(universe)
-    labels_map = {sid: bio.classify_locus(sid) for sid in universe}
+    """
+    Collapse FIMO rows to per-sequence stats with a SAME-ROW strict-hit definition.
 
-    hits = _load_fimo(genome_fimo_tsv)
-    has_q = "q-value" in hits.columns
-
-    # Per-sequence best score and best q over reported FIMO rows.
+    A sequence is a strict hit iff it has at least one site whose score > 0 AND whose
+    genome-wide BH q-value < q_thresh on the SAME row (audit C5 fix).
+    """
     best_score = {sid: float("-inf") for sid in universe}
     best_q = {sid: 1.0 for sid in universe}
+    strict = set()
+
+    if not hits.empty and "p-value" in hits.columns:
+        bh_q = benjamini_hochberg_q(hits["p-value"].to_numpy(), n_tests)
+        hits = hits.assign(bh_q=bh_q)
+    else:
+        hits = hits.assign(bh_q=pd.Series(dtype=float))
+
     for _, row in hits.iterrows():
         sid = str(row["sequence_name"])
         if sid not in best_score:
             best_score[sid] = float("-inf")
             best_q[sid] = 1.0
-            labels_map[sid] = bio.classify_locus(sid)
         sc = float(row.get("score", float("-inf")))
+        rq = float(row.get("bh_q", 1.0))
         if sc > best_score[sid]:
             best_score[sid] = sc
-        if has_q and pd.notna(row.get("q-value")):
-            best_q[sid] = min(best_q[sid], float(row["q-value"]))
+        if np.isfinite(rq):
+            best_q[sid] = min(best_q[sid], rq)
+        # SAME-ROW strict hit.
+        if sc > 0 and np.isfinite(rq) and rq < q_thresh:
+            strict.add(sid)
+    return {"best_score": best_score, "best_q": best_q, "strict_hits": strict}
 
-    # Strict hit = q < thresh AND score > 0.
-    def is_strict_hit(sid: str) -> bool:
-        return best_score[sid] > 0 and (best_q[sid] < q_thresh if has_q else True)
 
-    strict_hits = {sid for sid in best_score if is_strict_hit(sid)}
+def evaluate(
+    promoters_fasta: Path,
+    genome_fimo_tsv: Path,
+    motif_file: Path | None = None,
+    q_thresh: float = Q_THRESH,
+) -> dict:
+    """Compute gates G2, G3, G4 with a genome-wide BH FDR. G1/G5 are merged by main.py."""
+    records = list(SeqIO.parse(str(promoters_fasta), "fasta"))
+    universe = [r.id for r in records]
+    seq_lengths = [len(r.seq) for r in records]
+    n_total = len(universe)
+    labels_map = {sid: bio.classify_locus(sid) for sid in universe}
 
-    # Ranking score per sequence (floor for never-scored sequences).
+    motif_widths = _motif_widths(motif_file)
+    n_tests = genome_wide_test_count(seq_lengths, motif_widths)
+    if n_tests == 0:
+        logger.warning(
+            "Genome-wide test count is 0 (no motif widths?). FDR will be unavailable."
+        )
+
+    hits = _load_fimo(genome_fimo_tsv)
+    stats = _per_sequence_stats(hits, universe, n_tests, q_thresh)
+    best_score, best_q, strict_hits = (
+        stats["best_score"],
+        stats["best_q"],
+        stats["strict_hits"],
+    )
+
+    # Genome-wide ranking score per sequence (floor for never-scored sequences).
     finite = [s for s in best_score.values() if np.isfinite(s)]
     floor = (min(finite) - 1.0) if finite else 0.0
     rank_score = np.array(
         [best_score[s] if np.isfinite(best_score[s]) else floor for s in universe]
     )
+    # Top 5% cutoff over the FULL universe (audit C10 fix: was over scored-only).
+    top_cut = (
+        float(np.quantile(rank_score, 1 - TOP_FRACTION)) if n_total else float("inf")
+    )
 
     # ── G3 specificity ──────────────────────────────────────────────────────────
-    hit_fraction = len([s for s in universe if s in strict_hits]) / max(n_total, 1)
+    n_hit = len([s for s in universe if s in strict_hits])
+    hit_fraction = n_hit / max(n_total, 1)
     g3 = {
         "name": "specificity",
-        "hit_fraction": round(hit_fraction, 4),
-        "n_hit_promoters": len([s for s in universe if s in strict_hits]),
+        "hit_fraction": round(hit_fraction, 5),
+        "n_hit_promoters": n_hit,
         "n_total_promoters": n_total,
+        "n_genome_wide_tests": n_tests,
         "ceiling": SPECIFICITY_CEILING,
+        "fdr_q_threshold": q_thresh,
         "pass": hit_fraction <= SPECIFICITY_CEILING,
     }
 
-    # ── G2 known-site recovery ────────────────────────────────────────────────────
-    # Top 5% score cutoff among scored sequences.
-    scored = np.array([best_score[s] for s in universe if np.isfinite(best_score[s])])
-    top_cut = np.quantile(scored, 1 - TOP_FRACTION) if len(scored) else float("inf")
-    operator_recovery = {}
-    for sid in sorted(bio.KNOWN_OPERATOR_SEQUENCES):
+    # ── G2 held-out site recovery ─────────────────────────────────────────────────
+    def recovery(sid: str) -> dict:
         present = sid in best_score and np.isfinite(best_score[sid])
-        operator_recovery[sid] = {
+        return {
             "scanned": bool(present),
             "best_score": round(best_score[sid], 3) if present else None,
-            "best_q": round(best_q[sid], 6) if present else None,
+            "best_bh_q": round(best_q[sid], 8) if present else None,
             "strict_hit": sid in strict_hits,
             "in_top5pct": bool(present and best_score[sid] >= top_cut),
         }
-    # Require both mapped operator IGRs to be recovered (strict hit + top 5%).
-    igr_ok = all(
-        operator_recovery.get(igr, {}).get("strict_hit")
-        and operator_recovery.get(igr, {}).get("in_top5pct")
-        for igr in bio.OPERATOR_IGRS
-    )
+
+    heldout = bio.HELDOUT_OPERATOR_IGR
+    training = bio.TRAINING_OPERATOR_IGR
+    heldout_rec = recovery(heldout)
+    training_rec = recovery(training)
+    g2_pass = bool(heldout_rec["strict_hit"] and heldout_rec["in_top5pct"])
     g2 = {
-        "name": "known_site_recovery",
-        "operator_igrs": list(bio.OPERATOR_IGRS),
-        "recovery": operator_recovery,
-        "top5pct_score_cutoff": round(float(top_cut), 3)
-        if np.isfinite(top_cut)
-        else None,
-        "pass": bool(igr_ok),
+        "name": "heldout_site_recovery",
+        "heldout_operator_igr": heldout,
+        "heldout_recovery": heldout_rec,
+        "training_operator_igr": training,
+        "training_recovery_positive_control": training_rec,
+        "top5pct_score_cutoff": round(top_cut, 3) if np.isfinite(top_cut) else None,
+        "note": (
+            "Pass depends ONLY on the held-out Rv1935c-Rv1936 operator, which is not used "
+            "to build the knowledge PWM. The mce3R-yrbE3A region is a training positive "
+            "control (expected to recover; not counted)."
+        ),
+        "pass": g2_pass,
     }
 
-    # ── G4 regulon enrichment ─────────────────────────────────────────────────────
-    y = np.array(
-        [1 if labels_map[s] in ("operator", "regulon") else 0 for s in universe]
-    )
-    auprc, auroc = _auprc_auroc(rank_score, y)
-    baseline_auprc = y.sum() / len(y)
-
-    n_pos = int(y.sum())
-    obs_pos_hits = sum(
-        1
-        for s in universe
-        if labels_map[s] in ("operator", "regulon") and s in strict_hits
-    )
-    total_hits = len([s for s in universe if s in strict_hits])
-
-    # Random-set empirical null: sample n_pos promoters at random, count hits.
-    rng = np.random.default_rng(NULL_SEED)
-    hit_mask = np.array([1 if s in strict_hits else 0 for s in universe])
-    null_counts = np.array(
-        [
-            hit_mask[rng.choice(n_total, size=n_pos, replace=False)].sum()
-            for _ in range(N_RANDOM_NULL)
-        ]
-    )
-    emp_p = float((np.sum(null_counts >= obs_pos_hits) + 1) / (N_RANDOM_NULL + 1))
-
-    # Hypergeometric p (analytic): P(X >= obs) drawing n_pos from n_total with total_hits successes.
-    def hypergeom_sf(k, M, n, N):
-        # P(X >= k) for X~Hypergeometric(M population, n successes, N draws).
-        if N == 0 or n == 0:
-            return 1.0
-        denom = comb(M, N)
-        total = 0
-        upper = min(n, N)
-        for x in range(k, upper + 1):
-            total += comb(n, x) * comb(M - n, N - x)
-        return total / denom if denom else 1.0
-
-    try:
-        hg_p = float(hypergeom_sf(obs_pos_hits, n_total, total_hits, n_pos))
-    except (ValueError, OverflowError):
-        hg_p = float("nan")
-
-    # Negative-control hit rate (mce1/2/4 must look like background).
+    # ── G4 negative-control specificity ───────────────────────────────────────────
     neg = [s for s in universe if labels_map[s] == "negative_control"]
-    neg_hits = sum(1 for s in neg if s in strict_hits)
-    neg_rate = neg_hits / len(neg) if neg else None
-
+    neg_strict = [s for s in neg if s in strict_hits]
+    neg_top = [
+        s for s in neg if np.isfinite(best_score[s]) and best_score[s] >= top_cut
+    ]
+    neg_rate = len(neg_strict) / len(neg) if neg else None
+    n_declared = len(bio.NEGATIVE_CONTROL_GENES)
     g4 = {
-        "name": "regulon_enrichment",
-        "auprc": round(auprc, 4) if np.isfinite(auprc) else None,
-        "auprc_baseline": round(float(baseline_auprc), 4),
-        "auroc": round(auroc, 4) if np.isfinite(auroc) else None,
-        "n_positives": n_pos,
-        "observed_positive_hits": obs_pos_hits,
-        "total_strict_hits": total_hits,
-        "empirical_p_random_set": round(emp_p, 5),
-        "hypergeometric_p": round(hg_p, 6) if np.isfinite(hg_p) else None,
+        "name": "negative_control_specificity",
+        # Honest coverage: co-transcribed interior genes of mce1/2/4 have no own promoter,
+        # so only a subset of declared controls is testable. Reported, not hidden (C-1).
+        "n_negative_controls_declared": n_declared,
+        "n_negative_controls_tested": len(neg),
+        "negative_control_coverage_note": (
+            f"{len(neg)} of {n_declared} declared mce1/2/4 genes have a promoter in the "
+            "universe and are testable; the rest are co-transcribed interior operon genes."
+        ),
+        "negative_controls_tested": sorted(neg),
+        "negative_control_strict_hits": sorted(neg_strict),
+        "negative_control_in_top5pct": sorted(neg_top),
         "negative_control_hit_rate": round(neg_rate, 4)
         if neg_rate is not None
         else None,
-        "background_hit_rate": round(hit_fraction, 4),
-        "pass": bool(
-            np.isfinite(auprc)
-            and auprc > 0.5
-            and emp_p < 0.05
-            and (neg_rate is None or neg_rate <= hit_fraction + 1e-9)
+        "background_hit_rate": round(hit_fraction, 5),
+        "note": (
+            "Mce3R does not regulate mce1/mce2/mce4 (Santangelo 2008). A specific operator "
+            "model must leave them at background: zero strict hits and none in the top 5%."
         ),
+        # Descriptive only (NOT a pass criterion): the leaky regulon AUPRC the audit flagged.
+        "descriptive_regulon_auprc": _descriptive_regulon_auprc(
+            universe, labels_map, rank_score
+        ),
+        "pass": bool(neg and len(neg_strict) == 0 and len(neg_top) == 0),
     }
 
-    # ── G5 conservation ───────────────────────────────────────────────────────────
-    g5 = {
-        "name": "conservation",
-        "n_orthologs_with_operator": 0,
-        "min_required": CONSERVATION_MIN_ORTHOLOGS,
-        "pass": False,
-    }
-    if ortholog_fimo_tsv is not None and Path(ortholog_fimo_tsv).exists():
-        odf = _load_fimo(ortholog_fimo_tsv)
-        if not odf.empty:
-            pos = odf[odf["score"] > 0] if "score" in odf.columns else odf
-            n_orth = pos["sequence_name"].nunique()
-            g5["n_orthologs_with_operator"] = int(n_orth)
-            g5["pass"] = n_orth >= CONSERVATION_MIN_ORTHOLOGS
-            g5["underpowered"] = n_orth < CONSERVATION_MIN_ORTHOLOGS
-
-    gates = {"G2": g2, "G3": g3, "G4": g4, "G5": g5}
-    gates["all_core_pass"] = bool(
-        g2["pass"] and g3["pass"] and g4["pass"]
-    )  # G2-G4 don't need extra orthologs
+    gates = {"G2": g2, "G3": g3, "G4": g4}
     return gates
 
 
+def _descriptive_regulon_auprc(universe, labels_map, rank_score) -> dict:
+    """
+    The old G4 metric, kept ONLY as a descriptive readout with an explicit caveat.
+
+    It is circular as a gate (most positives are the PWM's own training regions), so it is
+    never used for pass/fail — reported so the regression vs the old pipeline is visible.
+    """
+    y = np.array(
+        [1 if labels_map[s] in ("operator", "regulon") else 0 for s in universe]
+    )
+    if y.sum() == 0 or y.sum() == len(y):
+        return {"auprc": None, "auroc": None, "caveat": "degenerate label set"}
+    try:
+        from sklearn.metrics import average_precision_score, roc_auc_score
+
+        ap = float(average_precision_score(y, rank_score))
+        roc = float(roc_auc_score(y, rank_score))
+    except Exception:
+        ap, roc = None, None
+    return {
+        "auprc": round(ap, 4) if ap is not None else None,
+        "auroc": round(roc, 4) if roc is not None else None,
+        "n_positives": int(y.sum()),
+        "caveat": (
+            "CIRCULAR — most positives are the operator-flanking regions used to train the "
+            "PWM. Descriptive only; not a validation gate."
+        ),
+    }
+
+
 def write_report(gates: dict, output_path: Path) -> None:
-    lines = ["=" * 72, "  MCE3R OPERATOR SCAN — VALIDATION REPORT", "=" * 72, ""]
-    for key in ("G2", "G3", "G4", "G5"):
-        g = gates[key]
+    order = ["G1", "G2", "G3", "G4", "G5"]
+    lines = [
+        "=" * 72,
+        "  MCE3R OPERATOR SCAN — VALIDATION REPORT (non-circular)",
+        "=" * 72,
+        "",
+    ]
+    for key in order:
+        g = gates.get(key)
+        if g is None:
+            continue
         status = "PASS" if g.get("pass") else "FAIL"
-        lines.append(f"[{key}] {g['name']:<22} {status}")
+        lines.append(f"[{key}] {g.get('name', ''):<28} {status}")
         for k, v in g.items():
-            if k in ("name", "pass", "recovery"):
+            if k in ("name", "pass"):
                 continue
             lines.append(f"      {k}: {v}")
-        if key == "G2":
-            for sid, rec in g["recovery"].items():
-                if sid in bio.OPERATOR_IGRS:
-                    lines.append(f"      operator {sid}: {rec}")
         lines.append("")
-    lines.append(f"CORE GATES (G2-G4) PASS: {gates['all_core_pass']}")
+    if "all_gates_pass" in gates:
+        lines.append(f"ALL GATES PASS (G1-G5): {gates['all_gates_pass']}")
+    elif "G2_G3_G4_pass" in gates:
+        lines.append(
+            f"G2-G4 PASS (partial; run main.py for G1+G5): {gates['G2_G3_G4_pass']}"
+        )
     lines.append("=" * 72)
     Path(output_path).parent.mkdir(parents=True, exist_ok=True)
     Path(output_path).write_text("\n".join(lines) + "\n")
@@ -299,7 +350,15 @@ def main():
     parser.add_argument(
         "--fimo", type=Path, default=root / "results" / "scans" / "fimo.tsv"
     )
-    parser.add_argument("--ortholog-fimo", type=Path, default=None)
+    parser.add_argument(
+        "--motif-file",
+        type=Path,
+        default=root
+        / "results"
+        / "motifs"
+        / "operator_knowledge"
+        / "operator_knowledge.meme",
+    )
     parser.add_argument(
         "--output",
         type=Path,
@@ -310,7 +369,16 @@ def main():
     )
     args = parser.parse_args()
 
-    gates = evaluate(args.promoters, args.fimo, args.ortholog_fimo)
+    gates = evaluate(args.promoters, args.fimo, args.motif_file)
+    # Standalone validate computes ONLY G2/G3/G4 (G1 external + G5 conservation need the
+    # MEME/Tomtom steps in main.py). Use a scoped key so this can never be mistaken for the
+    # 5-gate verdict that main.py writes (audit self-check H-2).
+    gates["G2_G3_G4_pass"] = bool(
+        gates["G2"]["pass"] and gates["G3"]["pass"] and gates["G4"]["pass"]
+    )
+    gates["note"] = (
+        "Partial: run main.py for the full 5-gate verdict (G1 + G5 included)."
+    )
     write_report(gates, args.output)
     Path(args.json_out).write_text(json.dumps(gates, indent=2, default=str))
     print(Path(args.output).read_text())

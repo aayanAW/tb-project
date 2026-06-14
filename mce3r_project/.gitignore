@@ -1,0 +1,16 @@
+# Regenerated from the GenBank file by main.py (ensure-genome step) — do not commit.
+data/raw/Mtb_H37Rv.fasta
+
+# Bulky / derived MEME-Suite render artifacts (the .txt/.meme/.tsv outputs are kept).
+*.html
+results/scans/fimo.xml
+results/scans/fimo.gff
+results/scans/cisml.xml
+results/scans/best_site.narrowPeak
+results/**/*.eps
+results/**/logo*.png
+results/**/logo*.eps
+
+# Stale artifact from the superseded ortholog-FIMO conservation path (now LOLO).
+results/scans/fimo_orthologs.tsv
+results/scans/_orthologs/

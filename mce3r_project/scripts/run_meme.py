@@ -126,11 +126,23 @@ def run_meme(
 
     meme_txt = output_dir / "meme.txt"
     if meme_txt.exists():
+        # Distinguish a harmless non-zero exit (EPS->PNG / XML->HTML conversion failed for
+        # lack of Ghostscript/ImageMagick) from a genuinely truncated run: a valid meme.txt
+        # must contain at least one MOTIF block. If it does not, fail loud (audit C6/L-2).
+        has_motif = any(
+            line.startswith("MOTIF ") for line in meme_txt.read_text().splitlines()
+        )
+        if not has_motif:
+            logger.error(
+                f"MEME wrote {meme_txt} but it contains no MOTIF block (truncated/failed; "
+                f"exit {result.returncode})."
+            )
+            if result.stderr:
+                logger.error(f"stderr:\n{result.stderr[-1000:]}")
+            raise RuntimeError(f"MEME produced a motif-free output: {meme_txt}")
         if result.returncode != 0:
-            # MEME often returns non-zero only because EPS->PNG / XML->HTML conversion
-            # failed (missing Ghostscript/ImageMagick) while meme.txt is fully written.
             logger.warning(
-                f"MEME exit code {result.returncode} but meme.txt was written "
+                f"MEME exit code {result.returncode} but a complete meme.txt was written "
                 "(likely only logo/HTML conversion failed — harmless)."
             )
         logger.info(f"MEME completed -> {meme_txt}")

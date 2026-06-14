@@ -187,8 +187,9 @@ def main():
     )
     parser.add_argument(
         "--email",
-        default="alwaniaayan6@gmail.com",
-        help="Email for NCBI Entrez (required by policy)",
+        default=None,
+        help="Email for NCBI Entrez (required by NCBI policy). Falls back to the "
+        "NCBI_EMAIL environment variable; no personal default is shipped.",
     )
     parser.add_argument("--api-key", default=None)
     parser.add_argument("--max-species", type=int, default=20)
@@ -205,9 +206,16 @@ def main():
     )
     args = parser.parse_args()
 
+    import os
+
+    email = args.email or os.environ.get("NCBI_EMAIL")
+    if not email:
+        parser.error(
+            "NCBI Entrez requires an email. Pass --email or set NCBI_EMAIL in the env."
+        )
     n = fetch_orthologs(
         args.output,
-        args.email,
+        email,
         max_species=args.max_species,
         upstream=args.upstream,
         api_key=args.api_key,

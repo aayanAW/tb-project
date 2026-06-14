@@ -96,6 +96,78 @@ OPERATOR_SITE_SPACER = 53  # bp between the two sites (2024 paper)
 OPERATOR_IS_PALINDROMIC = False  # explicitly nonpalindromic (2024 paper)
 
 
+# ── Held-out vs training designation (anti-circularity) ─────────────────────────
+# The knowledge-based PWM (build_operator_model.py) is trained ONLY on the
+# mce3R-yrbE3A operator window (PRIMARY_OPERATOR_IGR) + ortholog upstream windows.
+# The Rv1935c-Rv1936 operator region (SECOND_OPERATOR_IGR) is NEVER used in PWM
+# construction, so its recovery is a genuine HELD-OUT generalization test, not the
+# tautological re-recovery of training data flagged in the audit (C2/C4).
+TRAINING_OPERATOR_IGR = PRIMARY_OPERATOR_IGR
+HELDOUT_OPERATOR_IGR = SECOND_OPERATOR_IGR
+
+
+# ── Downstream co-transcribed regulon genes that carry NO operator ──────────────
+# Mce3R binds the two divergent operator IGRs; the downstream genes of each operon
+# are repressed because they are co-transcribed, NOT because each has its own
+# operator site (Santangelo 2009). A genuine binding-site scan must therefore NOT
+# light these up — they are the specificity check the leaky "regulon AUPRC" missed.
+# These are the regulon genes EXCLUDING the two operator-flanking promoters.
+OPERATOR_FLANKING_GENES = {"Rv1963c", "Rv1964", "Rv1935c", "Rv1936"}
+DOWNSTREAM_REGULON_NO_OPERATOR = KNOWN_REGULON - OPERATOR_FLANKING_GENES
+
+
+# ── Mycobacterial lineage grouping for conservation (anti-pseudo-replication) ────
+# The conservation gate previously counted 4 near-clonal M. tuberculosis-complex
+# (MTBC) members as 4 independent species (>99.9% identical → pseudo-replication,
+# audit C7). Collapse each MTBC member to ONE effective lineage; the M. marinum
+# clade (marinum/ulcerans/liflandii) and the M. smegmatis outgroup are independent.
+# Keyed by the species_key prefix used in ortholog FASTA ids
+# (e.g. "mycobacterium_tuberculosis").
+ORTHOLOG_LINEAGE = {
+    "mycobacterium_tuberculosis": "MTBC",
+    "mycobacterium_bovis": "MTBC",
+    "mycobacterium_africanum": "MTBC",
+    "mycobacterium_canettii": "MTBC",
+    "mycobacterium_marinum": "M_marinum_clade",
+    "mycobacterium_ulcerans": "M_marinum_clade",
+    "mycobacterium_liflandii": "M_marinum_clade",
+    "mycobacterium_smegmatis": "M_smegmatis",
+}
+# Effective independent lineages available in the frozen ortholog set = 3
+# (MTBC, M. marinum clade, M. smegmatis). The conservation gate is judged at the
+# lineage level, not the species level.
+CONSERVATION_MIN_LINEAGES = 2  # operator conserved in >= 2 independent lineages
+
+
+def ortholog_lineage(seq_id: str) -> str:
+    """Map an ortholog FASTA id to its effective lineage (defaults to the id stem)."""
+    key = "_".join(str(seq_id).split("_")[:2]).lower()
+    return ORTHOLOG_LINEAGE.get(key, key)
+
+
+# ── Independently-published operator motif sites (EXTERNAL reference) ────────────
+# These site sequences were derived by OTHER laboratories using DNase I footprinting
+# and independent MEME analysis — they are NOT outputs of this pipeline. Matching the
+# knowledge-based PWM against a PWM built from these sites is therefore a genuine
+# external-corroboration test (G1), not two MEME runs over shared DNA agreeing
+# (the circularity flagged in audit C1).
+#
+# Source: de la Paz Santangelo M et al. 2009, Microbiology 155:2245
+#   (doi:10.1099/mic.0.027086-0) — operator half-site sequences in the mce3R-yrbE3A
+#   and Rv1935c-Rv1936 intergenic regions (Fig. 6 / Table; consensus TANNNCAAAATACAT).
+# Cross-referenced against the Eram Kabir 2021 lab-rotation footprint summary
+# (mce3r_stochastic/reference_docs/Eram_ResearchSummaryFinalUPD.pdf).
+SANTANGELO_2009_OPERATOR_SITES = (
+    "GACTAACAAAATACAT",
+    "TATCAGTAATAGACAT",
+    "TACTAGCAAGATACAT",
+    "TATTGGCTATGGACAT",
+)
+SANTANGELO_2009_CITATION = (
+    "Santangelo et al. 2009, Microbiology 155:2245 (doi:10.1099/mic.0.027086-0)"
+)
+
+
 def classify_locus(locus_tag: str) -> str:
     """
     Classify a sequence/locus for validation.

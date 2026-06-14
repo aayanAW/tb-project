@@ -1,0 +1,6 @@
+Query_ID	Target_ID	Optimal_offset	p-value	E-value	q-value	Overlap	Query_consensus	Target_consensus	Orientation
+CAAGYDATMGSDTAHTRGCWATRBACATC	Santangelo2009_operator	-12	1.30471e-08	1.30471e-08	2.60941e-08	16	CAAGCGATCGGGTAATAGCAATGTACATC	TACTAGCAATAGACAT	+
+
+# Tomtom (Motif Comparison Tool): Version 5.5.9 compiled on May 27 2026 at 13:17:22
+# The format of this file is described at https://meme-suite.org/meme/doc/tomtom-output-format.html.
+# tomtom -no-ssc -oc '/Users/aayanalwani/tb project/mce3r_project/results/motifs/external/tomtom_external' -thresh 0.05 -dist pearson '/Users/aayanalwani/tb project/mce3r_project/results/motifs/operator_knowledge/operator_knowledge.meme' '/Users/aayanalwani/tb project/mce3r_project/results/motifs/external/santangelo2009.meme'

@@ -1,0 +1,7 @@
+# 0-order Markov frequencies from file /Users/aayanalwani/tb project/mce3r_project/data/raw/ortholog_promoters.fasta
+# seqs: 8    min: 250    max: 250    avg: 250.0    sum: 2000    alph: DNA
+# order 0
+A 2.138e-01
+C 2.862e-01
+G 2.862e-01
+T 2.138e-01

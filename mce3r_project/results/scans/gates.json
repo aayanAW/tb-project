@@ -1,91 +1,135 @@
 {
   "G2": {
-    "name": "known_site_recovery",
-    "operator_igrs": [
-      "IGR_Rv1963c_Rv1964",
-      "IGR_Rv1935c_Rv1936"
-    ],
-    "recovery": {
-      "IGR_Rv1935c_Rv1936": {
-        "scanned": true,
-        "best_score": 11.149,
-        "best_q": 0.00706,
-        "strict_hit": true,
-        "in_top5pct": true
-      },
-      "IGR_Rv1963c_Rv1964": {
-        "scanned": true,
-        "best_score": 43.067,
-        "best_q": 0.0,
-        "strict_hit": true,
-        "in_top5pct": true
-      },
-      "Rv1935c": {
-        "scanned": true,
-        "best_score": 11.149,
-        "best_q": 0.00706,
-        "strict_hit": true,
-        "in_top5pct": true
-      },
-      "Rv1936": {
-        "scanned": true,
-        "best_score": 11.149,
-        "best_q": 0.00706,
-        "strict_hit": true,
-        "in_top5pct": true
-      },
-      "Rv1963c": {
-        "scanned": true,
-        "best_score": -7.628,
-        "best_q": 0.253,
-        "strict_hit": false,
-        "in_top5pct": true
-      },
-      "Rv1964": {
-        "scanned": true,
-        "best_score": 43.067,
-        "best_q": 0.0,
-        "strict_hit": true,
-        "in_top5pct": true
-      }
+    "name": "heldout_site_recovery",
+    "heldout_operator_igr": "IGR_Rv1935c_Rv1936",
+    "heldout_recovery": {
+      "scanned": true,
+      "best_score": 11.149,
+      "best_bh_q": 0.01044635,
+      "strict_hit": true,
+      "in_top5pct": true
     },
-    "top5pct_score_cutoff": -9.585,
+    "training_operator_igr": "IGR_Rv1963c_Rv1964",
+    "training_recovery_positive_control": {
+      "scanned": true,
+      "best_score": 43.067,
+      "best_bh_q": 0.0,
+      "strict_hit": true,
+      "in_top5pct": true
+    },
+    "top5pct_score_cutoff": -13.67,
+    "note": "Pass depends ONLY on the held-out Rv1935c-Rv1936 operator, which is not used to build the knowledge PWM. The mce3R-yrbE3A region is a training positive control (expected to recover; not counted).",
     "pass": true
   },
   "G3": {
     "name": "specificity",
-    "hit_fraction": 0.0021,
+    "hit_fraction": 0.00213,
     "n_hit_promoters": 5,
     "n_total_promoters": 2352,
+    "n_genome_wide_tests": 1536228,
     "ceiling": 0.05,
+    "fdr_q_threshold": 0.05,
     "pass": true
   },
   "G4": {
-    "name": "regulon_enrichment",
-    "auprc": 0.8542,
-    "auprc_baseline": 0.0026,
-    "auroc": 0.997,
-    "n_positives": 6,
-    "observed_positive_hits": 5,
-    "total_strict_hits": 5,
-    "empirical_p_random_set": 0.001,
-    "hypergeometric_p": 0.0,
+    "name": "negative_control_specificity",
+    "n_negative_controls_declared": 24,
+    "n_negative_controls_tested": 4,
+    "negative_control_coverage_note": "4 of 24 declared mce1/2/4 genes have a promoter in the universe and are testable; the rest are co-transcribed interior operon genes.",
+    "negative_controls_tested": [
+      "Rv0586",
+      "Rv0591",
+      "Rv3501c",
+      "Rv3503c"
+    ],
+    "negative_control_strict_hits": [],
+    "negative_control_in_top5pct": [],
     "negative_control_hit_rate": 0.0,
-    "background_hit_rate": 0.0021,
+    "background_hit_rate": 0.00213,
+    "note": "Mce3R does not regulate mce1/mce2/mce4 (Santangelo 2008). A specific operator model must leave them at background: zero strict hits and none in the top 5%.",
+    "descriptive_regulon_auprc": {
+      "auprc": 0.8542,
+      "auroc": 0.997,
+      "n_positives": 6,
+      "caveat": "CIRCULAR \u2014 most positives are the operator-flanking regions used to train the PWM. Descriptive only; not a validation gate."
+    },
     "pass": true
+  },
+  "G1": {
+    "name": "external_corroboration",
+    "reference": "Santangelo et al. 2009, Microbiology 155:2245 (doi:10.1099/mic.0.027086-0)",
+    "tomtom_best_qvalue": 2.60941e-08,
+    "matched": true,
+    "note": "Knowledge PWM vs a PWM built from independently-published footprinted operator sites. Methodologically independent of this pipeline's MEME runs.",
+    "pass": true,
+    "internal_consistency_denovo_tomtom_q": 1.6854e-15,
+    "internal_consistency_matched": true
   },
   "G5": {
-    "name": "conservation",
-    "n_orthologs_with_operator": 7,
-    "min_required": 8,
-    "pass": false,
-    "underpowered": true
+    "name": "conservation_leave_one_lineage_out",
+    "lineages": [
+      "MTBC",
+      "M_marinum_clade",
+      "M_smegmatis"
+    ],
+    "n_lineages": 3,
+    "n_lineages_detected": 1,
+    "n_lineages_positionally_significant": 2,
+    "min_required_lineages": 2,
+    "detection_p_threshold": 0.001,
+    "per_lineage": {
+      "MTBC": {
+        "detected": true,
+        "n_test_windows": 4,
+        "n_train_windows": 4,
+        "detected_windows": [
+          "mycobacterium_africanum_yrbE3A_upstream",
+          "mycobacterium_bovis_yrbE3A_upstream",
+          "mycobacterium_canettii_yrbE3A_upstream"
+        ],
+        "positionally_significant_windows": [
+          "mycobacterium_africanum_yrbE3A_upstream",
+          "mycobacterium_bovis_yrbE3A_upstream",
+          "mycobacterium_canettii_yrbE3A_upstream",
+          "mycobacterium_tuberculosis_yrbE3A_upstream"
+        ]
+      },
+      "M_marinum_clade": {
+        "detected": false,
+        "n_test_windows": 3,
+        "n_train_windows": 5,
+        "detected_windows": [],
+        "positionally_significant_windows": [
+          "mycobacterium_liflandii_yrbE3A_upstream",
+          "mycobacterium_marinum_yrbE3A_upstream",
+          "mycobacterium_ulcerans_yrbE3A_upstream"
+        ]
+      },
+      "M_smegmatis": {
+        "detected": false,
+        "n_test_windows": 1,
+        "n_train_windows": 7,
+        "detected_windows": [],
+        "positionally_significant_windows": []
+      }
+    },
+    "note": "Each lineage is scored by a PWM trained on the OTHER lineages only (non-circular). MTBC near-clones collapsed to one lineage. 'detected' is the gate (score>0 AND p<thresh); 'positionally_significant' is a sensitivity readout (p<thresh, any sign) that is NOT used for pass/fail.",
+    "pass": false
   },
-  "all_core_pass": true,
-  "G1": {
-    "name": "operator_recovered_not_injected",
-    "matched": true,
-    "best_qvalue": 1.6854e-15,
-    "pass": true
+  "all_gates_pass": false,
+  "provenance": {
+    "git_sha": "1916bded18a6e466168e68a5e715d7c41478c6d4",
+    "git_dirty": true,
+    "tool_versions": {
+      "meme": "5.5.9",
+      "fimo": "5.5.9",
+      "tomtom": "5.5.9"
+    },
+    "input_checksums": {
+      "promoters.fasta": "sha256:ac60d520ecf252f6",
+      "ortholog_promoters.fasta": "sha256:f4c600ef996b6d67",
+      "operator_knowledge.meme": "sha256:248caebfbf461e02",
+      "fimo.tsv": "sha256:17b5da3968a74f01"
+    }
   }
 }

@@ -1,0 +1,7 @@
+Query_ID	Target_ID	Optimal_offset	p-value	E-value	q-value	Overlap	Query_consensus	Target_consensus	Orientation
+ATWGCYAWTAHSCGATWGYTT	CAAGYDATMGSDTAHTRGCWATRBACATC	7	4.2135e-16	8.427e-16	1.6854e-15	21	ATAGCTAATATCCGATAGCTT	GATGTACATTGCTATTACCCGATCGCTTG	-
+GGYSAGCGTRCGCSRCMKMAC	YSGCGYACGCTSRCCMMYSKSACMGRTCG	14	1.40883e-06	2.81766e-06	5.63532e-06	15	GGTCAGCGTGCGCCGCCGCAC	CGACCGGTCCCGTTGGTCAGCGTGCGCGG	-
+
+# Tomtom (Motif Comparison Tool): Version 5.5.9 compiled on May 27 2026 at 13:17:22
+# The format of this file is described at https://meme-suite.org/meme/doc/tomtom-output-format.html.
+# tomtom -no-ssc -oc '/Users/aayanalwani/tb project/mce3r_project/results/motifs/denovo/tomtom' -thresh 0.05 -dist pearson '/Users/aayanalwani/tb project/mce3r_project/results/motifs/denovo/operator_denovo.meme' '/Users/aayanalwani/tb project/mce3r_project/results/motifs/operator_knowledge/operator_knowledge.meme'

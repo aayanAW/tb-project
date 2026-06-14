@@ -52,9 +52,20 @@ def build_positive_set(igrs_fasta: Path, orthologs_fasta: Path, out_fasta: Path)
 
 
 def build_control_set(
-    igrs_fasta: Path, out_fasta: Path, n: int = N_CONTROL_IGRS
+    igrs_fasta: Path,
+    out_fasta: Path,
+    n: int = N_CONTROL_IGRS,
+    target_len: int | None = None,
 ) -> int:
-    """Negative control = random divergent IGRs excluding the operator regions."""
+    """
+    Negative control = random divergent IGRs excluding the operator regions.
+
+    When target_len is given, each chosen control is trimmed to a random window of that
+    length so the control and positive sets are length-matched (audit C9: MEME must not be
+    able to key on length/composition differences instead of the operator motif).
+    """
+    from Bio.SeqRecord import SeqRecord
+
     candidates = [
         r
         for r in SeqIO.parse(str(igrs_fasta), "fasta")
@@ -66,9 +77,25 @@ def build_control_set(
         chosen = [candidates[i] for i in sorted(idx)]
     else:
         chosen = candidates
+
+    if target_len:
+        trimmed = []
+        for r in chosen:
+            s = str(r.seq)
+            if len(s) > target_len:
+                off = int(rng.integers(0, len(s) - target_len + 1))
+                s = s[off : off + target_len]
+            trimmed.append(
+                SeqRecord(r.seq.__class__(s), id=r.id, description=r.description)
+            )
+        chosen = trimmed
+
     Path(out_fasta).parent.mkdir(parents=True, exist_ok=True)
     SeqIO.write(chosen, str(out_fasta), "fasta")
-    logger.info(f"De novo negative/control set: {len(chosen)} IGRs -> {out_fasta}")
+    logger.info(
+        f"De novo negative/control set: {len(chosen)} IGRs -> {out_fasta}"
+        + (f" (length-matched to ~{target_len} bp)" if target_len else "")
+    )
     return len(chosen)
 
 
@@ -143,7 +170,9 @@ def discover_denovo(
     pos = output_dir / "positive_set.fasta"
     neg = output_dir / "control_set.fasta"
     n_pos = build_positive_set(igrs_fasta, orthologs_fasta, pos)
-    n_neg = build_control_set(igrs_fasta, neg)
+    pos_lengths = [len(r.seq) for r in SeqIO.parse(str(pos), "fasta")]
+    target_len = int(np.median(pos_lengths)) if pos_lengths else None
+    n_neg = build_control_set(igrs_fasta, neg, target_len=target_len)
 
     w = bio.OPERATOR_SITE_WIDTH
     meme_dir = output_dir / "meme"

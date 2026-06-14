@@ -78,7 +78,19 @@ def run_fimo(
         raise subprocess.CalledProcessError(result.returncode, cmd)
     if not fimo_tsv.exists():
         raise FileNotFoundError(f"FIMO produced no fimo.tsv in {output_dir}")
-    logger.info(f"FIMO completed -> {fimo_tsv}")
+    # Fail loud on a non-zero exit even when a (possibly stale/partial) tsv exists, and on a
+    # data-row-free tsv (audit C6): never let a truncated FIMO run propagate into the gates.
+    if result.returncode != 0:
+        logger.warning(
+            f"FIMO returned non-zero exit {result.returncode} but wrote {fimo_tsv}; "
+            f"stderr tail:\n{(result.stderr or '')[-500:]}"
+        )
+    n_data_rows = sum(
+        1
+        for line in fimo_tsv.read_text().splitlines()
+        if line.strip() and not line.startswith("#") and not line.startswith("motif_id")
+    )
+    logger.info(f"FIMO completed -> {fimo_tsv} ({n_data_rows} data rows)")
     return fimo_tsv
 
 

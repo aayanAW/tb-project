@@ -77,3 +77,33 @@ standards); do not relax a threshold to pass.
   specificity. Reaching ≥ 8 conserved would require protein-similarity (BLAST) ortholog
   mining beyond gene-symbol annotation; logged as future work, not forced here.
 - All other gates (G1–G4) pass on real, non-circular evidence.
+
+## Post-audit correction (2026-06-14) — gates strengthened, not relaxed
+
+A cross-model audit (Claude + Codex/GPT-5.5; `audit_report.md`) ran AFTER the locked gates
+above were evaluated and found the original G1/G2/G4 **circular/leaky** and the FDR not a
+genuine genome-wide BH. Per the decision rule, a gate found invalid cannot be reported as
+passed. The gates were therefore **re-specified to be harder and non-circular** (no
+threshold was loosened to obtain a pass — every change tightens the test):
+
+| Gate | Original (circular)                                                                                                       | Corrected (non-circular)                                                                                                                                                                                                         | Why                                                             |
+| ---- | ------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------- |
+| G1   | de novo MEME vs knowledge PWM by Tomtom — two MEME runs over the SAME operator DNA + orthologs (guaranteed to agree)      | knowledge PWM vs a PWM built from **independently-published** Santangelo 2009 footprinted operator sites                                                                                                                         | external, methodologically independent corroboration (audit C1) |
+| G2   | recover BOTH operator IGRs — but both were used to build the model                                                        | recover only the **held-out** Rv1935c–Rv1936 operator (the knowledge PWM is trained on the mce3R–yrbE3A window + orthologs only); mce3R–yrbE3A reported as a training positive control                                           | a true generalization test (audit C2/C4)                        |
+| G3   | hit fraction ≤ 5% at FIMO's per-report q                                                                                  | hit fraction ≤ 5% at a **pooled genome-wide BH** q<0.05 (M = 2 motifs × 2 strands × Σ(L−w+1) = 1,536,228 tests, recomputed in `validate.py`)                                                                                     | genuine genome-wide FDR (audit C3/C5)                           |
+| G4   | regulon AUPRC>0.5 + empirical p — most "positives" were the PWM's own training regions                                    | **negative-control specificity**: mce1/mce2/mce4 (Mce3R does NOT bind them, Santangelo 2008) must show zero strict hits and none in the top 5%. The old AUPRC is retained as a **descriptive, explicitly-circular** readout only | removes the tautology (audit C2/C5/C10)                         |
+| G5   | operator detected in ≥8 ortholog windows — the SAME windows that trained the PWM; 4 MTBC near-clones counted as 4 species | **leave-one-lineage-out**: each lineage is scored by a PWM trained on the OTHER lineages only; MTBC near-clones collapsed to one lineage; threshold ≥2 of 3 independent lineages; mycobacterial (not H37Rv) background           | non-circular + de-pseudo-replicated (audit C7/S5)               |
+
+Strict-hit definition tightened to require `score>0` **and** genome-wide BH `q<0.05` on the
+**same FIMO row** (audit C5). `all_gates_pass` now requires **all five** gates (the previous
+`all_core_pass` excluded G1/G5 — audit escape hatch removed). Run provenance (git SHA, MEME
+tool versions, input checksums) is stamped into `gates.json` (audit S6).
+
+### Pre-registered nulls — honest deviation (audit C8)
+
+The prereg promised three enrichment nulls (dinucleotide shuffle, random gene-set,
+real-intergenic). Because the corrected G4 is reframed as a **negative-control specificity**
+test (the random-gene-set/hypergeometric enrichment was circular by construction), the
+multi-null enrichment machinery is **not** the gate. The honest specificity evidence is the
+genome-wide hit fraction (G3) + the clean mce1/2/4 negative controls (G4). This deviation is
+recorded here rather than silently dropped.

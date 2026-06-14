@@ -49,7 +49,9 @@ def slice_mtb_operator_window(igrs_fasta: Path) -> SeqRecord | None:
         if rec.id == bio.PRIMARY_OPERATOR_IGR:
             seq = str(rec.seq)
             if len(seq) < far:
-                window = seq  # short IGR: use whole thing
+                # Short IGR: still drop the `near` bp immediately upstream of the start
+                # (the exclusion zone), instead of returning the whole IGR (audit S4).
+                window = seq[: max(0, len(seq) - near)] or seq
             else:
                 window = seq[len(seq) - far : len(seq) - near]
             return SeqRecord(

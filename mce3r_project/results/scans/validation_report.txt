@@ -1,35 +1,52 @@
 ========================================================================
-  MCE3R OPERATOR SCAN — VALIDATION REPORT
+  MCE3R OPERATOR SCAN — VALIDATION REPORT (non-circular)
 ========================================================================
 
-[G2] known_site_recovery    PASS
-      operator_igrs: ['IGR_Rv1963c_Rv1964', 'IGR_Rv1935c_Rv1936']
-      top5pct_score_cutoff: -9.585
-      operator IGR_Rv1935c_Rv1936: {'scanned': True, 'best_score': 11.149, 'best_q': 0.00706, 'strict_hit': True, 'in_top5pct': True}
-      operator IGR_Rv1963c_Rv1964: {'scanned': True, 'best_score': 43.067, 'best_q': 0.0, 'strict_hit': True, 'in_top5pct': True}
+[G1] external_corroboration       PASS
+      reference: Santangelo et al. 2009, Microbiology 155:2245 (doi:10.1099/mic.0.027086-0)
+      tomtom_best_qvalue: 2.60941e-08
+      matched: True
+      note: Knowledge PWM vs a PWM built from independently-published footprinted operator sites. Methodologically independent of this pipeline's MEME runs.
+      internal_consistency_denovo_tomtom_q: 1.6854e-15
+      internal_consistency_matched: True
 
-[G3] specificity            PASS
-      hit_fraction: 0.0021
+[G2] heldout_site_recovery        PASS
+      heldout_operator_igr: IGR_Rv1935c_Rv1936
+      heldout_recovery: {'scanned': True, 'best_score': 11.149, 'best_bh_q': 0.01044635, 'strict_hit': True, 'in_top5pct': True}
+      training_operator_igr: IGR_Rv1963c_Rv1964
+      training_recovery_positive_control: {'scanned': True, 'best_score': 43.067, 'best_bh_q': 0.0, 'strict_hit': True, 'in_top5pct': True}
+      top5pct_score_cutoff: -13.67
+      note: Pass depends ONLY on the held-out Rv1935c-Rv1936 operator, which is not used to build the knowledge PWM. The mce3R-yrbE3A region is a training positive control (expected to recover; not counted).
+
+[G3] specificity                  PASS
+      hit_fraction: 0.00213
       n_hit_promoters: 5
       n_total_promoters: 2352
+      n_genome_wide_tests: 1536228
       ceiling: 0.05
+      fdr_q_threshold: 0.05
 
-[G4] regulon_enrichment     PASS
-      auprc: 0.8542
-      auprc_baseline: 0.0026
-      auroc: 0.997
-      n_positives: 6
-      observed_positive_hits: 5
-      total_strict_hits: 5
-      empirical_p_random_set: 0.001
-      hypergeometric_p: 0.0
+[G4] negative_control_specificity PASS
+      n_negative_controls_declared: 24
+      n_negative_controls_tested: 4
+      negative_control_coverage_note: 4 of 24 declared mce1/2/4 genes have a promoter in the universe and are testable; the rest are co-transcribed interior operon genes.
+      negative_controls_tested: ['Rv0586', 'Rv0591', 'Rv3501c', 'Rv3503c']
+      negative_control_strict_hits: []
+      negative_control_in_top5pct: []
       negative_control_hit_rate: 0.0
-      background_hit_rate: 0.0021
+      background_hit_rate: 0.00213
+      note: Mce3R does not regulate mce1/mce2/mce4 (Santangelo 2008). A specific operator model must leave them at background: zero strict hits and none in the top 5%.
+      descriptive_regulon_auprc: {'auprc': 0.8542, 'auroc': 0.997, 'n_positives': 6, 'caveat': 'CIRCULAR — most positives are the operator-flanking regions used to train the PWM. Descriptive only; not a validation gate.'}
 
-[G5] conservation           FAIL
-      n_orthologs_with_operator: 7
-      min_required: 8
-      underpowered: True
+[G5] conservation_leave_one_lineage_out FAIL
+      lineages: ['MTBC', 'M_marinum_clade', 'M_smegmatis']
+      n_lineages: 3
+      n_lineages_detected: 1
+      n_lineages_positionally_significant: 2
+      min_required_lineages: 2
+      detection_p_threshold: 0.001
+      per_lineage: {'MTBC': {'detected': True, 'n_test_windows': 4, 'n_train_windows': 4, 'detected_windows': ['mycobacterium_africanum_yrbE3A_upstream', 'mycobacterium_bovis_yrbE3A_upstream', 'mycobacterium_canettii_yrbE3A_upstream'], 'positionally_significant_windows': ['mycobacterium_africanum_yrbE3A_upstream', 'mycobacterium_bovis_yrbE3A_upstream', 'mycobacterium_canettii_yrbE3A_upstream', 'mycobacterium_tuberculosis_yrbE3A_upstream']}, 'M_marinum_clade': {'detected': False, 'n_test_windows': 3, 'n_train_windows': 5, 'detected_windows': [], 'positionally_significant_windows': ['mycobacterium_liflandii_yrbE3A_upstream', 'mycobacterium_marinum_yrbE3A_upstream', 'mycobacterium_ulcerans_yrbE3A_upstream']}, 'M_smegmatis': {'detected': False, 'n_test_windows': 1, 'n_train_windows': 7, 'detected_windows': [], 'positionally_significant_windows': []}}
+      note: Each lineage is scored by a PWM trained on the OTHER lineages only (non-circular). MTBC near-clones collapsed to one lineage. 'detected' is the gate (score>0 AND p<thresh); 'positionally_significant' is a sensitivity readout (p<thresh, any sign) that is NOT used for pass/fail.
 
-CORE GATES (G2-G4) PASS: True
+ALL GATES PASS (G1-G5): False
 ========================================================================

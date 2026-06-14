@@ -36,10 +36,15 @@ import pandas as pd
 import mce3r_biology as bio
 from build_background import build_background
 from build_operator_model import build_operator_model
-from discover_denovo import discover_denovo
+from conservation import leave_one_lineage_out
+from discover_denovo import discover_denovo, run_tomtom
+from literature_motif import build_literature_motif
 from run_fimo import run_fimo
 from utils import ensure_directories, get_project_root, require_meme_tool, setup_logging
 from validate import evaluate, write_report
+
+# Keep formatter from dropping these as "unused" before their use sites are scanned.
+_USED = (leave_one_lineage_out, run_tomtom, build_literature_motif)
 
 logger = setup_logging("main")
 
@@ -104,6 +109,11 @@ def ensure_operator_igrs(root: Path, gb: Path, igrs: Path, promoters: Path) -> N
     Make sure each mapped operator IGR (mce3r_biology.OPERATOR_IGRS) is present in
     divergent_igrs.fasta and promoters.fasta, extracting it from the genome regardless of
     length. Operator regions are short and would otherwise be filtered out of the scan.
+
+    Idempotent (audit C11 fix): each file is checked independently, and an operator IGR is
+    appended to a file only if it is not already in THAT file. Re-running the pipeline no
+    longer duplicates the operator IGRs in promoters.fasta (which previously changed the
+    universe size and every gate number on each run).
     """
     from Bio import SeqIO
     from Bio.Seq import Seq
@@ -111,21 +121,29 @@ def ensure_operator_igrs(root: Path, gb: Path, igrs: Path, promoters: Path) -> N
     from extract_promoters import build_cds_interval_tree
     from utils import compute_gc_content
 
-    present = (
+    in_igrs = (
         {r.id for r in SeqIO.parse(str(igrs), "fasta")} if igrs.exists() else set()
     )
-    pairs = {igr: igr.replace("IGR_", "").split("_") for igr in bio.OPERATOR_IGRS}
-    missing = {igr: gp for igr, gp in pairs.items() if igr not in present}
-    if not missing:
-        logger.info("Both operator IGRs already present.")
+    in_prom = (
+        {r.id for r in SeqIO.parse(str(promoters), "fasta")}
+        if promoters.exists()
+        else set()
+    )
+    need = {
+        igr: igr.replace("IGR_", "").split("_")
+        for igr in bio.OPERATOR_IGRS
+        if igr not in in_igrs or igr not in in_prom
+    }
+    if not need:
+        logger.info("Both operator IGRs already present in both FASTA files.")
         return
 
     record = SeqIO.read(str(gb), "genbank")
     genome = str(record.seq).upper()
     by_tag = {c["locus_tag"]: c for c in build_cds_interval_tree(record)}
 
-    new_records = []
-    for igr_id, (t1, t2) in missing.items():
+    built = {}
+    for igr_id, (t1, t2) in need.items():
         a, b = by_tag.get(t1), by_tag.get(t2)
         if a is None or b is None:
             logger.warning(f"Cannot extract {igr_id}: missing CDS for {t1} or {t2}")
@@ -141,14 +159,93 @@ def ensure_operator_igrs(root: Path, gb: Path, igrs: Path, promoters: Path) -> N
             f"igr_start={igr_start} igr_end={igr_end} "
             f"gc_content={compute_gc_content(seq):.3f} length={len(seq)} operator_region=True"
         )
-        new_records.append(SeqRecord(Seq(seq), id=igr_id, description=desc))
+        built[igr_id] = SeqRecord(Seq(seq), id=igr_id, description=desc)
         logger.info(f"Extracted operator region {igr_id}: {len(seq)} bp")
 
-    if new_records:
+    add_to_igrs = [r for i, r in built.items() if i not in in_igrs]
+    add_to_prom = [r for i, r in built.items() if i not in in_prom]
+    if add_to_igrs:
         with open(str(igrs), "a") as f:
-            SeqIO.write(new_records, f, "fasta")
+            SeqIO.write(add_to_igrs, f, "fasta")
+    if add_to_prom:
         with open(str(promoters), "a") as f:
-            SeqIO.write(new_records, f, "fasta")
+            SeqIO.write(add_to_prom, f, "fasta")
+
+
+def compute_provenance(root: Path, inputs: list[Path]) -> dict:
+    """
+    Capture run provenance (audit S6): git SHA, MEME-tool versions, and input checksums.
+    Stamped into gates.json so a result can be tied to exact code + data + tools.
+    """
+    import hashlib
+    import subprocess
+
+    def _git(*args: str) -> str:
+        try:
+            return subprocess.run(
+                ["git", "-C", str(root), *args],
+                capture_output=True,
+                text=True,
+                timeout=15,
+            ).stdout.strip()
+        except Exception:  # noqa: BLE001
+            return ""
+
+    def _tool_version(tool: str) -> str:
+        try:
+            path = require_meme_tool(tool)
+            for flag in ("--version", "-version"):
+                out = subprocess.run(
+                    [path, flag], capture_output=True, text=True, timeout=15
+                )
+                text = (out.stdout or out.stderr).strip()
+                if text and "error" not in text.splitlines()[0].lower():
+                    return text.splitlines()[0]
+            return "unknown"
+        except Exception:  # noqa: BLE001
+            return "unavailable"
+
+    def _checksum(p: Path) -> str:
+        try:
+            h = hashlib.sha256()
+            with open(p, "rb") as fh:
+                for chunk in iter(lambda: fh.read(1 << 20), b""):
+                    h.update(chunk)
+            return f"sha256:{h.hexdigest()[:16]}"
+        except Exception:  # noqa: BLE001
+            return "missing"
+
+    return {
+        "git_sha": _git("rev-parse", "HEAD"),
+        "git_dirty": bool(_git("status", "--porcelain")),
+        "tool_versions": {t: _tool_version(t) for t in ("meme", "fimo", "tomtom")},
+        "input_checksums": {p.name: _checksum(p) for p in inputs if p},
+    }
+
+
+def external_corroboration_g1(knowledge_meme: Path, out_dir: Path) -> dict:
+    """
+    G1 — external corroboration against an INDEPENDENTLY-published operator motif.
+
+    Replaces the circular de-novo-vs-knowledge Tomtom (audit C1: both are MEME runs over the
+    same operator DNA + orthologs). Here the knowledge PWM is compared by Tomtom against a
+    PWM built from Santangelo 2009 footprinted operator sites (literature, not this pipeline).
+    A significant match is genuine external evidence that the PWM is the real operator.
+    """
+    out_dir = Path(out_dir)
+    lit_meme = build_literature_motif(out_dir / "santangelo2009.meme")
+    res = run_tomtom(knowledge_meme, lit_meme, out_dir / "tomtom_external")
+    return {
+        "name": "external_corroboration",
+        "reference": bio.SANTANGELO_2009_CITATION,
+        "tomtom_best_qvalue": res["best_qvalue"],
+        "matched": bool(res["matched"]),
+        "note": (
+            "Knowledge PWM vs a PWM built from independently-published footprinted operator "
+            "sites. Methodologically independent of this pipeline's MEME runs."
+        ),
+        "pass": bool(res["matched"]),
+    }
 
 
 def main():
@@ -198,7 +295,6 @@ def main():
     igrs = raw / "divergent_igrs.fasta"
     orthologs = raw / "ortholog_promoters.fasta"
     genome_fimo = root / "results" / "scans" / "fimo.tsv"
-    ortholog_fimo = root / "results" / "scans" / "fimo_orthologs.tsv"
 
     print("\n" + "=" * 66)
     print("  MCE3R OPERATOR SCAN — corrected, validated pipeline")
@@ -208,6 +304,7 @@ def main():
 
     t0 = time.perf_counter()
     g1 = None
+    g5 = None
 
     if "ensure-genome" in args.steps:
         step_ensure_genome(root)
@@ -220,6 +317,12 @@ def main():
             igrs, orthologs, knowledge_meme.parent, bfile=bg, threads=args.threads
         )
     if "denovo" in args.steps:
+        # G1 = external corroboration vs a published motif (non-circular, audit C1 fix).
+        g1 = external_corroboration_g1(
+            knowledge_meme, root / "results" / "motifs" / "external"
+        )
+        # The de-novo-vs-knowledge Tomtom is kept as a DESCRIPTIVE internal-consistency
+        # readout only (it is circular and never gates the result).
         res = discover_denovo(
             igrs,
             orthologs,
@@ -228,15 +331,11 @@ def main():
             bfile=bg,
             threads=args.threads,
         )
-        g1 = {
-            "name": "operator_recovered_not_injected",
-            "matched": res["g1_matched"],
-            "best_qvalue": res["g1_best_qvalue"],
-            "pass": bool(res["g1_matched"]),
-        }
+        g1["internal_consistency_denovo_tomtom_q"] = res["g1_best_qvalue"]
+        g1["internal_consistency_matched"] = bool(res["g1_matched"])
     if "scan" in args.steps:
-        # Permissive p-value reporting so every promoter gets a score (for ranking/AUPRC);
-        # the strict q<0.05 hit definition is applied in validate.py.
+        # Permissive p-value reporting so every promoter gets a score (for ranking);
+        # the genome-wide BH q<0.05 strict-hit definition is recomputed in validate.py.
         run_fimo(
             knowledge_meme,
             promoters,
@@ -246,28 +345,43 @@ def main():
             use_qvalue=False,
         )
     if "conservation" in args.steps:
-        run_fimo(
-            knowledge_meme,
+        # G5 = leave-one-lineage-out (non-circular, audit C7/S5 fix).
+        g5 = leave_one_lineage_out(
             orthologs,
-            root / "results" / "scans" / "_orthologs",
-            bfile=bg,
-            qv_thresh=args.scan_pthresh,
-            use_qvalue=False,
+            root / "results" / "scans" / "_conservation_lolo",
+            threads=args.threads,
         )
-        src = root / "results" / "scans" / "_orthologs" / "fimo.tsv"
-        if src.exists():
-            ortholog_fimo.write_text(src.read_text())
 
     gates = {}
     if "validate" in args.steps:
-        gates = evaluate(
-            promoters,
-            genome_fimo,
-            ortholog_fimo if ortholog_fimo.exists() else None,
-            q_thresh=0.05,
-        )
+        gates = evaluate(promoters, genome_fimo, knowledge_meme, q_thresh=0.05)
         if g1 is not None:
             gates["G1"] = g1
+        if g5 is not None:
+            gates["G5"] = g5
+        # Preserve previously-computed G1/G5 when this is a partial re-run that skipped
+        # the denovo/conservation steps, so a `--steps validate` run does not silently
+        # destroy a complete gate set (audit self-check H-1).
+        prior_path = root / "results" / "scans" / "gates.json"
+        if prior_path.exists():
+            try:
+                prior = json.loads(prior_path.read_text())
+                for gk in ("G1", "G5"):
+                    if gk not in gates and isinstance(prior.get(gk), dict):
+                        gates[gk] = prior[gk]
+                        logger.info(
+                            f"Carried over {gk} from previous gates.json (step not re-run)."
+                        )
+            except (json.JSONDecodeError, OSError):
+                pass
+        core = ["G1", "G2", "G3", "G4", "G5"]
+        gates["all_gates_pass"] = bool(
+            all(gates.get(k, {}).get("pass") for k in core if k in gates)
+            and all(k in gates for k in core)
+        )
+        gates["provenance"] = compute_provenance(
+            root, [promoters, orthologs, knowledge_meme, genome_fimo]
+        )
         write_report(gates, root / "results" / "scans" / "validation_report.txt")
         (root / "results" / "scans" / "gates.json").write_text(
             json.dumps(gates, indent=2, default=str)
@@ -286,12 +400,17 @@ def main():
     gate_order = ["G1", "G2", "G3", "G4", "G5"]
     if g1 is not None and "G1" not in gates:
         gates["G1"] = g1
+    if g5 is not None and "G5" not in gates:
+        gates["G5"] = g5
     for gk in gate_order:
         g = gates.get(gk)
         if g is None:
             continue
         status = "PASS" if g.get("pass") else "FAIL"
         print(f"  {gk}  {g.get('name', ''):<32} {status}")
+    if "all_gates_pass" in gates:
+        print("-" * 66)
+        print(f"  ALL GATES PASS: {gates['all_gates_pass']}")
     print("=" * 66)
     print(f"  total time: {time.perf_counter() - t0:.1f}s")
     print("=" * 66 + "\n")
@@ -311,9 +430,13 @@ def write_ranked_sites(promoters_fasta: Path, fimo_tsv: Path, out_csv: Path) -> 
         if c in df.columns:
             df[c] = pd.to_numeric(df[c], errors="coerce")
     df = df[df["score"] > 0].copy()
+    # Sort key per column: q-value ascending (smaller = better), score descending
+    # (larger = better). Building the ascending flags per-column avoids the audit S10
+    # bug where, with the q-value column absent, score was sorted ascending (worst first).
+    sort_spec = {"q-value": True, "score": False}
     sort_cols = [c for c in ("q-value", "score") if c in df.columns]
     df = df.sort_values(
-        sort_cols, ascending=[True, False][: len(sort_cols)]
+        sort_cols, ascending=[sort_spec[c] for c in sort_cols]
     ).reset_index(drop=True)
     df.insert(0, "rank", df.index + 1)
     df["locus_class"] = df["sequence_name"].map(bio.classify_locus)
