@@ -56,7 +56,7 @@ run.font.name = 'Calibri'
 
 subtitle = doc.add_paragraph()
 subtitle.alignment = WD_ALIGN_PARAGRAPH.CENTER
-run = subtitle.add_run('Complete Methodology Document for Regeneron STS')
+run = subtitle.add_run('Complete Methodology Document')
 run.font.size = Pt(16)
 run.font.color.rgb = RGBColor(0x2E, 0x75, 0xB6)
 run.font.name = 'Calibri'

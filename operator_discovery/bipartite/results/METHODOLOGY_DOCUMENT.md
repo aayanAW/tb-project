@@ -1,5 +1,5 @@
 # Mce3R Operator Discovery Pipeline — Phase 1 Bioinformatics
-## Complete Methodology Document for Regeneron STS
+## Complete Methodology Document
 
 ---
 

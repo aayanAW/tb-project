@@ -230,7 +230,7 @@ add_body(doc,
     "additions for Phases 8\u201310, (C) analysis execution and figure generation, and "
     "(D) manuscript preparation and competition submission materials. Each week has explicit "
     "deliverables, time estimates, and dependency links to ensure the project remains on "
-    "schedule for the Regeneron STS submission deadline."
+    "schedule for the project submission deadline."
 )
 
 add_subsection_header(doc, "Current Project Status")
@@ -481,7 +481,7 @@ week_rows = [
      "Week 11 draft", "20"],
 
     ["13", "Jun 22 \u2013 Jun 28", "Competition",
-     "Prepare Regeneron STS materials: 1-page project abstract, "
+     "Prepare submission materials: 1-page project abstract, "
      "research report (20-page limit), common application essay edits.",
      "STS abstract draft",
      "Manuscript v3 complete", "20"],
@@ -875,7 +875,7 @@ doc.add_page_break()
 add_title(doc, "8. COMPETITION TIMELINE (REGENERON STS)")
 
 add_body(doc,
-    "The Regeneron Science Talent Search has a November 2026 submission deadline. "
+    "The project has a November 2026 submission deadline. "
     "The following timeline maps project milestones to competition requirements, "
     "ensuring all materials are prepared with adequate buffer time."
 )

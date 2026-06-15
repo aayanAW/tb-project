@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Publication Figure 1: Mce3R Phase 1 Operator Discovery Pipeline
-Multi-panel figure for Regeneron STS submission.
+Multi-panel figure for the operator-discovery writeup.
 """
 
 import matplotlib

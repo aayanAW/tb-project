@@ -16,7 +16,7 @@ Strategy:
   5. Rank candidates by combined score
   6. Validate: the known operator must be recovered as the #1 hit
 
-Author: Computational pipeline for Regeneron STS project
+Author: Computational pipeline (Mce3R operator discovery)
 Date: 2026-03-18
 """
 

@@ -23,7 +23,7 @@ tb project/
 │   │   ├── config/  data/  results/ (genomes + phase1 outputs; relative paths — keep layout)
 │   │   ├── reference_docs/          Eram summary, TBmotifs
 │   │   ├── paper_fulltext.txt        Panagoda 2024 full text
-│   │   ├── METHODOLOGY_DOCUMENT.*    (in results/) the STS methods writeup
+│   │   ├── METHODOLOGY_DOCUMENT.*    (in results/) the methods writeup
 │   │   └── audit_report_bipartite.md cross-model audit of the discovery method
 │   ├── validation/                  single-motif FIMO + non-circular gates (rigor SUPPORT)
 │   │   └── (run: python main.py — see its CLAUDE.md)
