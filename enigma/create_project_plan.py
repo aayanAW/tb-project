@@ -483,7 +483,7 @@ week_rows = [
     ["13", "Jun 22 \u2013 Jun 28", "Competition",
      "Prepare submission materials: 1-page project abstract, "
      "research report (20-page limit), common application essay edits.",
-     "STS abstract draft",
+     "competition abstract draft",
      "Manuscript v3 complete", "20"],
 
     ["14", "Jun 29 \u2013 Jul 5", "Competition",
@@ -598,7 +598,7 @@ risk_rows = [
      "Frame as computational prediction paper with explicit falsification criteria; "
      "target computational biology journals (PLoS Comp Bio, Biophysical Journal)"],
     ["8",
-     "STS deadline pressure compresses final preparation time",
+     "competition deadline pressure compresses final preparation time",
      "Medium", "High",
      "Buffer week (Week 16) built in; prioritize manuscript and research report "
      "over presentation materials if needed"],
@@ -868,11 +868,11 @@ styled_table(doc, criteria_headers, criteria_rows,
              col_widths=[0.3, 1.8, 1.6, 1.4, 1.4])
 
 # ═══════════════════════════════════════════════════════════════════════════
-# 8. COMPETITION TIMELINE (REGENERON STS SPECIFIC)
+# 8. COMPETITION TIMELINE (competition)
 # ═══════════════════════════════════════════════════════════════════════════
 
 doc.add_page_break()
-add_title(doc, "8. COMPETITION TIMELINE (REGENERON STS)")
+add_title(doc, "8. COMPETITION TIMELINE (competition)")
 
 add_body(doc,
     "The project has a November 2026 submission deadline. "
@@ -893,12 +893,12 @@ comp_rows = [
     ["August 2026", "Manuscript v3 complete",
      "Full paper draft with Introduction, Methods, Results, Discussion; all critiques addressed"],
     ["September 2026", "Research report draft",
-     "20-page STS format research report; adapted from manuscript for competition audience"],
+     "20-page competition format research report; adapted from manuscript for competition audience"],
     ["October 2026", "Final revisions",
      "All materials polished; code documented; results verified reproducible from clean run"],
-    ["November 2026", "STS submission",
+    ["November 2026", "competition submission",
      "Research report, 1-page abstract, transcripts, teacher recommendation, "
-     "Common App essay, all uploaded to STS portal"],
+     "Common App essay, all uploaded to competition portal"],
 ]
 
 styled_table(doc, comp_headers, comp_rows,

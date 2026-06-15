@@ -639,7 +639,7 @@ The previous bipartite search (`find_operators_v2.py`, 676 lines) had 7 bugs ide
 
 ---
 
-# 7. METHODS SUMMARY (Technical, for STS Report)
+# 7. METHODS SUMMARY (Technical)
 
 Reference genome sequences for *Mycobacterium tuberculosis* H37Rv (NC_000962.3), *M. bovis* AF2122/97 (NC_002945.4), and *M. marinum* M (NC_010612.1) were obtained from NCBI (`phase1_pipeline/download_genomes.py`). Upstream regulatory regions (200 bp) were extracted for all annotated genes accounting for strand orientation and circular chromosome topology (`phase1_pipeline/extract_upstream.py`).
 
