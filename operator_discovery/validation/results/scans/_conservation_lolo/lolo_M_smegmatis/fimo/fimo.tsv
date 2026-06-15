@@ -1,0 +1,4 @@
+
+# FIMO (Find Individual Motif Occurrences): Version 5.5.9 compiled on May 27 2026 at 13:17:17
+# The format of this file is described at https://meme-suite.org/meme/doc/fimo-output-format.html#tsv_results.
+# fimo --oc '/Users/aayanalwani/tb project/mce3r_project/results/scans/_conservation_lolo/lolo_M_smegmatis/fimo' --max-stored-scores 1000000 --bfile '/Users/aayanalwani/tb project/mce3r_project/results/scans/_conservation_lolo/ortholog_order0.bg' --thresh 0.001 '/Users/aayanalwani/tb project/mce3r_project/results/scans/_conservation_lolo/lolo_M_smegmatis/lolo.meme' '/Users/aayanalwani/tb project/mce3r_project/results/scans/_conservation_lolo/lolo_M_smegmatis/test.fasta'

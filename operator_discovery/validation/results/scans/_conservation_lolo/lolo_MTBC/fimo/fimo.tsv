@@ -1,0 +1,9 @@
+motif_id	motif_alt_id	sequence_name	start	stop	strand	score	p-value	q-value	matched_sequence
+GSYATYGVHTKCTSWYKTYCW	MEME-1	mycobacterium_bovis_yrbE3A_upstream	128	148	-	4.94215	8.44e-06	0.00505	GGCAGAGACCGCTGATGTCCA
+GSYATYGVHTKCTSWYKTYCW	MEME-1	mycobacterium_canettii_yrbE3A_upstream	128	148	-	4.94215	8.44e-06	0.00505	GGCAGAGACCGCTGATGTCCA
+GSYATYGVHTKCTSWYKTYCW	MEME-1	mycobacterium_africanum_yrbE3A_upstream	128	148	-	4.94215	8.44e-06	0.00505	GGCAGAGACCGCTGATGTCCA
+GSYATYGVHTKCTSWYKTYCW	MEME-1	mycobacterium_tuberculosis_yrbE3A_upstream	125	145	+	-8.91736	0.000292	0.131	GCTATGGACATCAGCGGTTCT
+
+# FIMO (Find Individual Motif Occurrences): Version 5.5.9 compiled on May 27 2026 at 13:17:17
+# The format of this file is described at https://meme-suite.org/meme/doc/fimo-output-format.html#tsv_results.
+# fimo --oc '/Users/aayanalwani/tb project/mce3r_project/results/scans/_conservation_lolo/lolo_MTBC/fimo' --max-stored-scores 1000000 --bfile '/Users/aayanalwani/tb project/mce3r_project/results/scans/_conservation_lolo/ortholog_order0.bg' --thresh 0.001 '/Users/aayanalwani/tb project/mce3r_project/results/scans/_conservation_lolo/lolo_MTBC/lolo.meme' '/Users/aayanalwani/tb project/mce3r_project/results/scans/_conservation_lolo/lolo_MTBC/test.fasta'

@@ -1,0 +1,14 @@
+Subject: Re: Mce3R binding-site results
+
+Hi Dr. Balázsi,
+
+I've attached a step-by-step write-up of the method so you have it before Monday. I also wanted to clear up the two things from your email.
+
+When I call the operator "bipartite," I just mean its shape within a single genome: it has two 25-bp binding sites, one strong and one weak, sitting about 53 bp apart on the same strand. So it's about the two sites in one sequence, not anything across species. The comparison between M. tuberculosis, M. bovis, and M. marinum is a separate conservation check I run later on.
+
+On the filtering, the spacing part means I only keep a candidate if its two half-sites land on the same strand at roughly that 53-bp distance. The proximity part comes in afterward, when I rank candidates higher if they sit in intergenic regions next to genes Mce3R is already known to control. The scan itself still looks across the whole genome equally, so that context only changes how I rank the hits, not where I search.
+
+I'm around after 3 on weekdays and after noon on weekends this week and next, so just let me know what works for you.
+
+Thanks,
+Aayan

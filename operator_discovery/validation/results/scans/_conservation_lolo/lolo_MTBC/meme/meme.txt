@@ -1,0 +1,225 @@
+********************************************************************************
+MEME - Motif discovery tool
+********************************************************************************
+MEME version 5.5.9 (Release date: Fri Nov 21 15:33:51 2025 -0800)
+
+For further information on how to interpret these results please access https://meme-suite.org/meme.
+To get a copy of the MEME Suite software please access https://meme-suite.org.
+
+********************************************************************************
+
+
+********************************************************************************
+REFERENCE
+********************************************************************************
+If you use this program in your research, please cite:
+
+Timothy L. Bailey and Charles Elkan,
+"Fitting a mixture model by expectation maximization to
+discover motifs in biopolymers",
+Proceedings of the Second International Conference on Intelligent Systems
+for Molecular Biology, pp. 28-36, AAAI Press, Menlo Park, California, 1994.
+********************************************************************************
+
+
+********************************************************************************
+TRAINING SET
+********************************************************************************
+PRIMARY SEQUENCES= /Users/aayanalwani/tb project/mce3r_project/results/scans/_conservation_lolo/lolo_MTBC/train.fasta
+CONTROL SEQUENCES= --none--
+ALPHABET= ACGT
+Sequence name            Weight Length  Sequence name            Weight Length  
+-------------            ------ ------  -------------            ------ ------  
+mycobacterium_liflandii_ 1.0000    250  mycobacterium_marinum_yr 1.0000    250  
+mycobacterium_ulcerans_y 1.0000    250  mycobacterium_smegmatis_ 1.0000    250  
+********************************************************************************
+
+********************************************************************************
+COMMAND LINE SUMMARY
+********************************************************************************
+This information can also be useful in the event you wish to report a
+problem with the MEME software.
+
+command: meme /Users/aayanalwani/tb project/mce3r_project/results/scans/_conservation_lolo/lolo_MTBC/train.fasta -dna -mod anr -nmotifs 1 -minw 21 -maxw 29 -oc /Users/aayanalwani/tb project/mce3r_project/results/scans/_conservation_lolo/lolo_MTBC/meme -p 4 -revcomp -bfile /Users/aayanalwani/tb project/mce3r_project/results/scans/_conservation_lolo/ortholog_order0.bg 
+
+model:  mod=           anr    nmotifs=         1    evt=           inf
+objective function:           em=       E-value of product of p-values
+                              starts=   E-value of product of p-values
+strands: + -
+width:  minw=           21    maxw=           29
+nsites: minsites=        2    maxsites=       20    wnsites=       0.8
+theta:  spmap=         uni    spfuzz=        0.5
+em:     prior=   dirichlet    b=            0.01    maxiter=        50
+        distance=    1e-05
+trim:   wg=             11    ws=              1    endgaps=       yes
+data:   n=            1000    N=               4
+sample: seed=            0    hsfrac=          0
+        searchsize=   1000    norand=         no    csites=       1000
+Letter frequencies in dataset:
+A 0.22 C 0.281 G 0.281 T 0.22 
+Background letter frequencies (from file /Users/aayanalwani/tb project/mce3r_project/results/scans/_conservation_lolo/ortholog_order0.bg):
+A 0.214 C 0.286 G 0.286 T 0.214 
+Background model order: 0
+********************************************************************************
+
+
+********************************************************************************
+MOTIF GSYATYGVHTKCTSWYKTYCW MEME-1	width =  21  sites =   6  llr = 125  E-value = 8.6e-007
+********************************************************************************
+--------------------------------------------------------------------------------
+	Motif GSYATYGVHTKCTSWYKTYCW MEME-1 Description
+--------------------------------------------------------------------------------
+Simplified        A  :::a:::33:::::7:::::3
+pos.-specific     C  :37::7:33::a:3:7::3a:
+probability       G  a7::::a3::7::7::3::::
+matrix            T  ::3:a3::3a3:a:337a7:7
+
+         bits    2.2    **    *  *    *   
+                 2.0    **    *  *    *   
+                 1.8 *  ** *  * **    * * 
+                 1.6 *  ** *  * **    * * 
+Relative         1.3 *  ** *  * ** *  * **
+Entropy          1.1 * *****  **** *******
+(30.0 bits)      0.9 *******  ************
+                 0.7 *******  ************
+                 0.4 *********************
+                 0.2 *********************
+                 0.0 ---------------------
+
+Multilevel           GGCATCGAATGCTGACTTTCT
+consensus             CT  T CC T  CTTG C A
+sequence                    GT            
+                                          
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+	Motif GSYATYGVHTKCTSWYKTYCW MEME-1 sites sorted by position p-value
+--------------------------------------------------------------------------------
+Sequence name            Strand  Start   P-value                    Site       
+-------------            ------  ----- ---------            ---------------------
+mycobacterium_ulcerans_y     -    200  1.03e-10 GCTGACGACA GGTATTGACTGCTGTCTTTCT TCGGTGAGCA
+mycobacterium_marinum_yr     -    200  1.03e-10 GCTGACGACA GGTATTGACTGCTGTCTTTCT TCGGTGAGCA
+mycobacterium_ulcerans_y     +     10  2.29e-10  GGCTGTGTG GGCATCGGATGCTCATTTCCT CGCCACGCGG
+mycobacterium_marinum_yr     +     10  2.29e-10  GGCTGTGTG GGCATCGGATGCTCATTTCCT CGCCACGCGG
+mycobacterium_ulcerans_y     +    116  5.58e-10 AGGTCCAAAG GCCATCGCTTTCTGACGTTCA CAAGTGTTAA
+mycobacterium_marinum_yr     +    116  5.58e-10 AGGTCCAAAG GCCATCGCTTTCTGACGTTCA CAAGTGTTAA
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+	Motif GSYATYGVHTKCTSWYKTYCW MEME-1 block diagrams
+--------------------------------------------------------------------------------
+SEQUENCE NAME            POSITION P-VALUE  MOTIF DIAGRAM
+-------------            ----------------  -------------
+mycobacterium_ulcerans_y          5.6e-10  9_[+1]_85_[+1]_63_[-1]_30
+mycobacterium_marinum_yr          5.6e-10  9_[+1]_85_[+1]_63_[-1]_30
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+	Motif GSYATYGVHTKCTSWYKTYCW MEME-1 in BLOCKS format
+--------------------------------------------------------------------------------
+BL   MOTIF GSYATYGVHTKCTSWYKTYCW width=21 seqs=6
+mycobacterium_ulcerans_y (  200) GGTATTGACTGCTGTCTTTCT  1 
+mycobacterium_marinum_yr (  200) GGTATTGACTGCTGTCTTTCT  1 
+mycobacterium_ulcerans_y (   10) GGCATCGGATGCTCATTTCCT  1 
+mycobacterium_marinum_yr (   10) GGCATCGGATGCTCATTTCCT  1 
+mycobacterium_ulcerans_y (  116) GCCATCGCTTTCTGACGTTCA  1 
+mycobacterium_marinum_yr (  116) GCCATCGCTTTCTGACGTTCA  1 
+//
+
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+	Motif GSYATYGVHTKCTSWYKTYCW MEME-1 position-specific scoring matrix
+--------------------------------------------------------------------------------
+log-odds matrix: alength= 4 w= 21 n= 920 bayes= 7.70107 E= 8.6e-007 
+  -923   -923    180   -923 
+  -923     22    122   -923 
+  -923    122   -923     64 
+   222   -923   -923   -923 
+  -923   -923   -923    222 
+  -923    122   -923     64 
+  -923   -923    180   -923 
+    64     22     22   -923 
+    64     22   -923     64 
+  -923   -923   -923    222 
+  -923   -923    122     64 
+  -923    180   -923   -923 
+  -923   -923   -923    222 
+  -923     22    122   -923 
+   164   -923   -923     64 
+  -923    122   -923     64 
+  -923   -923     22    164 
+  -923   -923   -923    222 
+  -923     22   -923    164 
+  -923    180   -923   -923 
+    64   -923   -923    164 
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+	Motif GSYATYGVHTKCTSWYKTYCW MEME-1 position-specific probability matrix
+--------------------------------------------------------------------------------
+letter-probability matrix: alength= 4 w= 21 nsites= 6 E= 8.6e-007 
+ 0.000000  0.000000  1.000000  0.000000 
+ 0.000000  0.333333  0.666667  0.000000 
+ 0.000000  0.666667  0.000000  0.333333 
+ 1.000000  0.000000  0.000000  0.000000 
+ 0.000000  0.000000  0.000000  1.000000 
+ 0.000000  0.666667  0.000000  0.333333 
+ 0.000000  0.000000  1.000000  0.000000 
+ 0.333333  0.333333  0.333333  0.000000 
+ 0.333333  0.333333  0.000000  0.333333 
+ 0.000000  0.000000  0.000000  1.000000 
+ 0.000000  0.000000  0.666667  0.333333 
+ 0.000000  1.000000  0.000000  0.000000 
+ 0.000000  0.000000  0.000000  1.000000 
+ 0.000000  0.333333  0.666667  0.000000 
+ 0.666667  0.000000  0.000000  0.333333 
+ 0.000000  0.666667  0.000000  0.333333 
+ 0.000000  0.000000  0.333333  0.666667 
+ 0.000000  0.000000  0.000000  1.000000 
+ 0.000000  0.333333  0.000000  0.666667 
+ 0.000000  1.000000  0.000000  0.000000 
+ 0.333333  0.000000  0.000000  0.666667 
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+	Motif GSYATYGVHTKCTSWYKTYCW MEME-1 regular expression
+--------------------------------------------------------------------------------
+G[GC][CT]AT[CT]G[ACG][ACT]T[GT]CT[GC][AT][CT][TG]T[TC]C[TA]
+--------------------------------------------------------------------------------
+
+
+
+
+Time  0.03 secs.
+
+********************************************************************************
+
+
+********************************************************************************
+SUMMARY OF MOTIFS
+********************************************************************************
+
+--------------------------------------------------------------------------------
+	Combined block diagrams: non-overlapping sites with p-value < 0.0001
+--------------------------------------------------------------------------------
+SEQUENCE NAME            COMBINED P-VALUE  MOTIF DIAGRAM
+-------------            ----------------  -------------
+mycobacterium_liflandii_         9.40e-02  250
+mycobacterium_marinum_yr         4.73e-08  9_[+1(2.29e-10)]_85_[+1(5.58e-10)]_\
+    63_[-1(1.03e-10)]_30
+mycobacterium_ulcerans_y         4.73e-08  9_[+1(2.29e-10)]_85_[+1(5.58e-10)]_\
+    63_[-1(1.03e-10)]_30
+mycobacterium_smegmatis_         9.41e-01  250
+--------------------------------------------------------------------------------
+
+********************************************************************************
+
+
+********************************************************************************
+Stopped because requested number of motifs (1) found.
+********************************************************************************
+
+CPU: Aayans-MacBook-Air.local
+
+********************************************************************************

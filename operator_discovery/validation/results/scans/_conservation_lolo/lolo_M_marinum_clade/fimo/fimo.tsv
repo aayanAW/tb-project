@@ -1,0 +1,9 @@
+motif_id	motif_alt_id	sequence_name	start	stop	strand	score	p-value	q-value	matched_sequence
+CAGYKVTSCRAGCTRKCGCATAYTGGCTA	MEME-1	mycobacterium_liflandii_yrbE3A_upstream	35	63	+	-5.91753	7.7e-05	0.102	AAGCGCGCCTATCATTAGGGTACTAGCAA
+CAGYKVTSCRAGCTRKCGCATAYTGGCTA	MEME-1	mycobacterium_liflandii_yrbE3A_upstream	205	233	-	-17.0412	0.000766	0.283	GCCTCGGGTGGGGTTGCTCACGCTGACCA
+CAGYKVTSCRAGCTRKCGCATAYTGGCTA	MEME-1	mycobacterium_ulcerans_yrbE3A_upstream	114	142	-	-17.6186	0.000852	0.283	CACTTGTGAACGTCAGAAAGCGATGGCCT
+CAGYKVTSCRAGCTRKCGCATAYTGGCTA	MEME-1	mycobacterium_marinum_yrbE3A_upstream	114	142	-	-17.6186	0.000852	0.283	CACTTGTGAACGTCAGAAAGCGATGGCCT
+
+# FIMO (Find Individual Motif Occurrences): Version 5.5.9 compiled on May 27 2026 at 13:17:17
+# The format of this file is described at https://meme-suite.org/meme/doc/fimo-output-format.html#tsv_results.
+# fimo --oc '/Users/aayanalwani/tb project/mce3r_project/results/scans/_conservation_lolo/lolo_M_marinum_clade/fimo' --max-stored-scores 1000000 --bfile '/Users/aayanalwani/tb project/mce3r_project/results/scans/_conservation_lolo/ortholog_order0.bg' --thresh 0.001 '/Users/aayanalwani/tb project/mce3r_project/results/scans/_conservation_lolo/lolo_M_marinum_clade/lolo.meme' '/Users/aayanalwani/tb project/mce3r_project/results/scans/_conservation_lolo/lolo_M_marinum_clade/test.fasta'
