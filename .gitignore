@@ -23,3 +23,10 @@ node_modules/
 # Conda/Miniconda installers (large binaries, not project code)
 Miniconda3-latest-MacOSX-arm64.sh
 miniforge.sh
+Miniconda3-*.sh
+
+# Tooling caches
+.ruff_cache/
+
+# Regenerated genome FASTA (rebuilt from the .gb by the validation pipeline)
+operator_discovery/validation/data/raw/Mtb_H37Rv.fasta
